@@ -1,7 +1,6 @@
-INDEX VERSION 1.4+C:\Class\JSPClass\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-233447831.index
-1970074441.index
-1093187846.index
-2753599902.index
-3214048031.index
+INDEX VERSION 1.4+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+610922006.index
+1337945420.index
+1647437439.index
 2843935503.index
+1349248790.index
