@@ -14,6 +14,7 @@ INDEX VERSION 1.131+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.ecl
 2602628853.index
 2167269142.index
 2990711342.index
+2843935503.index
 120443946.index
 765493182.index
 759842999.index

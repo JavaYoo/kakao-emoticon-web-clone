@@ -1,4 +1,6 @@
 INDEX VERSION 1.131
+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1184182453.index
+\jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3858839640.index
 \jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\258121069.index
