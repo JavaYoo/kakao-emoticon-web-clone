@@ -1,0 +1,87 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022. 6. 16. - 오후 4:49:49</title>
+<link rel="shortcut icon "type = "image/x-icon" href = "../images/SiSt.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<h3>test01.jsp</h3>
+
+<select id="selDept" name="selDept">
+	<option>선택...</option>
+	
+	<c:forEach items="${ list }" var="dto">
+		<option value="${ dto.deptno }">${ dto.dname }</option>
+	</c:forEach>
+</select>
+
+<script>
+	//  http://localhost/jspPro/soctt/emp?selDept=10
+	$("#selDept").wrap("<form></form>").change(function(event){
+		// alert( $(this).val() );  // 선택한 부서 번호
+		if( $(this).val() ){
+			$(this).parent()  // form
+						.attr({
+							<%-- action:"<%=contextPath%>/test/test00.htm", --%>
+							method:"get"
+						})
+						.submit();
+		}else{
+			alert(" 부서를 선택하세요. ")
+		}
+	});
+</script>
+<%-- 
+<table border="1" style="width:100%">
+	<thead>
+		<tr>
+			<th>deptno</th>
+			<th>empno</th>
+			<th>ename</th>
+			<th>job</th>
+			<th>hiredate</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<c:if test="${ empty list } }">
+			<tr>
+				<td colspan="5" style="height:200px">사원이 존재하지 않습니다.</td>
+			</tr>
+		</c:if>
+		<c:if test="${ not empty list }">
+			<c:forEach items="${ list }" var="dto">
+			<tr>
+				<td>${dto.deptno }</td>
+				<td>${dto.empno }</td>
+				<td>${dto.ename }</td>
+				<td>${dto.job }</td>
+				<td>${dto.hiredate }</td>
+			</tr>
+			</c:forEach>
+		</c:if>
+		
+
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">
+				${ param.selDept }번 부서원은 총 ${ list.size() }명 입니다.
+			</td>
+		</tr>
+	</tfoot>
+</table>
+ --%>
+<a href="<%=contextPath%>/test/test00.htm">Home</a>
+
+</body>
+</html>
