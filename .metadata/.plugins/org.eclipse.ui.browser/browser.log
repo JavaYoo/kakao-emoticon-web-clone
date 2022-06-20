@@ -70,3 +70,8 @@
 6월 17, 2022 17:19:23.952 [10492:7364:0617/171923.951:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 6월 17, 2022 17:23:39.476 [10492:13488:0617/172339.476:ERROR:device_event_log_impl.cc(214)] [17:23:39.464] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
 6월 17, 2022 17:23:39.491 [10492:13488:0617/172339.491:ERROR:device_event_log_impl.cc(214)] [17:23:39.496] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+
+6월 20, 2022 10:14:59.252 NEW SESSION
+6월 20, 2022 10:14:59.253 [4548:7800:0620/101459.248:ERROR:device_event_log_impl.cc(214)] [10:14:59.248] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 20, 2022 10:14:59.254 [4548:7800:0620/101459.249:ERROR:device_event_log_impl.cc(214)] [10:14:59.249] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 20, 2022 10:15:55.443 [4548:12408:0620/101555.442:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
