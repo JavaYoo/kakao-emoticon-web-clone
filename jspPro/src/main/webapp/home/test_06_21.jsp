@@ -12,6 +12,8 @@
 
 <h3>test06_01</h3>
 <p>push test01</p>
+<p>pull test</p>
+<p>branch push test01</p>
 
 </body>
 </html>
