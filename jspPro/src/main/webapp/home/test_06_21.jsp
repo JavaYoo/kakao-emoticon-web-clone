@@ -12,6 +12,5 @@
 
 <h3>test06_01</h3>
 <p>push test01</p>
-abc
 </body>
 </html>
