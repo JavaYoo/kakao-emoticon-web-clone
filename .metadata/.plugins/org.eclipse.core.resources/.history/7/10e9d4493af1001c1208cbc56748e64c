@@ -4,30 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2022. 6. 14. - 오후 4:37:37</title>
+<title>2022. 6. 20. - 오후 5:19:22</title>
+<link rel="shortcut icon "type = "image/x-icon" href = "../images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
-<h3>ex05_02.jsp</h3>
-
-<!-- action="" 자기 자신 URL 호출 -->
-정수를 입력하고 엔터를 치면 서브밋
-<form>
-정수 입력 : <input type="text" name="n" value="5">
-<p id="demo">
-1 + 2 + 3 + 4 + 5 = 15
-</p>
-</form>
+<h3>test1asds</h3>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
