@@ -12,6 +12,6 @@
 
 <h3>push</h3>
 파일 우클릭 - team - add to index - commit and push
-
+pull test
 </body>
 </html>
