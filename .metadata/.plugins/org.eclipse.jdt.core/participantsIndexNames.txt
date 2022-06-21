@@ -19,6 +19,8 @@ C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\js
 \jspPro\src\main\java
 C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1035783547.index
 \jspPro\src\main\java
+C:\Users\leesangho\git\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1184182453.index
+\jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2433091790.index
 \jspPro\src\main\java
 C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2131257826.index
