@@ -1,8 +1,7 @@
 INDEX VERSION 1.131+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jdt.core
 1658487299.index
 1735946842.index
-3197119030.index
-824435074.index
+1653570567.index
 2718329762.index
 311601670.index
 933235794.index
@@ -32,4 +31,4 @@ INDEX VERSION 1.131+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.ecl
 2529039273.index
 3732750657.index
 1516806466.index
-1653570567.index
+3197119030.index
