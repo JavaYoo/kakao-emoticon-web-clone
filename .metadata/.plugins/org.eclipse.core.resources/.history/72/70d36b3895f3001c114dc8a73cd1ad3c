@@ -1,0 +1,7 @@
+package days09.guestbook.command;
+
+
+//updateMessage.do?messageId=3
+public class UpdateMessageHandler {
+
+}

@@ -1,0 +1,5 @@
+package days09.guestbook.domain;
+
+public class Message {
+
+}

@@ -1,0 +1,14 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- <h3>ex02_02_ok.jsp</h3> -->
+
+<%
+	// 1. 쿠키 생성
+	String cookieName = request.getParameter("cookieName");
+	String cookieValue = request.getParameter("cookieValue");
+	Cookie c = new Cookie();
+
+	
+	// 2. 쿠키 응답
+%>
+

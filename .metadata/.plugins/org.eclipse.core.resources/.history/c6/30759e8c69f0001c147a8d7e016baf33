@@ -1,0 +1,14 @@
+package days05.board;
+
+public class PageBlock {
+	private int currentPage;
+	private int numberPerPage = 10;
+	private int numberOfPageBlock = 10;
+	private int startOfPageBlock = 1;  // 시작번호
+	private int endOfPageBlock;  // 끝번호 
+	private boolean prev, next;   //
+	
+	
+	// getter, setter
+	
+}

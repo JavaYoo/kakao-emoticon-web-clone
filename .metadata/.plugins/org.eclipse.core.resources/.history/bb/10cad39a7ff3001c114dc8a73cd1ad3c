@@ -1,0 +1,5 @@
+package days09.guestbook.persistence;
+
+public interface IMessage {
+	
+}

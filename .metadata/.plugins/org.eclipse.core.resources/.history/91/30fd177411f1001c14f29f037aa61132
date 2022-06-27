@@ -1,0 +1,78 @@
+package days05.board;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.util.DBconn;
+
+@WebServlet("/cstvsboard/delete.htm")
+public class Delete extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public Delete() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, 
+			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(" > Delete.doGet() 호출됨");
+		
+		String path = "/days05/board/delete.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		dispatcher.forward(request, response);
+		
+	}
+
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println(" > Delete.doPost() 호출됨");
+		request.setCharacterEncoding("UTF-8");
+		
+		//1. 파라미터  > BoardDTO dto 생성
+        String writer = request.getParameter("writer");
+        String pwd = request.getParameter("pwd");
+        String email = request.getParameter("email");
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        int tag = Integer.parseInt(request.getParameter("tag"));
+
+        BoardDTO dto = new BoardDTO();
+        dto.setWriter(writer);
+        dto.setPwd(pwd);
+        dto.setEmail(email);
+        dto.setTitle(title);
+        dto.setContent(content);
+        dto.setTag(tag);
+
+        //2. insert(dto);
+        Connection conn = DBconn.getConnection();
+        BoardDAOImpl dao = new BoardDAOImpl(conn);
+        int rowCount = 0;
+        try {
+            rowCount = dao.insert(dto);
+        } catch (SQLException e){
+            System.out.println("Delete.java doPost() Exception..");
+            e.printStackTrace();
+        }
+        DBconn.close();
+
+        //3. list.htm 리다이렉트 요청 > List.java 서블릿 호출 > list.jsp 포워딩
+        String contextPath = request.getContextPath();
+        String location = contextPath + "/cstvsboard/list.htm";
+        if (rowCount == 1) location += "?delete=success";
+        response.sendRedirect(location);
+
+		
+		
+	}
+
+}

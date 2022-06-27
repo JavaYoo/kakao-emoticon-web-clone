@@ -1,0 +1,5 @@
+package days10.replyboard.persistence;
+
+public interface IReplyBoard {
+
+}

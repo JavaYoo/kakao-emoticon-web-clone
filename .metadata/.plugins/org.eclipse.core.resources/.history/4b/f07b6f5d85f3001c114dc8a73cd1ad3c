@@ -1,0 +1,25 @@
+package days09.guestbook.service;
+
+// 싱글톤
+public class GetMessageListService {
+
+	private static GetMessageListService instance = null;
+
+	private GetMessageListService() {}
+
+	public static GetMessageListService getInstance() {
+		if( instance == null ) {
+			instance = new GetMessageListService();
+		}
+		return instance;
+	}
+	
+	// 한 페이지에 출력할 방명록 수
+	private static final int MESSAGE_COUNT_PER_PAGE = 3;
+	
+	// MessageListView [ 방명록 목록 + 페이징 처리 ] 반환하는 메서드
+	public MessageListView getMessageList( int pageNumber ) {
+		
+		return;
+	}
+} // class

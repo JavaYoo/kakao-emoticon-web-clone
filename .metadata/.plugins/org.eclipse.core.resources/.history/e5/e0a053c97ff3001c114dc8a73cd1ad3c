@@ -1,0 +1,47 @@
+package days09.guestbook.persistence;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import days09.guestbook.domain.Message;
+
+public class MessageImpl implements IMessage{
+
+	@Override
+	public int insert(Connection con, Message message) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectCount(Connection con) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Message> selectList(Connection con, int firstRow, int endRow) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Message select(Connection con, int message_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int delete(Connection con, int message_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Connection con, Message message) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

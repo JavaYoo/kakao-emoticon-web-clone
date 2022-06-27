@@ -1,0 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- <h3>ex02_04.jsp?ckbCookie=name&ckbCookie=age</h3> -->
+<%
+	// js 쿠키 삭제 ? 쿠키 새로 생성 + 만료시점 과거
+	// jsp 쿠키 삭제
+%>

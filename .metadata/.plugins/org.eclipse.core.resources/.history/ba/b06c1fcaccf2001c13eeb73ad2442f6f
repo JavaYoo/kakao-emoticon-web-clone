@@ -1,0 +1,4 @@
+# request URL = Commandler( [M]VC )
+/board/list.do=days08.mvc.command.ListHandler
+/board/write.do=days08.mvc.command.WriteHandler
+/board/edit.do=days08.mvc.command.EditHandler

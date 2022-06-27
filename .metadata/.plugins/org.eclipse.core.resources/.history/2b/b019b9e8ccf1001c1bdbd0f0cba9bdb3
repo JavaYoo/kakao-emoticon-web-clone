@@ -1,0 +1,12 @@
+<%@page import="com.util.Cookies"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- <h3>ex02_logout.jsp</h3> -->
+<%
+	String cname = "auth";
+	String logonID = null;
+	
+	Cookies cookies = new Cookies(request);
+	if(  cookies.exists(cname)   ){
+		logonID = cookies.getValue(cname);
+	}
+%>

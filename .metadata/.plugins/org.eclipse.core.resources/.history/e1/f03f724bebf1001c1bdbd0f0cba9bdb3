@@ -1,0 +1,17 @@
+<%@page import="com.util.Cookies"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	// [ ex06_auth.jspf ]
+			
+	String sname = "auth";
+	String logonID = null;
+	
+	// com.util.Cookies.java
+	// Cookies.java 객체 생성 => 생성자 호출 => cookieMap key, value
+	Cookies cookies = new Cookies(request);
+	if(  cookies.exists(sname)   ){
+		// 로그인 했다 ( 인증 )
+		logonID = cookies.getValue(sname);
+	}
+%>

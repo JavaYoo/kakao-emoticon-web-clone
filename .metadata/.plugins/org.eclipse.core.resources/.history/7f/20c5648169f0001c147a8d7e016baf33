@@ -1,0 +1,10 @@
+package days05.board;
+
+public class PageBlock {
+	private int currentPage;
+	private int numberPerPage;
+	private int numberOfPageBlock;
+	private int startOfPageBlock;
+	private int endOfPageBlock;
+	
+}

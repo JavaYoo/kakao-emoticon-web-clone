@@ -1,0 +1,2 @@
+# request URL = Commandler( [M]VC )
+/days10/replyboard/list.do=days10.replyboard.command.GetMessageListHandler

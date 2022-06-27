@@ -1,0 +1,73 @@
+package days08.mvc.controller;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import days08.mvc.command.CommandHandler;
+
+@WebServlet("/DispatcherServlet")
+public class DispatcherServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public DispatcherServlet() {
+        super();
+
+    }
+    
+    
+    private Map<String, CommandHandler> commandHandlerMap = new HashMap<String , CommandHandler>();
+    	
+    
+	@Override
+	public void init() throws ServletException {
+		// DispatcherServlet 서블릿 객체로 생성될 때 초기화 작업 - init() 메서드
+		// WEB-INF/commandHandler.properties 파일을 읽어서 요청 URL = CommandHandler => commandHandlerMap 추가
+		String path = this.getInitParameter("path");
+		String realPath = this.getServletContext().getRealPath(path);  // *****
+		
+		Properties prop = new Properties();
+		try ( FileReader fr = new FileReader(realPath)  ){
+			prop.load(  fr  );
+		} catch (Exception e) {
+			throw new ServletException();
+		}
+		// key =   /board/list.do
+		// value = days08.mvc.command.ListHandler  객체 생성
+		// commandHandlerMap 추가
+		
+		Iterator<Object> ir = prop.keySet().iterator();
+		while ( ir.hasNext() ) {
+			String url = (String)ir.next();
+			String commandHandlerFullName = prop.getProperty(url);
+			
+			Class.forName(commandHandlerFullName);
+			
+		}
+		
+		
+	}
+
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 1. 요청 URL 분석 list.do
+		// 2. 요청 URL -> 로직 처리하는 모델 객체 ( 커맨드핸들러 ) 찾아서 + request.setAttribute()/session
+		// commandHandler.properties => ListHandler => new ListHandler() 객체 생성 로직 처리
+		// 3. 응답 페이지 ( View ) 리다이렉트, 포워딩, 
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+}

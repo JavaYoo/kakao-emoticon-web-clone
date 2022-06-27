@@ -1,0 +1,13 @@
+package days08.mvc.command;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public interface CommandHandler {
+
+	// 로직 처리 메섣
+	public process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+	}
+	
+}

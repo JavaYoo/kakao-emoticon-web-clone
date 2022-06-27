@@ -1,0 +1,63 @@
+package days08.mvc.command;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.util.DBconn;
+
+import days05.board.BoardDAOImpl;
+import days05.board.BoardDTO;
+
+public class DeleteHandler implements CommandHandler{
+
+	@Override
+	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		if (request.getMethod().equals("GET")) { //get방식 새 게시글 작성 write.jsp 포워딩
+            return "/days08/board/delete.jsp";
+        } else if (   request.getMethod().equals("POST")   )  {  // post 방식 요청
+        	request.setCharacterEncoding("UTF-8");
+    		
+    		//1. 파라미터  > BoardDTO dto 생성
+    		int seq = Integer.parseInt(request.getParameter("seq")); // delete.htm?seq=641
+            String pwd = request.getParameter("pwd");  // 입력 받은 비밀번호
+
+            //2. insert(dto);
+            Connection conn = DBconn.getConnection();
+            BoardDAOImpl dao = new BoardDAOImpl(conn);
+            int rowCount = 0;
+            try {
+                BoardDTO dto = dao.view(seq);
+                String originalPwd = dto.getPwd(); 
+                if ( pwd.equals(originalPwd) ) {
+                	// 삭제
+    				rowCount = dao.delete(seq);
+    			} else {
+    				// 비밀번호 잘못 되었다고 경고
+    				// 삭제 delete.jsp
+    				request.setAttribute("error", "비밀번호가 틀립니다. " );
+    				doGet(request, response);
+    				return ; //메서드 빠져 나가도록 return 문 사용
+    			}
+                
+            } catch (SQLException e){
+                System.out.println("Delete.java doPost() Exception..");
+                e.printStackTrace();
+            }
+            DBconn.close();
+
+            //3. list.htm 리다이렉트 요청 > List.java 서블릿 호출 > list.jsp 포워딩
+            String contextPath = request.getContextPath();
+            String location = contextPath + "/cstvsboard/list.htm";
+            if (rowCount == 1) location += "?delete=success";
+            response.sendRedirect(location);
+            
+        } else { // PUT, DELETE , UPDATE 등등
+            response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+        }
+		return null;
+	}
+
+}

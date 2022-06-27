@@ -1,0 +1,40 @@
+package days08.mvc.command;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.util.DBconn;
+
+import days05.board.BoardDAOImpl;
+import days05.board.BoardDTO;
+
+public class ViewHandler implements CommandHandler{
+
+	@Override
+	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		
+		Connection conn = DBconn.getConnection();
+		BoardDAOImpl dao = new BoardDAOImpl(conn);
+		BoardDTO dto = null;
+		
+		try {
+			
+			dao.increaseReaded(seq);
+			dto = dao.view(seq);
+			request.setAttribute("dto", dto);
+		} catch (SQLException e) {
+			System.out.println(">View.doGet() Exception..");
+			e.printStackTrace();
+		}
+
+
+		DBconn.close();
+		
+		return "/days08/board/view.jsp";
+	}
+
+}
