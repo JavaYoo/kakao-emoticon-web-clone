@@ -1,0 +1,54 @@
+:root {
+  /* Color */
+  --c-white: #fff;
+  --c-kakao: #fee500;
+  --c-title: #191919;
+  --c-content: #808080;
+  --c-highlight: #fa4637;
+
+  /* Background Color */
+  --bgc-highlight: #fa4637;
+  --bgc-topbnr: #c66563;
+  --bgc-header: #fff;
+  --bgc-sidemenu: #fff;
+  --bgc-search: #fff;
+  --bgc-search-box-inner: #fafafa;
+  --bgc-search-form-inner: #fff;
+  --bgc-profile: #fff;
+  --bgc-nav: #fff;
+  --bgc-footer: #fff;
+  --bgc-mypage-header: #6195ef;
+  --bgc-notice: #fafafa;
+  --bgc-notice-content: #fff;
+  --bgc-faq: #fafafa;
+  --bgc-faq-content: #fff;
+  --bgc-number-header: #ffeb2d;
+  --bgc-number-button: #fff;
+
+  /* Element Height */
+  --h-header: 60px;
+  --h-nav: 50px;
+
+  /* Z-Index */
+  --z-top-banner: 1000;
+  --z-header: 1;
+  --z-header-inner: 300;
+  --z-sidemenu: 610;
+  --z-sidemenu-overlay: 600;
+  --z-search: 210;
+  --z-search-overlay: 200;
+  --z-profile: 500;
+  --z-nav: 290;
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    /* Element Height */
+    --h-header: 50px;
+    --h-nav: 44px;
+
+    /* Z-Index */
+    --z-search: 510;
+    --z-search-overlay: 500;
+  }
+}

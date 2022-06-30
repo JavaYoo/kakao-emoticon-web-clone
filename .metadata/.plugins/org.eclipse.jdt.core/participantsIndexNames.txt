@@ -25,6 +25,8 @@ C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\41105636
 \jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1978168444.index
 \jspPro\src\main\java
+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1184182453.index
+\jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2523647191.index
 \jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\232767428.index
@@ -33,9 +35,11 @@ C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\26515158
 \jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1613916826.index
 \jspPro\src\main\java
+C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\286550069.index
+\jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1035783547.index
 \jspPro\src\main\java
-C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\286550069.index
+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1978168444.index
 \jspPro\src\main\java
 C:\Class\JSPClass\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2131257826.index
 \jspPro\src\main\java
