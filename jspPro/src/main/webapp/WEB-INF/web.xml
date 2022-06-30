@@ -37,6 +37,7 @@
 	</filter-mapping>
 	
 		<!-- MV [C] 단 하나의 서블릿 ( 컨트롤러 ) 등록 -->
+<!-- 		
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>days10.replyboard.controller.DispatcherServlet</servlet-class>
@@ -50,7 +51,7 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-
+ -->
 
 
   
