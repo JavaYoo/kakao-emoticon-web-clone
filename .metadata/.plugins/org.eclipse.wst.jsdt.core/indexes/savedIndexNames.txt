@@ -1,5 +1,4 @@
 INDEX VERSION 1.4+C:\Class\kakao-emoticon-web-clone\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-496710558.index
 1349248790.index
 1337945420.index
 2843935503.index
