@@ -1,3 +1,0 @@
-# request URL = Commandler( [M]VC )
-/days09/guestbook/list.do=days09.guestbook.command.GetMessageListHandler
-/days09/guestbook/write.do=days09.guestbook.command.GetMessageHandler

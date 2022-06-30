@@ -1,3 +1,0 @@
-# request URL = Commandler( [M]VC )
-/days10/replyboard/list.do=days10.replyboard.command.ListHandler
-/days10/replyboard/write.do=days10.replyboard.command.WriteHandler

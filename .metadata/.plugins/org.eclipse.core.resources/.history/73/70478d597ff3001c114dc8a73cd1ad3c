@@ -1,5 +1,0 @@
-package days09.guestbook.persistence;
-
-public class MessageImpl implements IMessage{
-
-}
