@@ -40,7 +40,7 @@
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>kakao.command.DispatcherServlet</servlet-class>
+		<servlet-class>kakao.controller.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>path</param-name>
 			<param-value>/WEB-INF/commandHandler.properties</param-value>

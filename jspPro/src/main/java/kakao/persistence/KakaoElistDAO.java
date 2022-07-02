@@ -9,8 +9,8 @@ import java.util.List;
 
 import com.util.JdbcUtil;
 
+import kakao.domain.KakaoEimgDTO;
 import kakao.domain.KakaoElistDTO;
-import kakao.domain.ReplyBoardDTO;
 
 public class KakaoElistDAO implements KakaoElistDAOImpl{
 
@@ -26,9 +26,9 @@ public class KakaoElistDAO implements KakaoElistDAOImpl{
 
 		String sql = "select *  "
 						+ "  from em_elist "
-						+ "  order by el_num ASC  ";
+						+ "  order by el_date desc  ";
 
-		ArrayList<KakaoElistDTO> list = null;
+		ArrayList<KakaoElistDTO> elist = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -36,7 +36,7 @@ public class KakaoElistDAO implements KakaoElistDAOImpl{
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if ( rs.next() ) {
-				list = new ArrayList<KakaoElistDTO>();
+				elist = new ArrayList<KakaoElistDTO>();
 				KakaoElistDTO dto = null;
 				do {
 					dto =  new KakaoElistDTO();
@@ -46,7 +46,7 @@ public class KakaoElistDAO implements KakaoElistDAOImpl{
 					dto.setEl_maker(rs.getString("el_maker"));
 					dto.setEl_date(rs.getDate("el_date"));
 
-					list.add(dto);
+					elist.add(dto);
 				} while ( rs.next() );
 			} //
 		} finally {
@@ -54,7 +54,7 @@ public class KakaoElistDAO implements KakaoElistDAOImpl{
 			JdbcUtil.close(rs);
 		} // finally
 		
-		return list;
+		return elist;
 
 	}
 

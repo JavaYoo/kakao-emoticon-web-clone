@@ -9,27 +9,27 @@ import javax.naming.NamingException;
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import kakao.domain.ReplyBoardDTO;
-import kakao.persistence.ReplyBoardDAO;
+import kakao.domain.KakaoEimgDTO;
+import kakao.persistence.KakaoEimgDAO;
 
-public class ListService {
+public class KakaoEimgService {
 
 	// 1. 싱글톤
-	private ListService() {}
-	private static ListService instance = new ListService();
-	public static ListService getInstance() {
+	private KakaoEimgService() {}
+	private static KakaoEimgService instance = new KakaoEimgService();
+	public static KakaoEimgService getInstance() {
 		return instance;
 	}
 
-	public List<ReplyBoardDTO> select(){
+	public List<KakaoEimgDTO> select(){
 		//
 		Connection con = null;
 		try {
 			con = ConnectionProvider.getConnection();
-			ReplyBoardDAO dao = ReplyBoardDAO.getInstance();
-			List<ReplyBoardDTO> list = null;
-			list = dao.selectList(con);
-			return list;
+			KakaoEimgDAO dao = KakaoEimgDAO.getInstance();
+			List<KakaoEimgDTO> eimg = null;
+			eimg = dao.selectList(con);
+			return eimg;
 		} catch (NamingException | SQLException e) { 
 			//e.printStackTrace();  syso("ListService.select() 에러 : ")
 			throw new RuntimeException(e);

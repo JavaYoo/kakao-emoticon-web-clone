@@ -61,14 +61,14 @@
 						</h3>
 					</div>
 					<ul class="list_new">
-						<c:forEach items="${elist}" var="elist" >
+					<c:forEach items="${elist}" var="elist" >
 						<li class="">
 							<div class="link_new new_tit">
 								<a class="link_new" href="/t/cute-and-kind-bubble-ver-6">
 								<div	class="area_tit">
 										<strong class="tit_product">
 										<span class="txt_tit">${ elist.el_name }</span>
-										</strong><span class="txt_author">${ elist.el_name }</span>
+										</strong><span class="txt_author">${ elist.el_maker }</span>
 									</div></a>
 								<button type="button" class="btn_grpshare">
 									<span class="ico_comm ico_like">좋아요</span>
@@ -84,8 +84,7 @@
 										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed15b3f4e3c2033bfd702a321ec6eda72c"
 										class="img_emot img_hover" alt="">
 										</li>
-									<li>
-									<img
+									<li><img
 										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deedf604e7b0e6900f9ac53a43965300eb9a"
 										class="img_emot img_default" alt="">
 										<img
@@ -106,7 +105,7 @@
 										<img
 										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed82f3bd8c9735553d03f6f982e10ebe70"
 										class="img_emot img_hover" alt="">
-										</li> 
+										</li>
 								</ul>
 								</a>
 								</li>
