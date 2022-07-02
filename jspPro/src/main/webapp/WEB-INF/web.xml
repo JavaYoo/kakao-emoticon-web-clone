@@ -37,13 +37,13 @@
 	</filter-mapping>
 	
 		<!-- MV [C] 단 하나의 서블릿 ( 컨트롤러 ) 등록 -->
-<!-- 		
+
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>days10.replyboard.controller.DispatcherServlet</servlet-class>
+		<servlet-class>kakao.command.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>path</param-name>
-			<param-value>/days10/replyboard/commandHandler.properties</param-value>
+			<param-value>/WEB-INF/commandHandler.properties</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -51,7 +51,7 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
- -->
+ 
 
 
   

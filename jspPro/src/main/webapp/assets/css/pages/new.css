@@ -88,7 +88,6 @@
     padding: 6rem 4rem;
     margin: 0 auto;
   }
-
   .new__inner-banner::after {
     position: absolute;
     content: '';
