@@ -61,53 +61,28 @@
 						</h3>
 					</div>
 					<ul class="list_new">
-						<c:forEach items="${elist}" var="elist" >
+						<c:forEach items="${  emap   }" var="emap" >
 						<li class="">
 							<div class="link_new new_tit">
 								<a class="link_new" href="/t/cute-and-kind-bubble-ver-6">
 								<div	class="area_tit">
 										<strong class="tit_product">
-										<span class="txt_tit">${ elist.el_name }</span>
-										</strong><span class="txt_author">${ elist.el_name }</span>
+										<span class="txt_tit">${ emap.key.el_name }</span>
+										</strong><span class="txt_author">${ emap.key.el_name }</span>
 									</div></a>
 								<button type="button" class="btn_grpshare">
 									<span class="ico_comm ico_like">좋아요</span>
 								</button>
 							</div>
 							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="/t/cute-and-kind-bubble-ver-6">
-							<ul class="area_newemoticon">
+							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
+							<c:if test="${ i.index == 0 or i.index == 4 }"> <ul class="area_newemoticon"></c:if>
 									<li>
-									<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed8f324a0b9c48f77dbce3a43bd11ce785"
-										class="img_emot img_default" alt="">
-										<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed15b3f4e3c2033bfd702a321ec6eda72c"
-										class="img_emot img_hover" alt="">
+									<img  	src="${ emapValue.ei_path }" class="img_emot img_default" alt="">
 										</li>
 									<li>
-									<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deedf604e7b0e6900f9ac53a43965300eb9a"
-										class="img_emot img_default" alt="">
-										<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed4022de826f725e10df604bf1b9725cfd"
-										class="img_emot img_hover" alt="">
-										</li>
-									<li><img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed9f5287469802eca457586a25a096fd31"
-										class="img_emot img_default" alt="">
-										<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed8b566dca82634c93f811198148a26065"
-										class="img_emot img_hover" alt="">
-										</li>
-									<li>
-									<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed9f17e489affba0627eb1eb39695f93dd"
-										class="img_emot img_default" alt="">
-										<img
-										src="https://item.kakaocdn.net/do/008c15e6e103ac630f630d2e1fc6deed82f3bd8c9735553d03f6f982e10ebe70"
-										class="img_emot img_hover" alt="">
-										</li> 
-								</ul>
+								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
+								</c:forEach>
 								</a>
 								</li>
 								</c:forEach>
