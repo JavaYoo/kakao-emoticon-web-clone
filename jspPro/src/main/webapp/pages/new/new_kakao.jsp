@@ -10,7 +10,12 @@
 <!-- <link rel="shortcut icon" href="../assets/icons/e_16x16.ico" /> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../../css/new/header_footer.css?ver=1">
-<link rel="stylesheet" href="../../css/new/new_body.css">
+<link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
+<style>
+	div{
+		margin: 
+	}
+</style>
 </head>
 <body>
 
@@ -76,11 +81,10 @@
 							</div>
 							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="/t/cute-and-kind-bubble-ver-6">
 							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
-							<c:if test="${ i.index == 0 or i.index == 4 }"> <ul class="area_newemoticon"></c:if>
+							<c:if test="${ i.index == 0 or i.index == 4 }"> <ul class="area_newemoticon img_hover"></c:if>
 									<li>
 									<img  	src="${ emapValue.ei_path }" class="img_emot img_default" alt="">
-										</li>
-									<li>
+									</li>
 								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
 								</c:forEach>
 								</a>

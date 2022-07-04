@@ -3348,10 +3348,6 @@ to {
 	{
 	display: inline
 }
-.area_homestyle .area_listproduct .list_unit .link_emot:hover .img_hover
-	{
-	display: inline
-}
 
 .area_homestyle .area_listproduct .list_unit .img_emot {
 	width: 124px
@@ -3394,7 +3390,7 @@ to {
 		width: 124px
 	}
 }
-
+/* 
 @media ( max-width : 1023px) {
 	.area_newtab .btn_grpshare {
 		display: none
@@ -3510,7 +3506,7 @@ to {
 		font-family: "notokr-bold", sans-serif
 	}
 }
-
+ */
 @media ( min-width : 768px)and (max-width: 1024px) {
 	.area_newtab .area_tit {
 		width: 208px;
@@ -4096,7 +4092,7 @@ to {
 		padding: 30px 0 10px
 	}
 }
- 
+
 @media ( min-width : 576px)and (max-width: 767px) {
 	.list_emoticonshop .link_product .unit_emot {
 		width: 20%
@@ -4118,7 +4114,7 @@ to {
 		display: table-cell
 	}
 }
- 
+
 .cont_notice {
 	background-color: #fafafa
 }
