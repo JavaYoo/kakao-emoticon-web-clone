@@ -33,8 +33,6 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 		ResultSet rs1 = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
-
-		
 		
 		String sql1 = "select *  " 
 						+ "  from em_elist " 
@@ -47,7 +45,6 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 
 		Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = null;
 		List<KakaoEimgDTO> eimg = null;
-		
 
 		try {
 			pstmt1 = con.prepareStatement(sql1);

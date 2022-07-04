@@ -9,8 +9,8 @@
 <link rel="shortcut icon " type = "image/x-icon" href = "SiSt.ico">
 <!-- <link rel="shortcut icon" href="../assets/icons/e_16x16.ico" /> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="header_footer.css?ver=1">
-<link rel="stylesheet" href="new_body.css">
+<link rel="stylesheet" href="../../css/new/header_footer.css?ver=1">
+<link rel="stylesheet" href="../../css/new/new_body.css">
 </head>
 <body>
 

@@ -11,7 +11,7 @@ import com.util.JdbcUtil;
 
 import kakao.domain.ReplyBoardDTO;
 
-public class ReplyBoardDAO implements IReplyBoard{
+public class ReplyBoardDAO{
 
 	// 1. 싱글톤
 	private ReplyBoardDAO() {}
@@ -20,7 +20,6 @@ public class ReplyBoardDAO implements IReplyBoard{
 		return instance;
 	}
 
-	@Override
 	public List<ReplyBoardDTO> selectList(Connection con) throws SQLException {
 
 		String sql =
@@ -65,7 +64,6 @@ public class ReplyBoardDAO implements IReplyBoard{
 		return list;
 	}
 
-	@Override
 	public int insert(Connection con, ReplyBoardDTO dto) throws SQLException {
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
@@ -128,7 +126,6 @@ public class ReplyBoardDAO implements IReplyBoard{
 		return rowCount;
 	}
 
-	@Override
 	public int updateReadCount(Connection con, int num) throws SQLException {
 		String sql = "update replyboard "
 				+" set readcount = readcount +1 "
@@ -146,8 +143,6 @@ public class ReplyBoardDAO implements IReplyBoard{
 		return rowCount;
 	}
 
-
-	@Override
 	public ReplyBoardDTO selectOne(Connection con, int num) throws SQLException {
 		String sql = "select * from replyboard "
 				+" where num = ?";
@@ -185,7 +180,6 @@ public class ReplyBoardDAO implements IReplyBoard{
 	}
 
 	// 먼저)  동일한 글그룹(REF)에서 부모순번(STEP) 보다 큰 것들의 STEP을 1증가
-	@Override
 	public int updateRefStep(Connection con, int parentRef, int parentStep) throws SQLException {
 		String sql = "update replyboard "
 				+ " set step = step + 1 "
@@ -207,7 +201,6 @@ public class ReplyBoardDAO implements IReplyBoard{
 		return rowCount;
 	}
 
-	@Override
 	public int delete(Connection con, int num) throws SQLException {
 
 		return 0;
