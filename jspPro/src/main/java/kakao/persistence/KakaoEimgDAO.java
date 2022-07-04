@@ -45,10 +45,6 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 						+ "where ei_num = ? and ROWNUM <= 8 " 
 						+ "order by ei_seq ";
 
-		
-
-		
-
 		Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = null;
 		List<KakaoEimgDTO> eimg = null;
 		
@@ -66,8 +62,6 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 					listDto.setEl_name(rs1.getString("el_name"));
 					listDto.setEl_maker(rs1.getString("el_maker"));
 					listDto.setEl_date(rs1.getDate("el_date"));
-
-					
 					
 					pstmt2 = con.prepareStatement(sql2);
 					pstmt2.setInt(1, listDto.getEl_num() );
@@ -77,7 +71,6 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 						eimg = new ArrayList<KakaoEimgDTO>();
 						
 						KakaoEimgDTO imgDto = null;
-						
 						
 						do {
 							
@@ -102,7 +95,6 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 			JdbcUtil.close(pstmt2);
 			JdbcUtil.close(rs2);
 		} // finally
-
 
 		return emap;
 
