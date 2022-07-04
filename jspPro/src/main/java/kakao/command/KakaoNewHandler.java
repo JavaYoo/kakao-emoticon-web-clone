@@ -21,7 +21,7 @@ public class KakaoNewHandler implements CommandHandler{
 		request.setAttribute("emap", emap);
 
 		
-		return "/pages/new_kakao.jsp";
+		return "/pages/new/new_kakao.jsp";
 
 	}
 
