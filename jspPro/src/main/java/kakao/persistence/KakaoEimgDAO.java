@@ -36,7 +36,7 @@ public class KakaoEimgDAO implements KakaoEimgDAOImpl {
 		
 		String sql1 = "select *  " 
 						+ "  from em_elist " 
-						+ "  order by el_date desc  ";
+						+ "  order by el_date desc, el_num desc  ";
 		
 		String sql2 = "select *  " 
 						+ "from em_eimg " 

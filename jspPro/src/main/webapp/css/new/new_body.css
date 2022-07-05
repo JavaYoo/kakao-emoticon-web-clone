@@ -2263,11 +2263,11 @@ to {
 .area_newtab .btn_grpshare.btn_like {
 	display: block
 }
-
+/* 
 .link_new {
 	display: block
 }
-
+ */
 .link_new.new_img {
 	display: table-cell;
 	vertical-align: middle;
@@ -2292,7 +2292,7 @@ to {
 	font-family: "notokr-bold", sans-serif;
 	border-bottom: 1px solid #000
 }
-
+/* 
 .list_new>li:hover .area_newemoticon .img_default {
 	display: none
 }
@@ -2300,7 +2300,7 @@ to {
 .list_new>li:hover .area_newemoticon .img_hover {
 	display: block
 }
-
+ */
 .list_new>li:hover .area_grpshare {
 	display: none
 }

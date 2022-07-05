@@ -81,38 +81,22 @@
 							</div>
 							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="/t/cute-and-kind-bubble-ver-6">
 							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
-								<c:if test="${ i.index == 0 or i.index == 4 }"><ul class="area_newemoticon"></c:if>
+							<c:if test="${ i.index == 0 or i.index == 4 }"> <ul class="area_newemoticon"></c:if>
 									<li>
-									<img  	src="${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
+									<img  	src="${ emapValue.ei_path }" class="img_emot img_default" alt="">
 									</li>
 								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
-							</c:forEach>
-							</a>
-							</li>
-							</c:forEach>
+								</c:forEach>
+								</a>
+								</li>
+								</c:forEach>
 					</ul>
 					<div></div>
 				</div>
 			</div>
 			
-			<script>
-
-			$(document).ready(function () {
-				$(".new_list_hwan").on("mouseover", function(){
-					$(this).find(".img_hover").css("display", "block")
-					$(this).find(".img_default").css("display", "none")
-				})
-				$(".new_list_hwan").on("mouseout", function(){
-					$(this).find(".img_hover").css("display", "none")
-					$(this).find(".img_default").css("display", "block")
-				})
-			});
-
-			</script>
 			
-			
-			<div id="kakaoFoot" class="foot_group">
+			<div id="kakaoFoot" class="foot_group ">
 				<div class="area_footer">
 					<h2 class="screen_out">서비스 이용정보</h2>
 					<div class="service_info">
