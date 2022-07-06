@@ -19,7 +19,6 @@ public class KakaoNewHandler implements CommandHandler{
 		KakaoEimgService kakaoEimgService = KakaoEimgService.getInstance();
 		Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = kakaoEimgService.select();
 		request.setAttribute("emap", emap);
-
 		
 		return "/pages/new/new_kakao.jsp";
 

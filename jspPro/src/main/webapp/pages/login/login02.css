@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+input:-webkit-autofill {
+	animation-name: onautofillstart;
+}
+
+input:not(:-webkit-autofill) {
+	animation-name: onautofillcancel;
+}
+
+@keyframes onautofillstart {from {
+	
+}
+
+}
+@keyframes onautofillcancel {from {
+	
+}
+}
