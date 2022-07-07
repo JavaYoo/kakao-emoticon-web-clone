@@ -30,7 +30,7 @@ public class ViewHandler implements CommandHandler {
 		request.setAttribute("eImgList", eImgList);
 		System.out.println("viewHandler 호출됨");
 		// 포워딩
-		return "/kview/view.jsp";
+		return "/pages/view/view.jsp";
 	}
 
 }

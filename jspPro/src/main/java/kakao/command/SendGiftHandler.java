@@ -30,7 +30,7 @@ public class SendGiftHandler implements CommandHandler{
 		GiftService giftService = GiftService.getInstance();
 		int rowCount = giftService.gift(dto);
 		if(rowCount==1) {
-            String location = "/jspPro/kview/view.do?el_num="+gb_emnum;
+            String location = "/jspPro/pages/view/view.do?el_num="+gb_emnum;
             response.sendRedirect(location);  // 포워딩 X,  리다이렉트 O
 			System.out.println("선물 완료");
 		}

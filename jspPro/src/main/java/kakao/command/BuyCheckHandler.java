@@ -25,7 +25,7 @@ public class BuyCheckHandler implements CommandHandler {
 		 * System.out.println(rowCount);
 		 */		
 		
-		return "/kview/view_buyCheck.jsp?rowCount="+rowCount;
+		return "/pages/view/view_buyCheck.jsp?rowCount="+rowCount;
 	}
 
 }

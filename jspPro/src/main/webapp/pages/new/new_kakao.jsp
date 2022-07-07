@@ -70,7 +70,7 @@
 						<c:forEach items="${  emap   }" var="emap" >
 						<li class="new_list_hwan">
 							<div class="link_new new_tit">
-								<a class="link_new" href="<%=contextPath%>/kview/view.do?el_num=${ emap.key.el_num }">
+								<a class="link_new" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
 								<div	class="area_tit">
 										<strong class="tit_product">
 										<span class="txt_tit">${ emap.key.el_name }</span>

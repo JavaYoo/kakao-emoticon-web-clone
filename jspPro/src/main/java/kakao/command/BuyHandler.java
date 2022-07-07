@@ -28,7 +28,7 @@ public class BuyHandler implements CommandHandler{
 		BuyService buyService = BuyService.getInstance();
 		int rowCount = buyService.buy(dto);
 		if(rowCount==1) {
-            String location = "/jspPro/kview/view.do?el_num="+bl_num;
+            String location = "/jspPro/pages/view/view.do?el_num="+bl_num;
             response.sendRedirect(location);  // 포워딩 X,  리다이렉트 O
 			System.out.println("구매 완료");
 		}

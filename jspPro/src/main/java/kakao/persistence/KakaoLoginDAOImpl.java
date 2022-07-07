@@ -30,7 +30,9 @@ public class KakaoLoginDAOImpl implements KakaoLoginDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int rowcount = 0;
-		String sql = "select count(*) cnt " + "from em_member  " + "where m_id = ? and m_pwd = ?  ";
+		String sql = "select count(*) cnt " 
+						+ "from em_member  " 
+						+ "where m_id = ? and m_pwd = ?  ";
 
 		try {
 			pstmt = con.prepareStatement(sql);

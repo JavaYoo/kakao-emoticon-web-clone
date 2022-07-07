@@ -10,19 +10,20 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%String email = (String)session.getAttribute("email"); %>
 <link rel="shortcut icon" href="../images/e_16x16.ico" />
-<link rel="stylesheet" href="kview.css/area_product.css?ver=3">
-<link rel="stylesheet" href="kview.css/list_emoticon.css?ver=1">
-<link rel="stylesheet" href="kview.css/alert_layer.css?ver=1">
-<link rel="stylesheet" href="kview.css/header.css?ver=3">
-<link rel="stylesheet" href="kview.css/order_layer.css?ver=1">
-<link rel="stylesheet" href="kview.css/footer.css?ver=1">
+<link rel="stylesheet" href="../../css/kview.css/area_product.css?ver=3">
+<link rel="stylesheet" href="../../css/kview.css/list_emoticon.css?ver=1">
+<link rel="stylesheet" href="../../css/kview.css/alert_layer.css?ver=1">
+<link rel="stylesheet" href="../../css/kview.css/header.css?ver=3">
+<link rel="stylesheet" href="../../css/kview.css/order_layer.css?ver=1">
+<link rel="stylesheet" href="../../css/kview.css/footer.css?ver=1">
 <!-- jquery ui 모달창 -->
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="/jspPro/kview/js/httpRequest.js"></script>
+<script src="../../js/sangho/httpRequest.js"></script>
 </head>
 <body>
 
@@ -226,14 +227,14 @@
 											<input type="text" name="bl_num"
 												value="<%=request.getParameter("el_num")%>"
 												style="display: none;" /> <input type="text" name="bl_id"
-												value="qkreks12@daum.net" style="display: none;" />
+												value="<%=email %>" style="display: none;" />
 											<button type="button" class="btn_g" id="btn_buy">구매하기</button>
 										</form>
 										<form action="" method="get" id="gift_getFriendList">
 											<input type="text" name="bl_num"
 												value="<%=request.getParameter("el_num")%>"
 												style="display: none;" /> <input type="text" name=""
-												value="qkreks12@daum.net" style="display: none;" />
+												value="<%=email %>" style="display: none;" />
 											<button type="button" class="btn_g btn_gift" id="btn_gift"
 												onclick="getFriendJsonAjax()">선물하기</button>
 										</form>
@@ -658,7 +659,7 @@
 	<!-- 구매하기 모달창 -->
 	<div id="dialog-form" align="center" title="구매"
 		style="font-size: 15px;">
-		<form action="<%=contextPath%>/kview/buy.do" method="post"
+		<form action="<%=contextPath%>/pages/view/buy.do" method="post"
 			id="buyForm">
 			<br /> <span id="buy_emo_name" style="font-size: 18px;"></span> <br />
 			<hr />
@@ -690,7 +691,7 @@
 
 	<!-- 선물하기 모달 -->
 	<div id="gift-form" align="center" title="구매" style="font-size: 15px;">
-		<form action="<%=contextPath%>/kview/gift.do" method="post"
+		<form action="<%=contextPath%>/pages/view/gift.do" method="post"
 			id="giftForm">
 			<br /> <span id="gift_emo_name" style="font-size: 18px;"></span> <br />
 			<hr />
@@ -844,7 +845,7 @@
 		$("#gift_comp").click(
 				function() {
 					$("#gift_emo_name").html($("#emo_name").html()); //이모티콘 이름
-					$("#gift_sendid").val("qkreks12@daum.net"); //구매자 아이디
+					$("#gift_sendid").val("<%=email %>"); //구매자 아이디
 					$("#gift_price").val($("#fin_price").html());
 					$("#gift_uesd_coupon").val(
 							$("#sel_coupon_opt option:selected").html());
@@ -861,10 +862,6 @@
 	</script>
 
 	<script>
-		$("#btn_gift").click(function() {
-			$(".dimmed_layer").css("display", "block");
-			$(".emoticon_layer.friend_layer").css("display", "block");
-		})
 
 		$("#btn_friendList_close").click(function() {
 			$(".dimmed_layer").css("display", "none");
@@ -882,7 +879,7 @@
 			};
 
 			$.ajax({
-				url : "/jspPro/kivew/giftcheck.do",
+				url : "/jspPro/pages/view/giftcheck.do",
 				dataType : "json",
 				type : "GET",
 				data : params2,
@@ -987,15 +984,60 @@
 			$("#guide_open2").css("transform", "rotate(" + deg2 + "deg)");
 		})
 	</script>
-
+<%-- 
+<%
+	if ( email != null ){
+		
+	}
+	
+%>
+ --%>
 	<script>
-		//이모티콘 보내기 로그인 알람창
+		//로그인 알람창
 
-		$(".area_emoticon .list_emoticon .link_emoticon").click(function() {
+		if(   ${ empty  email }    ){
+		$("#btn_buy").click(function() {
 			$(".dimmed_layer").css("display", "block");
 			$("#alert_logon").css("display", "block");
 		});
+		
+		$("#btn_gift").click(function() {
+			$(".dimmed_layer").css("display", "block");
+			$("#alert_logon").css("display", "block");
+		});
+		
+		}else{
+			//구매 이력 확인 ajax
+			$("#btn_buy").click(function(event) {
+				var params = $("#buy_check").serialize();
 
+				$.ajax({
+					url : "/jspPro/pages/view/buycheck.do",
+					dataType : "json",
+					type : "GET",
+					data : params,
+					cache : false,
+					success : function(data, textStatus, jqXHR) {
+						if (data.count == 0) { //구매 하지 않음
+							$(".dimmed_layer").css("display", "block");
+							$("#buy_layer").css("display", "block");
+						} else {//이미 구매함
+							$(".dimmed_layer").css("display", "block");
+							$("#alert_buyCheck").css("display", "block");
+						}
+					},
+					error : function() {
+						alert("ajax 에러");
+					}
+				});
+
+			});
+			
+			$("#btn_gift").click(function() {
+				$(".dimmed_layer").css("display", "block");
+				$(".emoticon_layer.friend_layer").css("display", "block");
+			})
+		}
 		$("#btn_layer_close").click(function() {
 			$(".dimmed_layer").css("display", "none");
 			$("#alert_logon").css("display", "none");
@@ -1008,32 +1050,6 @@
 	</script>
 
 	<script>
-		//구매 이력 확인 ajax
-		$("#btn_buy").click(function(event) {
-			var params = $("#buy_check").serialize();
-
-			$.ajax({
-				url : "/jspPro/kivew/buycheck.do",
-				dataType : "json",
-				type : "GET",
-				data : params,
-				cache : false,
-				success : function(data, textStatus, jqXHR) {
-					if (data.count == 0) { //구매 하지 않음
-						$(".dimmed_layer").css("display", "block");
-						$("#buy_layer").css("display", "block");
-					} else {//이미 구매함
-						$(".dimmed_layer").css("display", "block");
-						$("#alert_buyCheck").css("display", "block");
-					}
-				},
-				error : function() {
-					alert("ajax 에러");
-				}
-			});
-
-		});
-
 		$("#btn_order_close").click(function() {
 			$(".dimmed_layer").css("display", "none");
 			$(".emoticon_layer.order_layer").css("display", "none");
@@ -1087,7 +1103,7 @@
 
 		$("#btn_comp").click(function() {
 			$("#buy_emo_name").html($("#emo_name").html()); //이모티콘 이름
-			$("#buy_id").val("qkreks12@daum.net"); //구매자 아이디
+			$("#buy_id").val("<%=email %>"); //구매자 아이디
 			$("#buy_price").val($("#fin_price").html());
 			$("#uesd_coupon").val($("#sel_coupon_opt option:selected").html());
 

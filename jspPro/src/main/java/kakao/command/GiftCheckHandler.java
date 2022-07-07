@@ -22,7 +22,7 @@ public class GiftCheckHandler implements CommandHandler {
 		System.out.println("buyCheck 메소드 호출");
 		
 		
-		return "/kview/view_buyCheck.jsp?rowCount="+ rowCount;
+		return "/pages/view/view_buyCheck.jsp?rowCount="+ rowCount;
 	}
 
 }
