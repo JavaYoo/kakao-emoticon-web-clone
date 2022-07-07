@@ -15,9 +15,10 @@
 Connection con = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
+String email = (String) session.getAttribute("email");
 
 String sql = "SELECT fr_add, m_nn, m_pimg" 
-				+" FROM (select fr_add from em_friend where fr_id = 'qkreks12@daum.net') f"
+				+" FROM (select fr_add from em_friend where fr_id = '" + email + "'   ) f"
 				+" JOIN em_member m" 
 				+" ON f.fr_add = m.m_id";
 

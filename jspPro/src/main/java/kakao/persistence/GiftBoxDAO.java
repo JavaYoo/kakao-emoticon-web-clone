@@ -45,7 +45,7 @@ public class GiftBoxDAO {
 		   return rowCount;
 	   }
 	   
-		/* 미구현 giftCheck */
+		
 	   public int giftCheck (Connection con, int gb_emnum, String gb_sendid, String gb_getid) throws SQLException{
 		   int rowCount = 0;
 		   PreparedStatement pstmt = null;

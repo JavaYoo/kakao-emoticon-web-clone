@@ -11,11 +11,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../../css/new/header_footer.css?ver=1">
 <link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
-<style>
-	div{
-		margin: 
-	}
-</style>
 </head>
 <body>
 <% String ses = (String)session.getAttribute("email"); %>
@@ -80,7 +75,7 @@
 									<span class="ico_comm ico_like">좋아요</span>
 								</button>
 							</div>
-							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="/t/cute-and-kind-bubble-ver-6">
+							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
 							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
 								<c:if test="${ i.index == 0 or i.index == 4 }"><ul class="area_newemoticon"></c:if>
 									<li>

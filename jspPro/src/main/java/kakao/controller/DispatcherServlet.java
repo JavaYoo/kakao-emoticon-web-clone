@@ -23,11 +23,9 @@ public class DispatcherServlet extends HttpServlet {
         super();
 
     }
-    
-    
+     
     private Map<String, CommandHandler> commandHandlerMap = new HashMap<String , CommandHandler>();
     	
-    
 	@Override
 	public void init() throws ServletException {
 		// DispatcherServlet 서블릿 객체로 생성될 때 초기화 작업 - init() 메서드
@@ -64,8 +62,6 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		
 	}
-
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 요청 URL 분석 list.do  , write.do  ,  edit.do

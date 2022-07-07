@@ -165,11 +165,11 @@
 											<dl class="list_purchase_price list_discount_price">
 												<dt class="screen_out">판매가격</dt>
 												<dd class="txt_price">
-													<em class="num_g">${dto.el_price }</em>원
+													<em class="num_g">2000</em>원
 												</dd>
 												<dt class="screen_out">기본가격</dt>
 												<dd class="txt_cost">
-													<span class="num_g">2000</span>원
+													<span class="num_g">${dto.el_price }</span>원
 												</dd>
 											</dl>
 
