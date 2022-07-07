@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+.foot_group {
+	background-color: #fff;
+	min-width: 280px
+}
+
+.foot_group .area_footer {
+	max-width: 1024px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 0 40px;
+	color: #7f7f7f
+}
+
+.foot_group .service_info {
+	padding-top: 20px
+}
+
+.foot_group .service_info .link_service {
+	position: relative;
+	float: left;
+	margin-right: 9px;
+	padding-right: 11px;
+	padding-bottom: 2px;
+	font-size: 13px;
+	color: #4c4c4c;
+	font-weight: normal;
+	line-height: 20px;
+	letter-spacing: -0.5px
+}
+
+.foot_group .service_info .link_service .dlnk_txt {
+	display: block;
+	font-family: "notokr-bold", sans-serif;
+	letter-spacing: 0
+}
+
+.foot_group .service_info .link_service:after {
+	position: absolute;
+	top: 4px;
+	right: 0;
+	width: 1px;
+	height: 10px;
+	background-color: rgba(0, 0, 0, .2);
+	content: ""
+}
+
+.foot_group .service_info .link_service:last-of-type {
+	margin-right: 0;
+	padding-right: 0
+}
+
+.foot_group .service_info .link_service:last-of-type:after {
+	display: none
+}
+
+.foot_group .service_info .link_service:hover {
+	text-decoration: underline
+}
+
+.foot_group .service_info .desc_service {
+	clear: both;
+	padding-top: 10px;
+	font-size: 11px;
+	line-height: 17px
+}
+
+.foot_group .wrap_info {
+	padding-top: 6px
+}
+
+.foot_group .wrap_info .tit_info {
+	display: none;
+	padding: 6px 0 4px
+}
+
+.foot_group .wrap_info .link_info {
+	display: inline-block;
+	font-family: "notokr-bold", sans-serif;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 20px;
+	color: #4c4c4c
+}
+
+.foot_group .wrap_info .list_info {
+	font-size: 11px;
+	line-height: 14px
+}
+
+.foot_group .wrap_info .list_info:after {
+	display: block;
+	clear: both;
+	content: ""
+}
+
+.foot_group .wrap_info .unit_info {
+	float: left;
+	padding-top: 6px
+}
+
+.foot_group .wrap_info .unit_info dt {
+	position: relative;
+	float: left;
+	padding-right: 6px
+}
+
+.foot_group .wrap_info .unit_info dt:after {
+	position: absolute;
+	top: 4px;
+	right: 2.5px;
+	width: 1px;
+	height: 5px;
+	display: inline-block;
+	overflow: hidden;
+	font-size: 1px;
+	line-height: 0;
+	color: rgba(0, 0, 0, 0);
+	vertical-align: top;
+	background:
+		url(https://t1.kakaocdn.net/estoreweb/images/20220421091219/ico_comm_220415.png)
+		no-repeat;
+	-webkit-background-size: 830px 230px;
+	background-size: 830px 230px;
+	background-position: -300px -40px;
+	content: ""
+}
+
+.foot_group .wrap_info .unit_info dd {
+	float: left;
+	padding-right: 6px
+}
+
+.foot_group .wrap_info .unit_info .txt_en {
+	display: inline-block;
+	margin-top: -0.5px;
+	font-family: Roboto, sans-serif
+}
+
+.foot_group .wrap_info .unit_info:last-of-type dd:last-of-type {
+	padding-right: 0
+}
+
+.foot_group .area_movetop {
+	text-align: center
+}
+
+.foot_group .area_movetop .btn_movetop {
+	margin: 30px 0 40px
+}

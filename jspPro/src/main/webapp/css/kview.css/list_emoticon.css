@@ -1,0 +1,205 @@
+/* 상세보기 페이지 - 상품 상세 .list_emoticon */
+@charset "UTF-8";
+
+
+@font-face {
+	font-family: 'notokr-regular';
+	font-style: normal;
+	font-weight: 400;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2)
+		format('woff2'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff)
+		format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf)
+		format('opentype');
+}
+
+@font-face {
+	font-family: 'notokr-regular';
+	font-style: normal;
+	font-weight: 500;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2)
+		format('woff2'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff)
+		format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf)
+		format('opentype');
+}
+
+@font-face {
+	font-family: 'notokr-regular';
+	font-style: normal;
+	font-weight: 700;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2)
+		format('woff2'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff)
+		format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf)
+		format('opentype');
+}
+
+@font-face {
+	font-family: 'notokr-regular';
+	font-style: normal;
+	font-weight: 900;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2)
+		format('woff2'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff)
+		format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf)
+		format('opentype');
+}
+
+body, th, td, input, select, textarea, button {
+	font-size: 12px;
+	line-height: 1.5;
+	font-family: notokr-regular, "Apple SD Gothic Neo", sans-serif;
+	color: #191919;
+}
+
+
+.area_emoticon {
+	background-color: #fafafa;
+}
+
+.area_emoticon .list_emoticon {
+	padding: 40px 24px 0;
+	margin: 0 auto;
+	max-width: 1025px;
+	box-sizing: border-box;
+}
+
+@media ( max-width : 767px) {
+	.area_emoticon .list_emoticon {
+		padding: 24px 12px 0;
+	}
+}
+/* 이모티콘 리스트 */
+.area_emoticon .list_emoticon li {
+	float: left;
+	width: 16.6666666667%;
+	padding: 0 16px;
+	box-sizing: border-box;
+	margin-bottom: 40px;
+}
+
+@media ( max-width : 767px) {
+	.area_emoticon .list_emoticon li {
+		width: 33.3333333333%;
+		margin-bottom: 24px;
+		padding: 0 12px;
+	}
+}
+
+@media ( min-width : 576px) and (max-width: 767px) {
+	.area_emoticon .list_emoticon li {
+		width: 20%;
+	}
+}
+
+@media ( min-width : 418px) and (max-width: 575px) {
+	.area_emoticon .list_emoticon li {
+		width: 25%;
+	}
+}
+
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+/* 보내기 */
+.area_emoticon .list_emoticon .link_emoticon {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+/* 이모티콘 이미지 */
+.area_emoticon .list_emoticon .link_emoticon .img_emoticon {
+	width: 100%;
+	max-width: 124px;
+}
+
+.area_emoticon .list_emoticon:after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+/* area_guide */
+.area_emoticon .area_guide {
+	margin: auto;
+	padding: 0 40px;
+	max-width: 1025px;
+	box-sizing: border-box;
+}
+
+.list_guide.guide_close+.list_guide {
+	padding-top: 0;
+}
+
+.list_guide+.list_guide {
+	border-top: 1px solid rgba(0, 0, 0, .04);
+}
+
+.list_guide dt {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.list_guide dt .btn_open {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 18px 0 18px;
+}
+
+.list_guide dt h4 {
+	font-size: 16px;
+	line-height: 24px;
+	color: #000;
+}
+
+.list_guide h4 {
+	font-weight: normal;
+}
+
+.list_guide dd {
+	position: relative;
+	display: block;
+	padding-bottom: 15px;
+	padding-left: 11px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #7f7f7f;
+}
+
+.list_guide.guide_close dd {
+	display: none;
+}
+
+.ico_open {
+	width: 17px;
+	height: 10px;
+	background-position: -670px -20px;
+}
+
+.list_guide.guide_close .ico_open {
+	transform: rotate(180deg);
+}
+
+.list_guide dt .btn_open .ico_open {
+	position: absolute;
+	right: 0;
+	top: 23px;
+}
+
+.list_guide dt .btn_open {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 18px 0 18px;
+}
