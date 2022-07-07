@@ -1,13 +1,13 @@
-package command;
+package kakao.command;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.EimgDTO;
-import domain.ElistDTO;
-import service.ViewService;
+import kakao.domain.EimgDTO;
+import kakao.domain.ElistDTO;
+import kakao.service.ViewService;
 
 public class ViewHandler implements CommandHandler {
 

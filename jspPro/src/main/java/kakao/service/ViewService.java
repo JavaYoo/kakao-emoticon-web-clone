@@ -1,4 +1,4 @@
-package service;
+package kakao.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,9 +9,9 @@ import javax.naming.NamingException;
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import domain.EimgDTO;
-import domain.ElistDTO;
-import persistence.ViewDAO;
+import kakao.domain.EimgDTO;
+import kakao.domain.ElistDTO;
+import kakao.persistence.ViewDAO;
 
 public class ViewService {
 	 

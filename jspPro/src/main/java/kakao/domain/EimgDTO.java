@@ -1,4 +1,4 @@
-package domain;
+package kakao.domain;
 
 public class EimgDTO {
 

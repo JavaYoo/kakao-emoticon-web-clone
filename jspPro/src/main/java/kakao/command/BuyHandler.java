@@ -1,10 +1,10 @@
-package command;
+package kakao.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.BuyListDTO;
-import service.BuyService;
+import kakao.domain.BuyListDTO;
+import kakao.service.BuyService;
 
 public class BuyHandler implements CommandHandler{
 	

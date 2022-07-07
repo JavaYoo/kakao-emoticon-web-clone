@@ -1,4 +1,4 @@
-package persistence;
+package kakao.persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import com.util.JdbcUtil;
 
-import domain.GiftBoxDTO;
+import kakao.domain.GiftBoxDTO;
 
 public class GiftBoxDAO {
 

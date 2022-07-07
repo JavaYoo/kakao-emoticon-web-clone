@@ -1,10 +1,10 @@
-package command;
+package kakao.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.GiftBoxDTO;
-import service.GiftService;
+import kakao.domain.GiftBoxDTO;
+import kakao.service.GiftService;
 
 public class SendGiftHandler implements CommandHandler{
 	

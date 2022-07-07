@@ -1,4 +1,4 @@
-package persistence;
+package kakao.persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,8 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import domain.EimgDTO;
-import domain.ElistDTO;
+import kakao.domain.EimgDTO;
+import kakao.domain.ElistDTO;
 
 public class ViewDAO{
 

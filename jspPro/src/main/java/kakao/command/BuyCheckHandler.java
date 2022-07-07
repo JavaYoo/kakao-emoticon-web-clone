@@ -1,9 +1,9 @@
-package command;
+package kakao.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.BuyCheckService;
+import kakao.service.BuyCheckService;
 
 
 public class BuyCheckHandler implements CommandHandler {

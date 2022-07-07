@@ -1,4 +1,4 @@
-package service;
+package kakao.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,8 +8,8 @@ import javax.naming.NamingException;
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import domain.BuyListDTO;
-import persistence.BuyListDAO;
+import kakao.domain.BuyListDTO;
+import kakao.persistence.BuyListDAO;
 
 public class BuyService {
 	 

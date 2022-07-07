@@ -1,4 +1,4 @@
-package service;
+package kakao.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,8 +8,8 @@ import javax.naming.NamingException;
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import domain.GiftBoxDTO;
-import persistence.GiftBoxDAO;
+import kakao.domain.GiftBoxDTO;
+import kakao.persistence.GiftBoxDAO;
 
 public class GiftService {
 	 
