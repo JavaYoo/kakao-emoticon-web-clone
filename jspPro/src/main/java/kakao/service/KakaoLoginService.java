@@ -19,22 +19,26 @@ public class KakaoLoginService {
 		return instance;
 	}
 
-	public boolean loginCheck( String id , String pwd){
+	public int loginCheck( String id , String pwd){
 		//
 		Connection con = null;
+		int rowcount = 0;
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			KakaoLoginDAOImpl dao = KakaoLoginDAOImpl.getInstance();
 			
+			rowcount = dao.loginCheck(id, pwd, con);
 			
-			return dao.loginCheck(id, pwd, con);
+			
 		} catch (NamingException | SQLException e) { 
 			//e.printStackTrace();  syso("ListService.select() 에러 : ")
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(con);
 		}
+		
+		return rowcount;
 	}
 
 }

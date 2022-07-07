@@ -18,7 +18,8 @@
 </style>
 </head>
 <body>
-
+<% String ses = (String)session.getAttribute("email"); %>
+<% String contextPath = request.getContextPath(); %>
 	<div id="root" style="height: 100%;">
 		<div id="kakaoWrap" class="">
 			<div id="kakaoHead" class="emoticon_head">
@@ -35,7 +36,7 @@
 					<button class="link_search">
 						<span class="ico_comm ico_search">검색하기</span>
 					</button>
-					<button class="link_my">
+					<button class="link_my" onclick="location.href='../login/login_kakao.do'">
 						<span class="wrap_thumb"><span class="inner_thumb">
 						<img class="thumb_user" 
 							src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
@@ -47,7 +48,7 @@
 				<nav id="kakaoGnb">
 					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 					<ul class="list_gnb">
-						<li class=""><a class="link_gnb" href="/">홈</a></li>
+						<li class=""><a class="link_gnb" href="/" >홈<%=ses%></a></li>
 						<li class="on"><a class="link_gnb" href="/item/new">신규</a></li>
 						<li class=""><a class="link_gnb" href="/item/hot">인기</a></li>
 						<li class=""><a class="link_gnb" href="/item/style">스타일</a></li>
@@ -69,7 +70,7 @@
 						<c:forEach items="${  emap   }" var="emap" >
 						<li class="new_list_hwan">
 							<div class="link_new new_tit">
-								<a class="link_new" href="/t/cute-and-kind-bubble-ver-6">
+								<a class="link_new" href="<%=contextPath%>/kview/view.do?el_num=${ emap.key.el_num }">
 								<div	class="area_tit">
 										<strong class="tit_product">
 										<span class="txt_tit">${ emap.key.el_name }</span>
@@ -96,6 +97,9 @@
 				</div>
 			</div>
 			
+			
+			
+			
 			<script>
 
 			$(document).ready(function () {
@@ -117,7 +121,7 @@
 					<h2 class="screen_out">서비스 이용정보</h2>
 					<div class="service_info">
 						<a class="link_service" href="/policy" target="_blank"
-							rel="noreferrer">이용약관</a><a class="link_service"
+							rel="noreferrer">이용약관<%= ses%></a><a class="link_service"
 							href="https://billing-web.kakao.com/kbill/terms/service"
 							target="_blank" rel="noreferrer">유료이용안내</a><a
 							class="link_service" href="https://www.kakao.com/policy/privacy"
@@ -176,7 +180,7 @@
 						</dl>
 					</div>
 					<div class="area_movetop">
-						<button type="button" class="btn_movetop">
+						<button type="button" class="btn_movetop" onclick="location.href=''">
 							<span class="ico_comm ico_movetop">위로 이동</span>
 						</button>
 					</div>

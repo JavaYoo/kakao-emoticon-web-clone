@@ -15,24 +15,28 @@ public class KakaoLoginHandler implements CommandHandler {
 			return "/pages/login/login_kakao.jsp";
 		} else if (request.getMethod().equals("POST")) { // post 방식 요청
 
-			String id = request.getParameter("id");
-			String pwd = request.getParameter("pwd");
+			String id = request.getParameter("email");
+			String pwd = request.getParameter("password");
 
 			KakaoLoginService login = KakaoLoginService.getInstance();
-			boolean check = login.loginCheck(id, pwd);
+			int rowcount = login.loginCheck(id, pwd);
 
-			if (check) {
+			System.out.println("들어오냐");
+			
+			if ( rowcount == 1) {
 
 				HttpSession session = request.getSession();
 
-				session.setAttribute("id", id);
-				session.setAttribute("pwd", pwd);
+				session.setAttribute("email", id);
+				session.setAttribute("password", pwd);
 
-				System.out.println(" 로그인 성공 ? ");
-				
-				response.sendRedirect("/pages/new/new_kakao.do");
-			}else {
 				System.out.println(" 로그인 성공 ! ");
+				
+				response.sendRedirect("../new/new_kakao.do");
+				
+			}else {
+				System.out.println(" 로그인 실패 ! ");
+				return "/pages/login/login_kakao.jsp";
 			}
 
 		} else { // PUT, DELETE , UPDATE 등등

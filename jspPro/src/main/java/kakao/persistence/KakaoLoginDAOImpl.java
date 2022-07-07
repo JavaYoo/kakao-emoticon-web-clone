@@ -25,36 +25,30 @@ public class KakaoLoginDAOImpl implements KakaoLoginDAO {
 	}
 
 	@Override
-	public boolean loginCheck(String id, String pwd , Connection con) throws SQLException {
+	public int loginCheck(String id, String pwd, Connection con) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean login = false;
-		
-		String sql = "select * "
-						+ "from em_member  "
-						+ "where m_id = '?' , m_pwd = '?'  ";
-		
+		int rowcount = 0;
+		String sql = "select count(*) cnt " + "from em_member  " + "where m_id = ? and m_pwd = ?  ";
 
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString( 1 , id );
-			pstmt.setString( 2 , pwd );
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-					
-					id = rs.getString("m_id");
-					pwd = rs.getString("m_pwd");
-					
-					login = true;
-					
-			} //
+			rs.next();
+
+			rowcount = rs.getInt("cnt");
+
+
 		} finally {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(rs);
 		} // finally
 
-		return login;
+		System.out.println(rowcount);
+		return rowcount;
 
 	}
 

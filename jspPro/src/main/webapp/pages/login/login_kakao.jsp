@@ -60,7 +60,7 @@
       <span class="ir_wa">kakao</span>
     </h1>
     <div class="login_kakaomail">
-  <form id="login-form" action="new_kakao.do">
+  <form id="login-form" action="login_kakao.do" method="post">
     <fieldset class="fld_login">
       <legend class="screen_out">카카오 계정 로그인 폼</legend>
       <input type="hidden" name="type" value="w">
@@ -226,13 +226,6 @@
     </div>
   </fieldset>
 </form>
-
-<script>
-	$("#login_check").on("click" ,function(event){
-		//$("#login_form").submit();
-		$("#login_check").submit();
-	});
-</script>
 
   <div class="info_user">
       

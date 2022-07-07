@@ -8,7 +8,7 @@ import kakao.domain.KakaoLoginDTO;
 
 public interface KakaoLoginDAO {
 
-	public boolean loginCheck( String id, String pwd , Connection con) throws SQLException;
+	public int loginCheck( String id, String pwd , Connection con) throws SQLException;
 
 	
 
