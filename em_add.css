@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: notokr-regular;
+	src: url("../images/notokr-regular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: notokr-bold;
+	src: url("../images/notokr-bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 600
+}
+
+* {
+	font-size: 18px;
+	line-height: 2;
+	font-family: notokr-regular, "Apple SD Gothic Neo", sans-serif;
+	color: #191919
+}
+
+h2 {
+	font-family: notokr-bold;
+	font-size: 20px;
+}
+
+.ico_comm {
+	display: inline-block;
+	overflow: hidden;
+	font-size: 1px;
+	line-height: 0;
+	color: rgba(0, 0, 0, 0);
+	vertical-align: top;
+	background:
+		url(https://t1.kakaocdn.net/estoreweb/images/20220421091219/ico_comm_220415.png)
+		no-repeat;
+	-webkit-background-size: 830px 230px;
+	background-size: 830px 230px
+}
+
+.ico_logo {
+	width: 190px;
+	height: 28px;
+	background-position: -210px 0
+}
+
+.em_title{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.yellow_bnr{
+	position: relative;
+    width: 100%;
+    height: 90px;
+    padding-top: 23px;
+    background-color: #ffeb2d;
+    
+}
+
+.tit_em_add {
+    width: auto;
+    height: auto;
+    font-size: 18px;
+    text-align: center;
+}
+
+.ico_card {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    bottom: auto;
+    margin-left: -36px;
+    
+    width: 75px;
+    height: 75px;
+    background-position: 0 0px;
+}
+
+@media (max-width: 767px)
+.ico_comm {
+    background-image: url(https://t1.kakaocdn.net/estoreweb/images/20220421091219/m/ico_comm_220415.png);
+}
+
+h2{
+	margin-top: 0px;
+}
+
+.list_marker{
+	width: 8px;
+    height: 8px;
+    background-color: #ffeb2d;
+    border-radius: 4px;
+    float: left;
+    margin: 13px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+}
+
+
+.add_name{
+	width: 100%;
+	float: left;
+}
+
+form{
+	margin-top: 50px;
+}
+
+.add_name, .add_maker, .add_price, .add_mainImg, .add_stopImg, .add_allImg, .add_category{
+	width: 50%;
+}
+
+
+body{
+	overflow-x: hidden;
+}
+
+.em_btn{
+	width: 100%;
+	display: flex;
+}
+
+.submit_btn, .home_btn{
+	width: 50%;
+	margin-top: 30px;
+}
+
+.em_submit, .btn_close{
+	width: 60%;
+    margin: 0 100px;
+}
+
+.em_submit:hover{
+	text-decoration: underline;
+}
+
+.btn_close:hover{
+	text-decoration: underline;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:-webkit-any-link{
+	text-decoration: none;
+}
+
+.em_submit{
+	background-color: #ffeb2d;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.btn_close{
+	background-color: white;
+	border: 1px solid #c0c0c0;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.flexBox{
+	display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+input[type=text]{
+	width: 40%;
+    margin-right: 100px;
+}
+
+input[type=file]{
+	margin-right: 100px;
+}
+
+
+body{
+	margin: 0px;
+}
+
+.emo_add{
+	margin: 0px 0px 10px 0px;
+}
+
+.fadeOut_txt{
+	width: 100%;
+	font-size: 30px;
+	text-align: center;
+	font-family: notokr-bold;
+}
