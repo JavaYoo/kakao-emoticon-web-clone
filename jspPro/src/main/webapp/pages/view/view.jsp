@@ -885,6 +885,7 @@
 				data : params2,
 				cache : false,
 				success : function(data, textStatus, jqXHR) {
+					
 					if (data.count == 0) {
 						$("#giftForm").submit();
 						alert("선물하기 완료!!!");

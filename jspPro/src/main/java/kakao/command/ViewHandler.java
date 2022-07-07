@@ -20,7 +20,6 @@ public class ViewHandler implements CommandHandler {
 			el_num = -1;
 		else
 			el_num = Integer.parseInt(pnum);
-
 		
 		ViewService viewService = ViewService.getInstance();
 		List<ElistDTO> eList = viewService.selectEmoInfo(el_num);
@@ -28,7 +27,7 @@ public class ViewHandler implements CommandHandler {
 
 		request.setAttribute("eList", eList);
 		request.setAttribute("eImgList", eImgList);
-		System.out.println("viewHandler 호출됨");
+		System.out.println("viewHandler 호출됨"); 
 		// 포워딩
 		return "/pages/view/view.jsp";
 	}

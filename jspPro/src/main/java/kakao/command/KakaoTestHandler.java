@@ -11,7 +11,7 @@ import kakao.domain.KakaoEimgDTO;
 import kakao.domain.KakaoElistDTO;
 import kakao.service.KakaoEimgService;
 
-public class KakaoNewHandler implements CommandHandler{
+public class KakaoTestHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -26,7 +26,7 @@ public class KakaoNewHandler implements CommandHandler{
 		
 		if( email != null ) System.out.println(email);
 		
-		return "/pages/new/new_kakao.jsp";
+		return "/pages/new/new_kakao2.jsp";
 
 	}
 

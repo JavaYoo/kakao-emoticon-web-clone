@@ -13,4 +13,8 @@ public interface KakaoEimgDAO {
    // 1. 글목록 : 페이징 처리 X
 	Map<KakaoElistDTO, List<KakaoEimgDTO>> selectList(Connection con) throws SQLException;
 
+	Map<KakaoElistDTO, List<KakaoEimgDTO>> selectList2(Connection con) throws SQLException;
+
+	//List<KakaoElistDTO> selectLike(Connection con) throws SQLException {
+	
 }

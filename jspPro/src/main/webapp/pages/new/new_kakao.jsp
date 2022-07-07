@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../../css/new/header_footer.css?ver=1">
 <link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
+<script src="../../js/sangho/httpRequest.js"></script>
 </head>
 <body>
 <% String ses = (String)session.getAttribute("email"); %>
@@ -61,6 +62,10 @@
 								alt="배너이미지">
 						</h3>
 					</div>
+					
+					<div>
+					<button onclick="onTest()">test</button>
+					</div>
 					<ul class="list_new">
 						<c:forEach items="${  emap   }" var="emap" >
 						<li class="new_list_hwan">
@@ -71,7 +76,7 @@
 										<span class="txt_tit">${ emap.key.el_name }</span>
 										</strong><span class="txt_author">${ emap.key.el_maker }</span>
 									</div></a>
-								<button type="button" class="btn_grpshare">
+								<button type="button" class="btn_grpshare" onclick="onLike()">
 									<span class="ico_comm ico_like">좋아요</span>
 								</button>
 							</div>
@@ -108,6 +113,52 @@
 				})
 			});
 
+			</script>
+			
+			<script>
+			
+			let page = 1
+			function onTest(){	
+			
+				var params2 = {
+						currentPage :page+=1 ,
+						perPage : 10,
+					};
+				
+
+				/* alert(params2.currentPage); */
+				
+				
+					 $.ajax({
+						url : "/jspPro/pages/new/new_kakao.do",
+						dataType : "json",
+						type : "GET",
+						data : params2,
+						cache : false,
+						success : function(data, textStatus, jqXHR) {
+							
+							console.log(data)
+						/* 	if (data.count == 0) {
+								$("#giftForm").submit();
+								alert("선물하기 완료!!!");
+							}
+
+							else {
+								alert("친구가 이미 보유한 상품입니다. 다른 친구를 선택해 보세요!!");
+								dialog2.dialog("close");
+								$(".dimmed_layer").css("display", "block");
+								$(".emoticon_layer.friend_layer").css("display",
+										"block");
+
+							}
+ */
+						},
+						error : function() {
+							alert("ajax 에러");
+						}
+					});
+				
+			}
 			</script>
 			
 			
