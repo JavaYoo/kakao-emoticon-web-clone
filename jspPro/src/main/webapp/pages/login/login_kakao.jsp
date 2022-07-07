@@ -124,12 +124,9 @@
     
 <div class="item_tf item_inp" style="">
     <label for="id_email_2" class="lab_g lab_placeholder lab_txt" id="id_email_2_label">
-    <!-- 
-      <span aria-hidden="true">카카오메일 아이디, 이메일, 전화번호 </span>
-      <span class="screen_out">카카오메일 아이디, 이메일, 전화번호 </span>
-       -->
+     
     </label>
-  <input data-type="text" class="tf_g tf_email" name="email" validator="email_or_phone_or_kakaoid" type="text" id="id_email_2" data-error-empty="카카오계정을 입력해 주세요." data-error-invalid="카카오계정을 정확하게 입력해 주세요.">
+  <input data-type="text" class="tf_g tf_email" placeholder="카카오메일 아이디, 이메일, 전화번호" name="email" validator="email_or_phone_or_kakaoid" type="text" id="id_email_2" data-error-empty="카카오계정을 입력해 주세요." data-error-invalid="카카오계정을 정확하게 입력해 주세요.">
  
 <script>
 	
@@ -158,12 +155,9 @@
       
 <div class="item_tf item_inp" style="">
     <label for="id_password_3" class="lab_g lab_placeholder lab_txt" id="id_password_3_label">
-    <!-- 
-      <span aria-hidden="true">비밀번호</span>
-      <span class="screen_out">비밀번호</span>
-       -->
+
     </label>
-  <input data-type="password" class="tf_g " name="password" type="password" validator="password" id="id_password_3" data-error-empty="카카오계정 비밀번호를 입력해 주세요.(영문자/숫자/특수문자)" data-error-invalid="비밀번호가 올바르지 않습니다." autocomplete="off">
+  <input data-type="password" class="tf_g " placeholder="비밀번호" name="password" type="password" validator="password" id="id_password_3" data-error-empty="카카오계정 비밀번호를 입력해 주세요.(영문자/숫자/특수문자)" data-error-invalid="비밀번호가 올바르지 않습니다." autocomplete="off">
 
 <script>
 	
