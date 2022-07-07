@@ -2,16 +2,13 @@ package kakao.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.naming.NamingException;
 
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import kakao.domain.KakaoElistDTO;
-import kakao.domain.KakaoLoginDTO;
-import kakao.persistence.KakaoLoginDAO;
+import kakao.persistence.KakaoLoginDAOImpl;
 
 public class KakaoLoginService {
 
@@ -22,18 +19,16 @@ public class KakaoLoginService {
 		return instance;
 	}
 
-	public List<KakaoLoginDTO> check(){
+	public boolean loginCheck( String id , String pwd){
 		//
 		Connection con = null;
-		String id = null;
-		String pwd = null;
+		
 		try {
 			con = ConnectionProvider.getConnection();
-			KakaoLoginDAO dao = KakaoLoginDAO.getInstance();
-			List<KakaoLoginDTO> elist = null;
-			elist = dao.loginCheck(id , pwd , con);
+			KakaoLoginDAOImpl dao = KakaoLoginDAOImpl.getInstance();
 			
-			return elist;
+			
+			return dao.loginCheck(id, pwd, con);
 		} catch (NamingException | SQLException e) { 
 			//e.printStackTrace();  syso("ListService.select() 에러 : ")
 			throw new RuntimeException(e);

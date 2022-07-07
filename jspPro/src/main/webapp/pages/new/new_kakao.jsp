@@ -39,7 +39,7 @@
 						<span class="wrap_thumb"><span class="inner_thumb">
 						<img class="thumb_user" 
 							src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
-								width="28px" height="28px" alt="사용자">
+								width="28px" height="28px" alt="사용자" >
 								</span>
 							</span>
 					</button>

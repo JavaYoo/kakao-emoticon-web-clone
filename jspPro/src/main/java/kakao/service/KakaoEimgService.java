@@ -12,7 +12,7 @@ import com.util.JdbcUtil;
 
 import kakao.domain.KakaoEimgDTO;
 import kakao.domain.KakaoElistDTO;
-import kakao.persistence.KakaoEimgDAO;
+import kakao.persistence.KakaoEimgDAOImpl;
 
 public class KakaoEimgService {
 
@@ -28,7 +28,7 @@ public class KakaoEimgService {
 		Connection con = null;
 		try {
 			con = ConnectionProvider.getConnection();
-			KakaoEimgDAO dao = KakaoEimgDAO.getInstance();
+			KakaoEimgDAOImpl dao = KakaoEimgDAOImpl.getInstance();
 			Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = null;
 			emap = dao.selectList(con);
 			return emap;

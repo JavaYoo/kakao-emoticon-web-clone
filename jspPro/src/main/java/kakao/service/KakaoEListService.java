@@ -10,7 +10,7 @@ import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
 import kakao.domain.KakaoElistDTO;
-import kakao.persistence.KakaoElistDAO;
+import kakao.persistence.KakaoElistDAOImpl;
 
 public class KakaoEListService {
 
@@ -26,7 +26,7 @@ public class KakaoEListService {
 		Connection con = null;
 		try {
 			con = ConnectionProvider.getConnection();
-			KakaoElistDAO dao = KakaoElistDAO.getInstance();
+			KakaoElistDAOImpl dao = KakaoElistDAOImpl.getInstance();
 			List<KakaoElistDTO> elist = null;
 			elist = dao.selectList(con);
 			return elist;

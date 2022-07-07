@@ -60,7 +60,7 @@
       <span class="ir_wa">kakao</span>
     </h1>
     <div class="login_kakaomail">
-  <form id="login-form" action="#">
+  <form id="login-form" action="new_kakao.do">
     <fieldset class="fld_login">
       <legend class="screen_out">카카오 계정 로그인 폼</legend>
       <input type="hidden" name="type" value="w">
@@ -124,8 +124,10 @@
     
 <div class="item_tf item_inp" style="">
     <label for="id_email_2" class="lab_g lab_placeholder lab_txt" id="id_email_2_label">
+    <!-- 
       <span aria-hidden="true">카카오메일 아이디, 이메일, 전화번호 </span>
       <span class="screen_out">카카오메일 아이디, 이메일, 전화번호 </span>
+       -->
     </label>
   <input data-type="text" class="tf_g tf_email" name="email" validator="email_or_phone_or_kakaoid" type="text" id="id_email_2" data-error-empty="카카오계정을 입력해 주세요." data-error-invalid="카카오계정을 정확하게 입력해 주세요.">
  
@@ -156,8 +158,10 @@
       
 <div class="item_tf item_inp" style="">
     <label for="id_password_3" class="lab_g lab_placeholder lab_txt" id="id_password_3_label">
+    <!-- 
       <span aria-hidden="true">비밀번호</span>
       <span class="screen_out">비밀번호</span>
+       -->
     </label>
   <input data-type="password" class="tf_g " name="password" type="password" validator="password" id="id_password_3" data-error-empty="카카오계정 비밀번호를 입력해 주세요.(영문자/숫자/특수문자)" data-error-invalid="비밀번호가 올바르지 않습니다." autocomplete="off">
 
@@ -218,10 +222,17 @@
       <p class="desc_error"></p>
     </div>
     <div class="wrap_btn">
-      <button class="btn_g btn_confirm submit" type="button">로그인</button>
+      <input class="btn_g btn_confirm submit" id="login_check"  type="submit" value="로그인">
     </div>
   </fieldset>
 </form>
+
+<script>
+	$("#login_check").on("click" ,function(event){
+		//$("#login_form").submit();
+		$("#login_check").submit();
+	});
+</script>
 
   <div class="info_user">
       
@@ -606,7 +617,7 @@
             </div>
 
             <div class="wrap_btn">
-              <button class="btn_g btn_confirm submit" type="button">확인</button>
+              <button class="btn_g btn_confirm submit"type="button">확인</button>
             </div>
           </form>
 
