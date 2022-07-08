@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kakao.domain.HotDTO;
 import kakao.domain.HotNewDTO;
@@ -23,6 +24,9 @@ public class HotHandler implements CommandHandler{
 		request.setAttribute("memberList", memberList);
 		request.setAttribute("hotList", hotList);
 		request.setAttribute("hotNewList", hotNewList);
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("referer" , request.getRequestURI());
 		
 		return "/pages/hot/hot.jsp";
 	}

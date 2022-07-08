@@ -20,11 +20,15 @@ public class KakaoNewHandler implements CommandHandler{
 		KakaoEimgService kakaoEimgService = KakaoEimgService.getInstance();
 		Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = kakaoEimgService.select();
 		request.setAttribute("emap", emap);
+		
+		
 		HttpSession session = request.getSession();
 		
-		String email = (String)session.getAttribute("email");
+		session.setAttribute("referer" , request.getRequestURI());
 		
-		if( email != null ) System.out.println(email);
+		//String email = (String)session.getAttribute("email");
+		
+		//if( email != null ) System.out.println(email);
 		
 		return "/pages/new/new_kakao.jsp";
 

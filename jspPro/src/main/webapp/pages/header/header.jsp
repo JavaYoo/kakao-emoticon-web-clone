@@ -479,6 +479,8 @@
 			$(".kakaoTopbnr").css("display", "none");
 			$(".emoticon_head").css("top", "0px");
 			$(".search_wrap").css("top", "110px")
+			$(".wrap_menu").css("top","0px");
+	        $(".wrap_menu").css("height", "calc(100%)");
 		});
 
 		if (${ not empty sessionScope.email }) {
@@ -520,8 +522,7 @@
 	   $(".dimmed_layer").css("display","none");
 	});
 	
-	$("")
-	
+
 	</script>
 
 	<script>
@@ -537,21 +538,33 @@
 	    $("#alert_logon").css("display", "none");
 	 });
 	
-	
+
 	//메뉴 열림
 	 $(".link_menu").on("click",function(){
-	      
-		   $(".wrap_menu").css("display","block");
-		   $(".dimmed_menu").css("display","block");
-
-		}); 
-
-		 $(".dimmed_menu").on("click", function() {
-		   $(".wrap_menu").css("display", "none");
-		   $(".dimmed_menu").css("display","none");
-		   
-		}); 
-	 
+		$(".wrap_menu").css("display","block");
+		$(".dimmed_menu").css("display","block");
+		if (${ not empty sessionScope.email } ) {
+			if($(".kakaoTopbnr").css("display") == "none")){
+				$(".wrap_menu").css("top","0px");
+	       		$(".wrap_menu").css("height", "calc(100%)");
+			}else if($(".kakaoTopbnr").css("display") == "block")){
+			$(".wrap_menu").css("top","50px");
+			$(".wrap_menu").css("height", "calc(94%)");
+			}
+		} 
+		 
+	}); 
+	
+	$(".dimmed_menu").on("click", function() {
+		$(".wrap_menu").css("display", "none");
+		$(".dimmed_menu").css("display","none");
+		
+	}); 
+	$(".btn_close_tb").on("click",function(){
+		$(".wrap_menu").css("top","0px");
+		$(".wrap_menu").css("height", "calc(100%)");
+	})
+	
 	</script>
 
 	<script>
@@ -571,6 +584,9 @@
 	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
 	}
 	</script>
+	
+	
+
 
 </body>
 </html>

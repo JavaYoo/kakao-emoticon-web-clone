@@ -2783,10 +2783,9 @@ button {
     cursor: pointer;
 }
 
-
 .wrap_menu {
    position: fixed;
-   top: 1;
+   top: 0;
    z-index: 113;
    width: 290px;
    height: 100%;
