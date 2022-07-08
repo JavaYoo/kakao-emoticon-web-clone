@@ -543,15 +543,15 @@
 	 $(".link_menu").on("click",function(){
 		$(".wrap_menu").css("display","block");
 		$(".dimmed_menu").css("display","block");
-		if (${ not empty sessionScope.email } ) {
-			if($(".kakaoTopbnr").css("display") == "none")){
-				$(".wrap_menu").css("top","0px");
-	       		$(".wrap_menu").css("height", "calc(100%)");
-			}else if($(".kakaoTopbnr").css("display") == "block")){
-			$(".wrap_menu").css("top","50px");
-			$(".wrap_menu").css("height", "calc(94%)");
-			}
-		} 
+		
+		
+		$(".wrap_menu").css("top","50px");
+		$(".wrap_menu").css("height", "calc(94%)");
+		
+		if($(".kakaoTopbnr").is(":visible") == false){
+			$(".wrap_menu").css("top","0px");
+       		$(".wrap_menu").css("height", "calc(100%)");
+		}
 		 
 	}); 
 	

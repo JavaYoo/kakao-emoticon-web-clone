@@ -11,25 +11,28 @@ import kakao.domain.KakaoEimgDTO;
 import kakao.domain.KakaoElistDTO;
 import kakao.service.KakaoEimgService;
 
-public class KakaoNewHandler implements CommandHandler{
+public class KakaoNewHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
 		KakaoEimgService kakaoEimgService = KakaoEimgService.getInstance();
 		Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = kakaoEimgService.select();
 		request.setAttribute("emap", emap);
+
+		HttpSession session= request.getSession(false);
+
+		// if( session.getAttribute("email").equals(null) ) {
+
+		session.setAttribute("referer", request.getRequestURI());
+
+		System.out.println( session.getAttribute("referer") );
+		// }
 		
-		
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("referer" , request.getRequestURI());
-		
-		//String email = (String)session.getAttribute("email");
-		
-		//if( email != null ) System.out.println(email);
-		
+		// String email = (String)session.getAttribute("email");
+
+		// if( email != null ) System.out.println(email);
+
 		return "/pages/new/new_kakao.jsp";
 
 	}

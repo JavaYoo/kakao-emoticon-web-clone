@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +72,7 @@ String contextPath = request.getContextPath();
 					<button class="link_search">
 						<span class="ico_comm ico_search">검색하기</span>
 					</button>
-					<button class="link_my">
+					<button class="link_my" >
 						<span class="wrap_thumb">
 							<span class="inner_thumb">
 								<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
@@ -89,7 +88,7 @@ String contextPath = request.getContextPath();
 									<a href="/"> <!-- 로그인 페이지 -->
 										<img class="thumb_user"
 												src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
-												width="28px" height="28px" alt="사용자">
+												width="28px" height="28px" alt="사용자" >
 									</a>
 								</c:if>
 							</span>
@@ -108,7 +107,7 @@ String contextPath = request.getContextPath();
 									</span> 
 									<span class="tit_thumb">${ memberList.m_nn }</span> 
 									<span class="desc_email">${ memberList.m_id }</span>
-									<button class="btn_logout">로그아웃</button>
+									<button class="btn_logout" id="btn_logout">로그아웃</button>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -120,7 +119,7 @@ String contextPath = request.getContextPath();
 			               	<span class="tit_thumb">admin</span>
 			               	<button class="btn_em_add" onclick="location.href='../add_delete/em_add.do'">이모티콘 추가</button>
 			               	<button class="btn_em_delete" onclick="location.href='../add_delete/em_delete.do'">이모티콘 삭제</button>
-			               	<button class="btn_em_logout">로그아웃</button>
+			               	<button class="btn_em_logout" id="btn_em_logout">로그아웃</button>
 		               </div>
 		            </c:if>
 
@@ -342,29 +341,21 @@ String contextPath = request.getContextPath();
 		});
 		
 		/* 로그아웃 */
-		$(".btn_em_logout").on("click", function() {
+		
+		$("#btn_em_logout").on("click", function() {
 			//sessionStorage.clear();  //세션 데이터 삭제
-			<%-- 
-			<% 
-			session.invalidate();
-			session = request.getSession(true);
-			%>
-			 --%>
+			
 			 <% session.removeAttribute("email"); %>
 			location.reload(); //새로고침
 		});
 		
-		$(".btn_logout").on("click", function() {
+		$("#btn_logout").on("click", function() {
 			//sessionStorage.clear();  //세션 데이터 삭제
-			<%-- 
-			<% 
-			session.invalidate();
-			session = request.getSession(true);
-			%>
-			 --%>
+			
 			 <% session.removeAttribute("email"); %>
 			location.reload(); //새로고침
 		});
+		 
 	</script>
 
 

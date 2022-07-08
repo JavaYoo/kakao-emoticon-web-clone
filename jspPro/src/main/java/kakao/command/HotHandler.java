@@ -12,6 +12,8 @@ import kakao.domain.Profile_MemberDTO;
 import kakao.service.HotService;
 
 public class HotHandler implements CommandHandler{
+	
+	
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -24,9 +26,17 @@ public class HotHandler implements CommandHandler{
 		request.setAttribute("memberList", memberList);
 		request.setAttribute("hotList", hotList);
 		request.setAttribute("hotNewList", hotNewList);
-		HttpSession session = request.getSession();
+		
+		
+		HttpSession session = request.getSession(false);
+		
+		
+		//if( session.getAttribute("email").equals(null) ) {
 		
 		session.setAttribute("referer" , request.getRequestURI());
+		
+		//}
+		
 		
 		return "/pages/hot/hot.jsp";
 	}

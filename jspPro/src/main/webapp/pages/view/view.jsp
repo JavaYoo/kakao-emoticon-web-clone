@@ -69,13 +69,14 @@
 						<button class="link_search">
 							<span class="ico_comm ico_search">검색하기</span>
 						</button>
-						<button class="link_my">
+						
+						<button class="link_my" <c:if test="${ email eq null }"> onclick="location.href='../login/login_kakao.do'"</c:if>>
 							<span class="wrap_thumb"><span class="inner_thumb"><img
 									class="thumb_user"
 									src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
 									width="28px" height="28px" alt="사용자"></span></span>
 						</button>
-
+						
 						<!-- 로그인 후 프로필 클릭하면 보이는 프로필창 -->
 						<!-- 
 	               <div class="profile_layer">
