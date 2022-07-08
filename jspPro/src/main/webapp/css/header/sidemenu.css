@@ -11,34 +11,24 @@ button {
     background-color: rgba(0,0,0,0);
     cursor: pointer;
 }
-.ico_comm {
-    display: inline-block;
-    overflow: hidden;
-    font-size: 1px;
-    line-height: 0;
-    color: rgba(0,0,0,0);
-    vertical-align: top;
-    background: url(https://t1.kakaocdn.net/estoreweb/images/20220421091219/ico_comm_220415.png) no-repeat;
-    -webkit-background-size: 830px 230px;
-    background-size: 830px 230px;
-}
+
 
 .wrap_menu {
-	position: fixed;
-	top: 0;
-	z-index: 113;
-	width: 290px;
-	height: 100%;
-	padding-bottom: 54px;
-	background: #fff;
-	box-sizing: border-box;
+   position: fixed;
+   top: 0;
+   z-index: 113;
+   width: 290px;
+   height: 100%;
+   padding-bottom: 54px;
+   background: #fff;
+   box-sizing: border-box;
 }
 
 .wrap_menu .inner_menu {
-	overflow-y: auto;
-	height: 100%;
-	padding: 18px 0 12px;
-	box-sizing: border-box;
+   overflow-y: auto;
+   height: 100%;
+   padding: 18px 0 12px;
+   box-sizing: border-box;
 }
 .wrap_menu .wrap_profile {
     position: relative;
@@ -116,7 +106,7 @@ a {
  @media (max-width: 767px){
 .ico_comm {
     background-image: url(https://t1.kakaocdn.net/estoreweb/images/20220421091219/m/ico_comm_220415.png);
-	}
+   }
 } 
 
 .ico_logarr_type1 {
@@ -198,7 +188,7 @@ strong {
     box-sizing: border-box;
 }
 .wrap_menu .list_nav .link_nav:hover {
-	background-color: rgba(0, 0, 0, .02)
+   background-color: rgba(0, 0, 0, .02)
 }
 .wrap_menu .list_aside {
     margin-top: 12px;
@@ -206,7 +196,7 @@ strong {
     border-top: 1px solid rgba(0,0,0,.04);
 }
 .wrap_menu .list_aside .link_aside:hover {
-	background-color: rgba(0, 0, 0, .02)
+   background-color: rgba(0, 0, 0, .02)
 }
 .wrap_menu .list_aside li {
     height: 40px;
@@ -360,4 +350,37 @@ strong {
     width: 15px;
     height: 15px;
     background-position: -630px -70px;
+}
+
+
+.wrap_menu{
+	display: none;
+}
+
+.dimmed_menu {
+   position: fixed;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   z-index: 111;
+   background-color: #191919;
+   opacity: .3
+}
+
+.wrap_menu .list_mymenu .ico_menunew {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    margin-left: 6px;
+}
+
+.wrap_menu .list_mymenu .txt_mymenu .txt_count {
+    display: inline-block;
+    margin-top: 1px;
+    padding-left: 2px;
+    font-family: "helvetica", "helvetica neue";
+    line-height: 18px;
+    color: #fa4637;
+    vertical-align: top;
 }

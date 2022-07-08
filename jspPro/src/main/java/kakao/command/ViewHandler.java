@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kakao.domain.EimgDTO;
 import kakao.domain.ElistDTO;
@@ -27,6 +28,11 @@ public class ViewHandler implements CommandHandler {
 
 		request.setAttribute("eList", eList);
 		request.setAttribute("eImgList", eImgList);
+		
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("referer" , request.getRequestURI() + "?el_num=" + el_num );
+		
 		System.out.println("viewHandler 호출됨"); 
 		// 포워딩
 		return "/pages/view/view.jsp";

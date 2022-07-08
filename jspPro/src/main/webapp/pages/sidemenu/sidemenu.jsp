@@ -52,7 +52,7 @@
 				Corp</a>
 		</div>
 	</div>
-	
+	<div class="dimmed_menu" style="display:none"></div> 
 		<div class="alert_layer" id="alert_logon">
 	               <div class="inner_layer">
 	                  <div class="layer_body">

@@ -17,10 +17,11 @@ public class KakaoLoginHandler implements CommandHandler {
 
 			String id = request.getParameter("email");
 			String pwd = request.getParameter("password");
+			String referer = null;
 
 			KakaoLoginService login = KakaoLoginService.getInstance();
 			int rowcount = login.loginCheck(id, pwd);
-
+			
 			//System.out.println("들어오냐");
 			
 			if ( rowcount == 1) {
@@ -32,12 +33,17 @@ public class KakaoLoginHandler implements CommandHandler {
 				System.out.println(" 로그인 성공 ! ");
 				
 				//System.out.println(   request.getRequestURI()     ); 
-				System.out.println(   request.getHeader("referer")     ); 
-				
-				response.sendRedirect("../header/header.do");
+				referer = (String)session.getAttribute("referer"); 
+				session.removeAttribute("referer");
+				if ( referer != null) {
+					response.sendRedirect(referer);
+				}else {
+					response.sendRedirect("../new/new_kakao.do");
+				}
 				
 			}else {
 				System.out.println(" 로그인 실패 ! ");
+				
 				return "/pages/login/login_kakao.jsp";
 			}
 

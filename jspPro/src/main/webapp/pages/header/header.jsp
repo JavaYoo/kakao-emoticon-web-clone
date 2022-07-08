@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ include file="../include.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +12,7 @@
 	href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<link rel="stylesheet" href="../../css/header/header.css?ver=2" />
-
+<link rel="stylesheet" href="../../css/header/header.css?ver=3" />
 </head>
 <body>
 
@@ -56,9 +56,218 @@
 				</div>
 			</c:if>
 
-
-
 			<div id="kakaoHead" class="emoticon_head">
+			
+			<c:if test="${ empty sessionScope.email }">
+					<div class="wrap_menu">
+						<div class="inner_menu">
+							<a href="#" class="wrap_profile"><span class="wrap_thumb"><span
+									class="inner_thumb"><img class="thumb_user"
+										src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+										alt="사용자"></span></span><span class="wrap_name"><span
+									class="txt_name">로그인<span
+										class="ico_comm ico_logarr_type1"></span></span></span></a><strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li id="menu1"><a class="link_mymenu" href="#"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li id="menu1"><a class="link_mymenu" href="#"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li id="menu1"><a class="link_mymenu" href="#"><span
+										class="ico_comm ico_coupon"></span><span class="txt_mymenu">쿠폰함</span></a></li>
+								<li id="menu1"><a class="link_mymenu" href="#"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요</span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" href="/">홈</a></li>
+								<li><a class="link_nav" href="/item/new">신규</a></li>
+								<li><a class="link_nav" href="/item/hot">인기</a></li>
+								<li><a class="link_nav" href="/item/style">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="/notices">새소식</a></li>
+								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="/"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakao
+								Corp</a>
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+
+					<div class="alert_layer" id="alert_logon">
+						<div class="inner_layer">
+							<div class="layer_body">
+								<strong class="txt_info">로그인 후 이용해주세요.</strong>
+							</div>
+							<div class="layer_foot">
+								<button class="btn_s btn_m" id="alert_close">취소</button>
+								<button class="btn_g btn_m">로그인</button>
+							</div>
+						</div>
+						<button type="button" class="btn_close">
+							<span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
+						</button>
+					</div>
+					<div class="dimmed_layer dim_over"></div>
+				</c:if>
+
+
+				<c:if test="${ not empty sessionScope.email }">
+				<%-- <c:if test="${ not empty param.id }"> --%>
+					<div class="wrap_menu" id=logonmenu style="display: none">
+						<div class="inner_menu">
+							<c:forEach var="memberList" items="${ memberList }">
+								<c:if test="${ memberList.m_id eq sessionScope.email }">
+								<%-- <c:if test="${ memberList.m_id eq param.id }"> --%> 
+									<span class="wrap_profile">
+										<span class="wrap_thumb">
+											<span class="inner_thumb">
+												<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												alt="사용자">
+											</span>
+										</span>
+									<span class="wrap_name">
+										<span class="txt_name">${ memberList.m_nn }</span>
+										<span class="txt_email">${ memberList.m_id }</span>
+									</span>
+								</span>
+								</c:if>
+							</c:forEach>
+							
+							
+						<strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/received.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/coupons.do?id=email">
+									<span class="ico_comm ico_menunew">신규</span>
+									<span class="ico_comm ico_coupon"></span>
+									<span class="txt_mymenu">쿠폰함
+											<c:if test="${not empty couponsList}">
+
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+									</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요<em
+											class="txt_count">2<span class="screen_out">개</span></em></span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" href="/">홈</a></li>
+								<li><a class="link_nav" href="/item/new">신규</a></li>
+								<li><a class="link_nav" href="/item/hot">인기</a></li>
+								<li><a class="link_nav" href="/item/style">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="/notices">새소식</a></li>
+								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a href="#" class="link_aside" id="logout">로그아웃</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="/"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
+
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+				</c:if>
+
+
+				<%-- <c:if test="${ not empty sessionScope.email }"> --%>
+				<c:if test="${ not empty param.id }">
+					<div class="wrap_menu" id=logonmenu style="display: none">
+						<div class="inner_menu">
+							<c:forEach var="memberList" items="${ memberList }">
+							<%-- 	<c:if test="${ memberList.m_id eq sessionScope.email }"> --%>
+								<c:if test="${ memberList.m_id eq param.id }"> 
+									<span class="wrap_profile">
+										<span class="wrap_thumb">
+											<span class="inner_thumb">
+												<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												alt="사용자">
+											</span>
+										</span>
+									<span class="wrap_name">
+										<span class="txt_name">${ memberList.m_nn }</span>
+										<span class="txt_email">${ memberList.m_id }</span>
+									</span>
+								</span>
+								</c:if>
+							</c:forEach>
+							
+							
+						<strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/received.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/coupons.do?id=email">
+									<span class="ico_comm ico_menunew">신규</span>
+									<span class="ico_comm ico_coupon"></span>
+									<span class="txt_mymenu">쿠폰함
+											<c:if test="${not empty couponsList}">
+
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+									</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요<em
+											class="txt_count">2<span class="screen_out">개</span></em></span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" href="/">홈</a></li>
+								<li><a class="link_nav" href="/item/new">신규</a></li>
+								<li><a class="link_nav" href="/item/hot">인기</a></li>
+								<li><a class="link_nav" href="/item/style">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="/notices">새소식</a></li>
+								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a href="#" class="link_aside" id="logout">로그아웃</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="/"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+				</c:if>
 				<div class="k_head">
 					<button class="link_menu" id="side_open">
 						<span class="ico_comm ico_menu">사이드메뉴 열기</span>
@@ -294,6 +503,73 @@
 			sessionStorage.clear();  //세션 데이터 삭제
 			location.reload(); //새로고침
 		});
+	</script>
+<!--  -->
+	<script>
+
+	// 누르면 로그인 창 뜨도록 배경은 어둡게 
+	$(".list_mymenu").click(function() {
+	   $(".dimmed_layer").css("display", "block");
+	    $("#alert_logon").css("display", "block");
+	    $(".dimmed_menu").css("display", "block");
+	});
+	
+	//어두운 부분 누르면 다시 돌아감
+	$(".dimmed_layer").on("click", function() {
+	   $(".alert_layer").css("display", "none");
+	   $(".dimmed_layer").css("display","none");
+	});
+	
+	$("")
+	
+	</script>
+
+	<script>
+	
+	// x 버튼
+	 $("#btn_layer_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	//취소 버튼
+	 $("#alert_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	
+	
+	//메뉴 열림
+	 $(".link_menu").on("click",function(){
+	      
+		   $(".wrap_menu").css("display","block");
+		   $(".dimmed_menu").css("display","block");
+
+		}); 
+
+		 $(".dimmed_menu").on("click", function() {
+		   $(".wrap_menu").css("display", "none");
+		   $(".dimmed_menu").css("display","none");
+		   
+		}); 
+	 
+	</script>
+
+	<script>
+	
+	/* 로그인 버튼 누르면 로그인 페이지로 */
+	$(".btn_g").click(function() {
+	   location.href="../mypage/purchases.jsp";  
+	});
+	$(".wrap_profile").click(function() {
+	   location.href="../mypage/purchases.jsp";  
+	});
+	</script>
+
+	<script>
+	//이메일을 보내줌? 안보내줌
+	function numbermodal(){
+	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
+	}
 	</script>
 
 </body>

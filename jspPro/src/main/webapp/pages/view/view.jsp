@@ -415,7 +415,7 @@
 						</div>
 						<div class="layer_foot">
 							<button class="btn_s btn_m" id="alert_close">취소</button>
-							<button class="btn_g btn_m">로그인</button>
+							<button class="btn_g btn_m"  onclick="location.href='../login/login_kakao.do'">로그인</button>
 						</div>
 					</div>
 					<button type="button" class="btn_close">
