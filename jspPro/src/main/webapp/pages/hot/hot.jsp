@@ -203,7 +203,7 @@ String contextPath = request.getContextPath();
 								</c:if>
 								
 								<div class="double_tit">
-									<a class="link_double" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
+									<a class="link_double" href="<%=contextPath%>/pages/view/view.do?el_num=${ hotList.el_num }">
 										<div class="area_tit">
 											<strong class="tit_product">
 												<c:forEach var="hotNewList" items="${ hotNewList }">
@@ -225,7 +225,7 @@ String contextPath = request.getContextPath();
 										<span class="ico_comm ico_like">좋아요</span>
 									</button>
 								</div>
-								<a class="link_double double_img" href="#">
+								<a class="link_double double_img" href="#" >
 									<!-- 이모티콘 등록한거 가져오려면 /Kakao/upload/이모티콘이름/이미지이름 -->
 									<div class="area_doubleemoticon">
 										<c:if test="${ status.count >= 103 }">

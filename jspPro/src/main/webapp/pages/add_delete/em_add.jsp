@@ -6,11 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>이모티콘 추가하기</title>
-<link rel="shortcut icon"
-	href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../../css/add_delete/em_add.css?ver=1" />
 
 </head>
@@ -25,7 +22,7 @@
 			</div>
 
 
-			<form action="/Kakao/pages/add_delete/em_add_ok.do" method="post" enctype="multipart/form-data">
+			<form action="/jspPro/pages/add_delete/em_add_ok.do" method="post" enctype="multipart/form-data">
 				<div class="flexBox">
 					<div class="add_name">
 						<div class="list_marker"></div>
@@ -97,7 +94,7 @@
 						<input type="submit" class="em_submit" value="이모티콘 추가">
 					</div>
 					<div class="home_btn">
-						<button class="btn_close" onclick="location.href='/Kakao/pages/home/home.do'">홈</button>
+						<button class="btn_close" onclick="location.href='/jspPro/pages/home/home.do'">홈</button>
 					</div>
 				</div>
 			</form>

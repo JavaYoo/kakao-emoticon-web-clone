@@ -133,10 +133,10 @@
 						<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 						<ul class="list_gnb">
 							<!-- 해당 페이지에 클래스 on 넣기  -->
-							<li class=""><a class="link_gnb" href="/">홈</a></li>
-							<li class=""><a class="link_gnb" href="/item/new">신규</a></li>
-							<li class=""><a class="link_gnb" href="/item/hot">인기</a></li>
-							<li class=""><a class="link_gnb" href="/item/style">스타일</a></li>
+							<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
 						</ul>
 					</nav>
 
@@ -399,7 +399,7 @@
 							</dl>
 						</div>
 						<div class="area_movetop">
-							<button type="button" class="btn_movetop" onclick="location.href='#'">
+							<button type="button" class="btn_movetop" onclick="location.href=''">
 								<span class="ico_comm ico_movetop">위로 이동</span>
 							</button>
 						</div>

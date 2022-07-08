@@ -11,7 +11,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<link rel="stylesheet" href="../../css/em_delete.css" />
+<link rel="stylesheet" href="../../css/add_delete/em_delete.css" />
 
 </head>
 <body>
@@ -24,7 +24,7 @@
 				<span class="ico_comm ico_card"></span>
 			</div>
 			
-			<form class="del_form" action="/Kakao/pages/add_delete/em_delete_ok.do?del=">
+			<form class="del_form" action="/jspPro/pages/add_delete/em_delete_ok.do?del=">
 				<div class="flexBox">
 					<div class="delete_name">
 						<div class="list_marker"></div>
