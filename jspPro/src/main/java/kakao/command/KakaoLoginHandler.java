@@ -21,18 +21,20 @@ public class KakaoLoginHandler implements CommandHandler {
 			KakaoLoginService login = KakaoLoginService.getInstance();
 			int rowcount = login.loginCheck(id, pwd);
 
-			System.out.println("들어오냐");
+			//System.out.println("들어오냐");
 			
 			if ( rowcount == 1) {
 
 				HttpSession session = request.getSession();
 
 				session.setAttribute("email", id);
-				session.setAttribute("password", pwd);
 
 				System.out.println(" 로그인 성공 ! ");
 				
-				response.sendRedirect("../new/new_kakao.do");
+				//System.out.println(   request.getRequestURI()     ); 
+				System.out.println(   request.getHeader("referer")     ); 
+				
+				response.sendRedirect("../header/header.do");
 				
 			}else {
 				System.out.println(" 로그인 실패 ! ");

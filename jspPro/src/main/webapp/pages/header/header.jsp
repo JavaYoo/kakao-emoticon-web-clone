@@ -11,7 +11,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<link rel="stylesheet" href="../../css/header.css?ver=2" />
+<link rel="stylesheet" href="../../css/header/header.css?ver=2" />
 
 </head>
 <body>
@@ -79,11 +79,11 @@
 					<button class="link_search">
 						<span class="ico_comm ico_search">검색하기</span>
 					</button>
-					<button class="link_my">
-						<span class="wrap_thumb">
-							<span class="inner_thumb">
-								<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
+					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
 								<%-- <c:if test="${ not empty param.id && param.id ne 'admin'}"> --%>
+						<button class="link_my">
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
 									<c:forEach var="memberList" items="${ memberList }">
 										<c:if test="${ memberList.m_id eq sessionScope.email }">
 										<%-- <c:if test="${ memberList.m_id eq param.id }"> --%>
@@ -92,18 +92,38 @@
 												width="28px" height="28px" alt="사용자">
 										</c:if>
 									</c:forEach>
-								</c:if>
-								<c:if test="${ empty sessionScope.email || sessionScope.email eq 'admin' }">
+								</span>
+							</span>
+						</button>
+					</c:if>
+								
+					<c:if test="${ empty sessionScope.email }">
 								<%-- <c:if test="${ empty param.id || param.id eq 'admin' }"> --%>
-									<a href="/"> <!-- 로그인 페이지 경로 -->
+						<button class="link_my" onclick="location.href='../login/login_kakao.do'">
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
+									<img class="thumb_user"
+											src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+											width="28px" height="28px" alt="사용자">
+								</span>
+							</span>
+						</button>
+					</c:if>
+					<c:if test="${ sessionScope.email eq 'admin' }">
+						<button class="link_my" >
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
 										<img class="thumb_user"
 												src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
 												width="28px" height="28px" alt="사용자">
-									</a>
-								</c:if>
+								</span>
 							</span>
-						</span>
-					</button>
+						</button>
+					</c:if>
+
+					<script>
+						
+					</script>
 
 					<!-- 회원 로그인 후 프로필 클릭하면 보이는 프로필창 -->
 					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">

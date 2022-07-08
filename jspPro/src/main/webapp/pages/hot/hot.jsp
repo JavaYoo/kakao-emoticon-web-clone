@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>카카오 이모티콘샵</title>
 <link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
-<link rel="stylesheet" href="../../css/header.css" />
-<link rel="stylesheet" href="../../css/hot.css?ver=1"  />
-
+<link rel="stylesheet" href="../../css/header/header.css" />
+<link rel="stylesheet" href="../../css/hot/hot.css?ver=1"  />
+<%
+String contextPath = request.getContextPath(); 
+%>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -75,7 +78,7 @@
 							<span class="inner_thumb">
 								<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
 									<c:forEach var="memberList" items="${ memberList }">
-										<c:if test="${ memberList.m_id eq param.id }">
+										<c:if test="${ memberList.m_id eq sessionScope.email }">
 											<img class="thumb_user"
 												src="${ memberList.m_pimg }"
 												width="28px" height="28px" alt="사용자">
@@ -139,7 +142,7 @@
 
 				<div class="search_wrap on">
 					<div class="dim_layer"></div>
-					<form class="search-box__form" action="/Kakao/pages/header/search.do">
+					<form class="search-box__form" action="/jspPro/pages/header/search.do">
 						<div class="inner_search">
 							<h3 class="screen_out">이모티콘 검색어 입력</h3>
 							<div class="emoticon_sch">
@@ -164,10 +167,10 @@
 					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 					<ul class="list_gnb">
 						<!-- 해당 페이지에 클래스 on 넣기  -->
-						<li class=""><a class="link_gnb" href="/Kakao/pages/home/home.do">홈</a></li>
-						<li class=""><a class="link_gnb" href="/Kakao/pages/new/new.do">신규</a></li>
-						<li class="on"><a class="link_gnb" href="/Kakao/pages/hot/hot.do">인기</a></li>
-						<li class=""><a class="link_gnb" href="/Kakao/pages/style/style.do">스타일</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
+						<li class="on"><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -200,7 +203,7 @@
 								</c:if>
 								
 								<div class="double_tit">
-									<a class="link_double" href="#">
+									<a class="link_double" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
 										<div class="area_tit">
 											<strong class="tit_product">
 												<c:forEach var="hotNewList" items="${ hotNewList }">
@@ -226,7 +229,7 @@
 									<!-- 이모티콘 등록한거 가져오려면 /Kakao/upload/이모티콘이름/이미지이름 -->
 									<div class="area_doubleemoticon">
 										<c:if test="${ status.count >= 103 }">
-											<img src="/Kakao/upload/${ hotList.el_name }/${ hotList.el_stopimg }" class="img_emot img_default">
+											<img src="/jspPro/upload/${ hotList.el_name }/${ hotList.el_stopimg }" class="img_emot img_default">
 										</c:if>
 										<c:if test="${ status.count < 103 }">
 											<img src="${ hotList.el_stopimg }" class="img_emot img_default">
@@ -234,7 +237,7 @@
 									</div>
 									<div class="area_doubleemoticon">
 										<c:if test="${ status.count >= 103 }">
-											<img src="/Kakao/upload/${ hotList.el_name }/${ hotList.el_mainimg }" class="img_emot img_hover">
+											<img src="/jspPro/upload/${ hotList.el_name }/${ hotList.el_mainimg }" class="img_emot img_hover">
 										</c:if>
 										<c:if test="${ status.count < 103 }">
 											<img src="${ hotList.el_mainimg }" class="img_emot img_hover">
@@ -340,12 +343,26 @@
 		
 		/* 로그아웃 */
 		$(".btn_em_logout").on("click", function() {
-			sessionStorage.clear();  //세션 데이터 삭제
+			//sessionStorage.clear();  //세션 데이터 삭제
+			<%-- 
+			<% 
+			session.invalidate();
+			session = request.getSession(true);
+			%>
+			 --%>
+			 <% session.removeAttribute("email"); %>
 			location.reload(); //새로고침
 		});
 		
 		$(".btn_logout").on("click", function() {
-			sessionStorage.clear();  //세션 데이터 삭제
+			//sessionStorage.clear();  //세션 데이터 삭제
+			<%-- 
+			<% 
+			session.invalidate();
+			session = request.getSession(true);
+			%>
+			 --%>
+			 <% session.removeAttribute("email"); %>
 			location.reload(); //새로고침
 		});
 	</script>

@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../include.jspf"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
@@ -14,15 +13,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<link rel="stylesheet" href="../../css/header.css" />
-<link rel="stylesheet" href="../../css/search.css?ver=1" />
-<link rel="stylesheet" href="../../css/hot.css" />
+<link rel="stylesheet" href="../../css/header/header.css" />
+<link rel="stylesheet" href="../../css/header/search.css?ver=1" />
+<link rel="stylesheet" href="../../css/hot/hot.css" />
 
 </head>
 <body>
-
-
-
 
 	<div id="kakaoIndex"
 		style="overflow: hidden; position: absolute; left: -9999px; width: 0; height: 1px; margin: 0; padding: 0;">
@@ -145,7 +141,7 @@
 				</div>
 
 				<div class="search_wrap on">
-					<form class="search-box__form" action="/Kakao/pages/header/search.do">
+					<form class="search-box__form" action="/jspPro/pages/header/search.do">
 						<div class="inner_search">
 							<h3 class="screen_out">이모티콘 검색어 입력</h3>
 							<div class="emoticon_sch">
@@ -177,10 +173,10 @@
 					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 					<ul class="list_gnb">
 						<!-- 해당 페이지에 클래스 on 넣기  -->
-						<li class=""><a class="link_gnb" href="/Kakao/pages/home/home.do">홈</a></li>
-						<li class=""><a class="link_gnb" href="/Kakao/pages/new/new.do">신규</a></li>
-						<li class=""><a class="link_gnb" href="/Kakao/pages/hot/hot.do">인기</a></li>
-						<li class=""><a class="link_gnb" href="/Kakao/pages/style/style.do">스타일</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>

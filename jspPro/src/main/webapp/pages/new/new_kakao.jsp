@@ -14,8 +14,10 @@
 <script src="../../js/sangho/httpRequest.js"></script>
 </head>
 <body>
-<% String ses = (String)session.getAttribute("email"); %>
-<% String contextPath = request.getContextPath(); %>
+<% 
+	String ses = (String)session.getAttribute("email");  
+	String contextPath = request.getContextPath(); 
+%>
 	<div id="root" style="height: 100%;">
 		<div id="kakaoWrap" class="">
 			<div id="kakaoHead" class="emoticon_head">
@@ -44,10 +46,10 @@
 				<nav id="kakaoGnb">
 					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 					<ul class="list_gnb">
-						<li class=""><a class="link_gnb" href="/" >홈<%=ses%></a></li>
-						<li class="on"><a class="link_gnb" href="/item/new">신규</a></li>
-						<li class=""><a class="link_gnb" href="/item/hot">인기</a></li>
-						<li class=""><a class="link_gnb" href="/item/style">스타일</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈<%=ses%></a></li>
+						<li class="on"><a class="link_gnb" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
