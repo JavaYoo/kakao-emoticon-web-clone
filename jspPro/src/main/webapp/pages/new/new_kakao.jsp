@@ -64,7 +64,7 @@
 					</div>
 					
 					<div>
-					<button onclick="onTest()">test</button>
+					<!-- <button onclick="onTest()">test</button> -->
 					</div>
 					<ul class="list_new">
 						<c:forEach items="${  emap   }" var="emap" >
@@ -114,7 +114,7 @@
 			});
 
 			</script>
-			
+			<!-- 
 			<script>
 			
 			let page = 1
@@ -126,7 +126,7 @@
 					};
 				
 
-				/* alert(params2.currentPage); */
+				//alert(params2.currentPage);
 				
 				
 					 $.ajax({
@@ -138,7 +138,7 @@
 						success : function(data, textStatus, jqXHR) {
 							
 							console.log(data)
-						/* 	if (data.count == 0) {
+						if (data.count == 0) {
 								$("#giftForm").submit();
 								alert("선물하기 완료!!!");
 							}
@@ -151,7 +151,7 @@
 										"block");
 
 							}
- */
+
 						},
 						error : function() {
 							alert("ajax 에러");
@@ -160,7 +160,7 @@
 				
 			}
 			</script>
-			
+			 -->
 			
 			<div id="kakaoFoot" class="foot_group">
 				<div class="area_footer">
