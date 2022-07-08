@@ -1,0 +1,367 @@
+@charset "UTF-8";
+
+.head_bnr .emoticon_head~#kakaoContent {
+    padding-top: 110px;
+}
+
+media (max-width: 767px)
+.head_bnr .emoticon_head~#kakaoContent {
+    padding-top: 144px;
+}
+
+@media (max-width: 767px)
+.emoticon_head~#kakaoContent {
+    padding-top: 94px;
+}
+
+#kakaoContent.cont_home {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+#kakaoContent {
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    min-width: 280px;
+    box-sizing: border-box;
+}
+
+.area_newtab, .area_hottab, .area_styletab {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.area_hottab .area_tabbnr {
+    background-color: #6cccff;
+}
+
+@media (max-width: 767px)
+.area_tabbnr {
+    overflow: hidden;
+    height: 110px;
+}
+
+.area_tabbnr {
+    height: 210px;
+}
+
+.area_tabbnr .tit_tab {
+    position: relative;
+    max-width: 1024px;
+    min-width: 320px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+@media (max-width: 767px)
+.area_tabbnr .img_bnrtit {
+    height: 60px;
+    top: 25px;
+    left: 24px;
+}
+
+.area_tabbnr .img_bnrtit {
+    position: absolute;
+    left: 40px;
+    top: 58px;
+    vertical-align: middle;
+    height: 94px;
+}
+
+@media (max-width: 767px)
+.area_tabbnr .img_bnrbg {
+    display: none;
+}
+
+.area_tabbnr .img_bnrbg {
+    position: absolute;
+    right: 40px;
+    top: 0px;
+    z-index: 0;
+    vertical-align: middle;
+    height: 210px;
+}
+
+media (max-width: 767px)
+.list_double {
+    min-width: inherit;
+    padding: 10px 0 10px 24px;
+}
+
+@media (max-width: 1023px)
+.list_double {
+    width: auto;
+}
+
+.list_double {
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 30px 40px;
+    max-width: 944px;
+    width: 944px;
+}
+
+dl, ul, ol, menu, li {
+    list-style: none;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.list_double li:nth-child(odd) {
+    margin-right: 40px;
+}
+
+@media (max-width: 767px)
+.list_double li {
+    float: none;
+    width: 100%;
+    height: 101px;
+    padding-right: 24px;
+}
+
+.list_double li {
+    display: table;
+    table-layout: fixed;
+    position: relative;
+    float: left;
+    height: 136px;
+    width: calc(50% - 40px);
+    box-sizing: border-box;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.list_double .txt_num.num_highlight {
+    color: #fa4637;
+}
+
+@media (max-width: 767px)
+.list_double .txt_num, .txt_num_small {
+    width: 22px;
+    padding-right: 8px;
+}
+
+.list_double .txt_num {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 10px;
+    width: 32px;
+    max-width: 32px;
+    min-width: 32px;
+    font-size: 24px;
+    line-height: 22px;
+    font-family: "helvetica","helvetica neue";
+}
+
+.double_tit {
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.double_tit .link_double {
+    display: block;
+}
+
+.link_double {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.link_double .area_tit {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 767px)
+.link_double .tit_product {
+    padding: 0 16px 0 0;
+}
+
+.link_double .tit_product {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    line-height: 0;
+}
+
+.link_double .area_icons {
+    float: right;
+}
+
+.link_double .tit_product .ico_newemot {
+    margin: 1px 0 0 4px;
+}
+
+.ico_newemot {
+    width: 15px;
+    height: 15px;
+    background-position: -710px -20px;
+}
+
+.link_double .area_tit .txt_tit {
+    height: 17px;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid rgba(0,0,0,0);
+}
+
+.link_double .txt_author {
+    overflow: hidden;
+    display: block;
+    font-size: 13px;
+    line-height: 19px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #999;
+}
+
+.list_double li .btn_grpshare {
+    display: none;
+    margin-top: 8px;
+}
+
+.btn_grpshare {
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 50%;
+}
+
+body, th, td, input, select, textarea, button {
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: notokr-regular,"Apple SD Gothic Neo",sans-serif;
+    color: #191919;
+}
+
+.btn_grpshare .ico_like, .btn_grpshare .ico_likeOn {
+    margin: 3px 2px 2px;
+}
+
+
+
+.ico_like {
+    width: 14px;
+    height: 14px;
+    background-position: -680px -40px;
+}
+
+@media (max-width: 767px)
+.link_double.double_img {
+    padding-left: 16px;
+}
+
+@media (max-width: 1023px)
+.link_double.double_img {
+    padding: 0 0 0 16px;
+}
+
+.link_double.double_img {
+    display: table-cell;
+    width: 76px;
+    padding: 0 0 0 20px;
+    vertical-align: middle;
+}
+
+.link_double {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.link_double .area_doubleemoticon {
+    position: relative;
+}
+
+.link_double .area_doubleemoticon .img_emot {
+    display: inline-block;
+    width: 100%;
+}
+
+.link_double .area_doubleemoticon .img_hover {
+    display: none;
+}
+
+
+@media (max-width: 767px)
+.list_double li:after {
+    left: 30px;
+}
+
+.list_double li:after {
+    position: absolute;
+    bottom: 0;
+    left: 42px;
+    right: 0;
+    content: "";
+    height: 1px;
+    background-color: rgba(0,0,0,.04);
+}
+
+
+.hot_item:hover .txt_tit{
+	text-decoration: underline;
+	font-weight: bold;
+}
+	
+.hot_item:hover .btn_grpshare{
+	display: block;
+}
+
+.hot_item:hover .img_default{
+	display: none;
+}
+
+.hot_item:hover .img_hover{
+	display: inline-block;
+}
+
+
+.btn_grpshare .ico_like, .btn_grpshare .ico_likeOn {
+    margin: 3px 2px 2px;
+}
+
+.ico_likeOn {
+    width: 14px;
+    height: 14px;
+    background-position: -660px -40px;
+}
+
+.list_double .txt_num_small{
+	display: table-cell;
+    vertical-align: middle;
+    padding-right: 10px;
+    width: 32px;
+    max-width: 32px;
+    min-width: 32px;
+    font-size: 20px;
+    line-height: 22px;
+    font-family: "helvetica","helvetica neue";
+}
