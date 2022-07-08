@@ -1,0 +1,209 @@
+@charset "UTF-8";
+@media (max-width: 1023px){
+
+	.main_mypage {
+	    padding: 0 40px 20px;
+	}
+
+}
+.btn_grpshare .ico_like, .btn_grpshare .ico_likeOn {
+    margin: 3px 2px 2px;
+}
+.main_mypage {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 40px 32px;
+    box-sizing: border-box;
+}
+.main_mypage .tit_mypage .txt_tit {
+    display: inline-block;
+    padding: 40px 0 21px;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: normal;
+    font-family: "notokr-bold",sans-serif;
+}
+.main_mypage .tit_mypage .tit_num {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: "helvetica","helvetica neue";
+    font-weight: bold;
+    color: #fa4637;
+}
+.list_like {
+    margin-top: 30px;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+
+	.list_emoticonshop {
+	    margin: 12px 0 0 -32px;
+	}
+}
+.list_emoticonshop {
+    padding: 0;
+    margin: 12px 0 0 -16px;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+
+	.list_emoticonshop li {
+	    width: 25%;
+	    padding-left: 32px;
+	}
+}
+.list_emoticonshop li {
+    position: relative;
+    float: left;
+    width: 20%;
+    margin-bottom: 28px;
+    padding: 0 0 0 16px;
+    box-sizing: border-box;
+    border-bottom: none;
+}
+.list_emoticonshop .link_new {
+    display: block;
+}
+.link_new {
+    display: block;
+}
+@media (max-width: 1023px){
+
+	.list_emoticonshop .link_product {
+	    margin: 0 24px;
+	}
+}
+.list_emoticonshop .link_product {
+    position: relative;
+    display: block;
+    margin: 0 26px;
+}
+.list_emoticonshop .link_product .unit_emot:first-child {
+    position: relative;
+    display: block;
+}
+.list_emoticonshop .link_product .unit_emot {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+.list_emoticonshop .link_product .img_emot {
+    width: 100%;
+    margin: 0 auto;
+}
+.list_emoticonshop .link_product .img_hover {
+    display: none;
+}
+.list_emoticonshop .link_product .img_emot {
+    width: 100%;
+    margin: 0 auto;
+}
+@media (max-width: 1023px){
+
+	.list_emoticonshop .area_tit {
+	    padding: 0;
+	}
+}
+.list_emoticonshop .area_tit {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0 0 12px;
+    box-sizing: border-box;
+}
+.list_emoticonshop li.on .link_tit {
+    width: calc(100% - 47px);
+}
+.list_emoticonshop .link_new .link_tit {
+    display: inline-block;
+    width: 100%;
+}
+.list_emoticonshop li .link_tit {
+    padding-top: 15px;
+}
+@media (max-width: 1023px){
+
+	.list_emoticonshop .link_tit {
+	    padding: 17px 0 12px;
+	}
+}
+.list_emoticonshop .area_tit .tit_product {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    height: 19px;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+.list_emoticonshop .area_tit .tit_product .area_icons {
+    float: right;
+}
+.list_emoticonshop .area_tit .tit_product .txt_tit {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0,0,0,0);
+    line-height: 16px;
+    word-wrap: break-word;
+    font-size: 15px;
+}
+.list_emoticonshop .area_tit .txt_author {
+    display: block;
+    margin: 0;
+    color: #999;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "notokr-regular",sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+
+	.list_emoticonshop li.on .btn_grpshare {
+	    display: inline-block;
+	}
+}
+.list_emoticonshop li.on .btn_grpshare {
+    display: inline-block;
+}
+.list_emoticonshop .link_new .btn_grpshare {
+    display: none;
+    margin-top: 13px;
+    vertical-align: top;
+}
+.list_emoticonshop li .btn_grpshare {
+    float: right;
+}
+
+
+.ico_like {
+    width: 14px;
+    height: 14px;
+    background-position: -680px -40px;
+}
+
+.ico_likeOn {
+    width: 14px;
+    height: 14px;
+    background-position: -660px -40px;
+}
+.list_emoticonshop .area_tit:after {
+    display: block;
+    clear: both;
+    content: "";
+  
+}
+
+.btn_grpshare {
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 50%;
+}
+
