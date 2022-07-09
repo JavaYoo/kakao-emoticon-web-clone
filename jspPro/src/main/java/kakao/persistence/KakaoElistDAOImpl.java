@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.util.JdbcUtil;
 
-import kakao.domain.KakaoEimgDTO;
 import kakao.domain.KakaoElistDTO;
 
 public class KakaoElistDAOImpl implements KakaoElistDAO{
@@ -24,9 +23,10 @@ public class KakaoElistDAOImpl implements KakaoElistDAO{
 	@Override
 	public List<KakaoElistDTO> selectList(Connection con) throws SQLException {
 
-		String sql = "select *  "
-						+ "  from em_elist "
-						+ "  order by el_date desc  ";
+		String sql = "select el_num, el_name, el_maker, el_mainimg, el_stopimg  "
+						+ "from em_elist "
+						+ "where rownum <= 10 "
+						+ "order by el_num desc  ";
 
 		ArrayList<KakaoElistDTO> elist = null;
 		PreparedStatement pstmt = null;
@@ -44,7 +44,8 @@ public class KakaoElistDAOImpl implements KakaoElistDAO{
 					dto.setEl_num( rs.getInt("el_num") );
 					dto.setEl_name(rs.getString("el_name"));
 					dto.setEl_maker(rs.getString("el_maker"));
-					dto.setEl_date(rs.getDate("el_date"));
+					dto.setEl_mainimg(rs.getString("el_mainimg"));
+					dto.setEl_stopimg(rs.getString("el_stopimg"));
 
 					elist.add(dto);
 				} while ( rs.next() );

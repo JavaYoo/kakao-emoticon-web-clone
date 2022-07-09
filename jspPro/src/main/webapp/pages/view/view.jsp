@@ -32,7 +32,7 @@
 		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
 	</div>
 
-	<div id="root" style="height: 100%;">
+	<div id="root" style="height: 100%;">	
 		<div id="kakaoWrap" class="default head_bnr menu_in">
 
 			<!-- 로그인 하면 나오는 띠배너 -->
@@ -112,7 +112,7 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" href="#">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
@@ -146,9 +146,8 @@
 							<span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
 						</button>
 					</div>
-					<div class="dimmed_layer dim_over"></div>
-				</c:if>
-
+				<div class="dimmed_layer dim_over"></div>
+			</c:if>
 
 				<c:if test="${ not empty sessionScope.email }">
 				<%-- <c:if test="${ not empty param.id }"> --%>
@@ -220,7 +219,7 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" href="#">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
@@ -754,8 +753,9 @@
 					</div>
 				</div>
 				<!-- kakaoFoot -->
-				
+				<div class="dimmed_layer dim_over"></div> 
 				<div class="alert_layer" id="alert_logon">
+				
 					<div class="inner_layer">
 						<div class="layer_body">
 							<strong class="txt_info">로그인 후 이용해주세요.</strong>
@@ -770,6 +770,7 @@
 					</button>
 				</div>
 
+				<div class="dimmed_layer dim_over"></div>
 				<div class="alert_layer" id="alert_buyCheck">
 					<div class="inner_layer">
 						<div class="layer_body">

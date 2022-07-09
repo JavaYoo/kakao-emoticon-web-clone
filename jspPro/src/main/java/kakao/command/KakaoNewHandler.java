@@ -28,18 +28,7 @@ public class KakaoNewHandler implements CommandHandler {
 
 		HttpSession session = request.getSession();
 
-		System.out.println(" 오냐 ? ");
-
-		//if (session.getAttribute("email").equals(null)) {
-			//System.out.println(" 오냐 1 ? ");
-			session.setAttribute("referer", request.getRequestURI());
-
-			System.out.println((String) session.getAttribute("referer"));
-		//}
-
-		// String email = (String)session.getAttribute("email");
-
-		// if( email != null ) System.out.println(email);
+		session.setAttribute("referer", request.getRequestURI());
 
 		return "/pages/new/new_kakao.jsp";
 

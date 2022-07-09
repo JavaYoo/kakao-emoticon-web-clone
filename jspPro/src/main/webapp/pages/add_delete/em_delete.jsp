@@ -43,7 +43,7 @@
 						<input type="submit" class="em_submit" value="이모티콘 삭제">
 					</div>
 					<div class="home_btn">
-						<button class="btn_close" onclick="location.href='../home/home.do'">홈</button>
+						<button class="btn_close" type="button" onclick="location.href='/jspPro/pages/home/home.do'">홈</button>
 					</div>
 				</div>
 			</form>
@@ -65,14 +65,12 @@
 		var value = $(".em_delete option:selected").val();
 		if(value == 0){
 			alert("삭제할 이모티콘을 선택해주세요!");
-		}
+		}		
 	});
-	
 	if ($(".fadeOut_txt").length) {
 		alert("삭제 성공!");
 	}
-	
-	
+		
 </script>
 
 </body>

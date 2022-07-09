@@ -12,6 +12,7 @@
 
 <link rel="shortcut icon" href="../images/e_16x16.ico" />
 <link rel="stylesheet" href="../../css/style/category.css" />
+<link rel="stylesheet" href="../../css/header/header.css" />
 
 </head>
 <body>
@@ -101,7 +102,7 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" href="#">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
@@ -209,7 +210,7 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" href="#">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
@@ -462,7 +463,7 @@
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
-						<li class="on"><a class="link_gnb" href="#">스타일</a></li>
+						<li class="on"><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -750,6 +751,172 @@
 		});
 	});
 </script>
+
+<script type="text/javascript">
+		/* 검색 관련 */
+
+		// 검색 버튼 클릭 
+		$(".link_search").on("click", function() {
+			$(".search_wrap").css("display", "block");
+			$(".k_head").css("z-index", "2");
+			$("#kakaoGnb").css("position", "relative");
+			$("#kakaoGnb").css("z-index", "1");
+			$(".link_search").css({
+				"cursor" : "default",
+				"display" : "none"
+			});
+			$(".btn_delete").css({
+				"cursor" : "default",
+				"display" : "none"
+			});
+			$(".profile_layer").css("display", "none");
+			$(".link_thome").css("margin-right", "44px");
+		});
+
+		//검색창 밖 클릭시 검색창 제거 + 입력했던 값 제거
+		$(".dim_layer").on("click", function() {
+			$(".search_wrap").css("display", "none");
+			$(".link_search").css({
+				"cursor" : "pointer",
+				"display" : "block"
+			});
+			$(".tf_search").val("");
+			$(".link_thome").css("margin-right", "0px");
+		});
+
+		//검색 삭제 버튼
+		$(".tf_search").on("keyup", function() {
+			$(".btn_delete").css("display", "");
+		});
+
+		// 검색어 삭제 
+		$(".btn_delete").on("click", function() {
+			$(".tf_search").val("");
+			$(".btn_delete").css("display", "none");
+		});
+
+		
+		/* 쿠폰알림창 */
+		$(".btn_close_tt").on("click", function() {
+			$(".tooltip_layer").css("display", "none");
+		});
+
+		/* 띠 배너 */
+		//띠배너 닫기
+		$(".btn_close_tb").on("click", function() {
+			$(".kakaoTopbnr").css("display", "none");
+			$(".emoticon_head").css("top", "0px");
+			$(".search_wrap").css("top", "110px")
+			$(".wrap_menu").css("top","0px");
+	        $(".wrap_menu").css("height", "calc(100%)");
+	        $("#kakaoContent").css("padding-top", "110px");
+		});
+
+		if (${ not empty sessionScope.email }) {
+		//if (${ not empty param.id }) {
+			$(".head_bnr .emoticon_head").css("top", "50px");
+			$(".head_bnr .search_wrap").css("top", "160px");
+		}
+
+		/* 프로필 */
+		$(".link_my").on("click", function() {
+			$(".profile_layer").toggle();
+		});
+		
+	</script>
+<!--  -->
+	<script>
+
+	// 누르면 로그인 창 뜨도록 배경은 어둡게 
+	$(".list_mymenu").click(function() {
+	   $(".dimmed_layer").css("display", "block");
+	    $("#alert_logon").css("display", "block");
+	    $(".dimmed_menu").css("display", "block");
+	});
+	
+	//어두운 부분 누르면 다시 돌아감
+	$(".dimmed_layer").on("click", function() {
+	   $(".alert_layer").css("display", "none");
+	   $(".dimmed_layer").css("display","none");
+	});
+	// 로그아웃
+	$(".btn_em_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
+	
+	$(".btn_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
+
+	</script>
+
+	<script>
+	
+	// x 버튼
+	 $("#btn_layer_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	//취소 버튼
+	 $("#alert_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	
+
+	//메뉴 열림
+	 $(".link_menu").on("click",function(){
+		$(".wrap_menu").css("display","block");
+		$(".dimmed_menu").css("display","block");
+		
+		
+		$(".wrap_menu").css("top","50px");
+		$(".wrap_menu").css("height", "calc(94%)");
+		
+		if($(".kakaoTopbnr").is(":visible") == false){
+			$(".wrap_menu").css("top","0px");
+       		$(".wrap_menu").css("height", "calc(100%)");
+		}
+		 
+	}); 
+	
+	$(".dimmed_menu").on("click", function() {
+		$(".wrap_menu").css("display", "none");
+		$(".dimmed_menu").css("display","none");
+		
+	}); 
+	$(".btn_close_tb").on("click",function(){
+		$(".wrap_menu").css("top","0px");
+		$(".wrap_menu").css("height", "calc(100%)");
+	})
+	
+	</script>
+
+	<script>
+	$(".btn_login").click(function() {
+	   location.href="../login/login_kakao.do";  
+	});
+	if(${ empty sessionScope.email }){
+		$(".wrap_profile").click(function() {
+		   location.href="../login/login_kakao.do";  
+		});
+	};
+	
+	</script>
+
+	<script>
+	//이메일을 보내줌? 안보내줌
+	function numbermodal(){
+	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
+	}
+	</script>
 
 
 </body>

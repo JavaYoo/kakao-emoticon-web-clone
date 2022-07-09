@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../include.jspf" %>
 <!DOCTYPE html>
 <html>
@@ -15,32 +16,460 @@
 
 </head>
 <body>
+<link rel="stylesheet" href="../../css/header/header.css">
+	<div id="kakaoIndex"
+		style="overflow: hidden; position: absolute; left: -9999px; width: 0; height: 1px; margin: 0; padding: 0;">
+		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
+	</div>
 
-<div id="root" style="height: 100%;">
-	<div id="kakaoWrap" class="">
-		<div id="kakaoHead" class="emoticon_head">
-			<div class="k_head"><button class="link_menu" id="side_open"><span class="ico_comm ico_menu">사이드메뉴
-						열기</span></button><a class="link_home" href="/"><span class="ico_comm ico_home">홈으로
-						이동</span></a>
-				<h1 class="tit_logo"><a class="link_thome" href="/"><span class="ico_comm ico_logo">kakao emoticon
-							shop</span></a><span class="ico_comm ico_logo">kakao emoticon shop</span></h1><strong
-					class="tit_cont"></strong><button class="link_search"><span
-						class="ico_comm ico_search">검색하기</span></button><button class="link_my"><span
-						class="wrap_thumb"><span class="inner_thumb"><img class="thumb_user"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
-								width="28px" height="28px" alt="사용자"></span></span></button>
+	<div id="root" style="height: 100%;">
+		<div id="kakaoWrap" class="default head_bnr menu_in">
+
+			<!-- 로그인 하면 나오는 띠배너 -->
+			<c:if test="${ not empty sessionScope.email }">
+			<%-- <c:if test="${ not empty param.id }"> --%>
+				<div class="kakaoTopbnr">
+					<div class="wrap_topbnr"
+						style="background-color: rgb(152, 232, 231);">
+						<div class="inner_topbnr">
+							<a
+								href="https://my.kakao.com/product/EMOTICON001?t_src=emoticon&amp;t_ch=webstore&amp;t_obj=web_gnb_banner"
+								class="link_bnr"> <span class="txt_info"
+								style="color: rgb(0, 0, 0);">이모티콘 무제한! 웹에선 평생 할인</span> <span
+								class="unit_coupon"> 
+								<img src="https://item.kakaocdn.net/dn/e1iAq/btrFiaXi8G1/wYPKhfbRvUgCYIgsxc9V5k/img.png"
+									class="img_coupon" alt="띠배너이미지">
+							</span>
+							</a>
+						</div>
+						<button class="btn_close_tb" aria-label="띠배너닫기">
+							<span class="ico_comm ico_closew"></span>
+						</button>
+					</div>
+				</div>
+			</c:if>
+
+			<div id="kakaoHead" class="emoticon_head">
+			
+			<c:if test="${ empty sessionScope.email }">
+					<div class="wrap_menu">
+						<div class="inner_menu">
+							<a href="#" class="wrap_profile"><span class="wrap_thumb"><span
+									class="inner_thumb"><img class="thumb_user"
+										src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+										alt="사용자"></span></span><span class="wrap_name"><span
+									class="txt_name">로그인<span
+										class="ico_comm ico_logarr_type1"></span></span></span></a><strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li id="menu1"><a class="link_mymenu">
+								<span class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								><span
+										class="ico_comm ico_coupon"></span><span class="txt_mymenu">쿠폰함
+										<c:if test="${not empty couponsList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty couponsList}">
+										
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+											
+										</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요
+											<c:if test="${not empty likesList}">
+													<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+													<em class="txt_count">${fn:length(likesList)}<span
+														class="screen_out">개</span></em>
+												</c:if>
+												<c:if test="${empty likesList}">
+													
+													<em class="txt_count">
+														<span class="screen_out"></span>
+													</em>
+												</c:if>
+										</span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">홈</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="<%= contextPath %>/pages/home/home.do"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakao
+								Corp</a>
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+
+					<div class="alert_layer" id="alert_logon">
+						<div class="inner_layer">
+							<div class="layer_body">
+								<strong class="txt_info">로그인 후 이용해주세요.</strong>
+							</div>
+							<div class="layer_foot">
+								<button class="btn_s btn_m" id="alert_close">취소</button>
+								<button class="btn_g btn_m" onclick="location.href='../login/login_kakao.do">로그인</button>
+							</div>
+						</div>
+						<button type="button" class="btn_close">
+							<span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
+						</button>
+					</div>
+					<div class="dimmed_layer dim_over"></div>
+				</c:if>
+
+
+				<c:if test="${ not empty sessionScope.email }">
+				<%-- <c:if test="${ not empty param.id }"> --%>
+					<div class="wrap_menu" id=logonmenu style="display: none">
+						<div class="inner_menu">
+							<c:forEach var="memberList" items="${ memberList }">
+								<c:if test="${ memberList.m_id eq sessionScope.email }">
+								<%-- <c:if test="${ memberList.m_id eq param.id }"> --%> 
+									<span class="wrap_profile">
+										<span class="wrap_thumb">
+											<span class="inner_thumb">
+												<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												alt="사용자">
+											</span>
+										</span>
+									<span class="wrap_name">
+										<span class="txt_name">${ memberList.m_nn }</span>
+										<span class="txt_email">${ memberList.m_id }</span>
+									</span>
+								</span>
+								</c:if>
+							</c:forEach>
+							
+							
+						<strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li id="menu1"><a class="link_mymenu"
+								 href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/recevied.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/coupons.do?id=email">
+									<span class="ico_comm ico_menunew">신규</span>
+									<span class="ico_comm ico_coupon"></span>
+									<span class="txt_mymenu">쿠폰함
+											<c:if test="${not empty couponsList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty couponsList}">
+										
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+											
+									</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요
+										<c:if test="${not empty likesList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(likesList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty likesList}">
+												
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+										</span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">홈</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a href="<%=contextPath %>/pages/loginlogout_kakao.do" class="link_aside" id="logout" >로그아웃</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="<%= contextPath %>/pages/home/home.do"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
+
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+				</c:if>
+
+
+				<c:if test="${ not empty sessionScope.email }">
+				<%-- <c:if test="${ not empty param.id }"> --%>
+					<div class="wrap_menu" id=logonmenu style="display: none">
+						<div class="inner_menu">
+							<c:forEach var="memberList" items="${ memberList }">
+							<c:if test="${ memberList.m_id eq sessionScope.email }">
+								<%-- <c:if test="${ memberList.m_id eq param.id }">  --%>
+									<span class="wrap_profile">
+										<span class="wrap_thumb">
+											<span class="inner_thumb">
+												<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												alt="사용자">
+											</span>
+										</span>
+									<span class="wrap_name">
+										<span class="txt_name">${ memberList.m_nn }</span>
+										<span class="txt_email">${ memberList.m_id }</span>
+									</span>
+								</span>
+								</c:if>
+							</c:forEach>
+							
+							
+						<strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/received.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/coupons.do?id=email">
+									<span class="ico_comm ico_menunew">신규</span>
+									<span class="ico_comm ico_coupon"></span>
+									<span class="txt_mymenu">쿠폰함
+											<c:if test="${not empty couponsList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty couponsList}">
+										
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+									</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요
+										<c:if test="${not empty likesList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(likesList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty likesList}">
+												
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if></span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">홈</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
+								<li><a class="link_aside" href="<%= contextPath%>/pages/user/faq.do">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a href="<%= contextPath %>/pages/login/logout.do" class="link_aside" id="logout">로그아웃</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="<%= contextPath %>/pages/home/home.do"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+				</c:if>
+				<div class="k_head">
+					<button class="link_menu" id="side_open">
+						<span class="ico_comm ico_menu">사이드메뉴 열기</span>
+						<c:if test="${ not empty sessionScope.email }">
+						<%-- <c:if test="${ not empty param.id }"> --%>
+							<span class="ico_comm ico_new">new</span> 
+						</c:if>
+					</button>
+					<a class="link_home" href="<%= contextPath %>/pages/home/home.do"><span class="ico_comm ico_home">홈으로
+							이동</span></a>
+					<h1 class="tit_logo">
+						<a class="link_thome" href="<%= contextPath %>/pages/home/home.do">
+							<span class="ico_comm ico_logo">kakao emoticon shop</span>
+						</a> 
+						<span class="ico_comm ico_logo">kakao emoticon shop</span>
+					</h1>
+					<strong class="tit_cont"></strong>
+					<button class="link_search">
+						<span class="ico_comm ico_search">검색하기</span>
+					</button>
+					 
+					
+					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
+								<%-- <c:if test="${ not empty param.id && param.id ne 'admin'}"> --%>
+						<button class="link_my">
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
+									<c:forEach var="memberList" items="${ memberList }">
+										<c:if test="${ memberList.m_id eq sessionScope.email }">
+										<%-- <c:if test="${ memberList.m_id eq param.id }"> --%>
+											<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												width="28px" height="28px" alt="사용자">
+										</c:if>
+									</c:forEach>
+								</span>
+							</span>
+						</button>
+					</c:if>
+								
+					<c:if test="${ empty sessionScope.email }">
+								<%-- <c:if test="${ empty param.id || param.id eq 'admin' }"> --%>
+						<button class="link_my" onclick="location.href='../login/login_kakao.do'">
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
+									<img class="thumb_user"
+											src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+											width="28px" height="28px" alt="사용자">
+								</span>
+							</span>
+						</button>
+					</c:if>
+					<c:if test="${ sessionScope.email eq 'admin' }">
+						<button class="link_my" >
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
+										<img class="thumb_user"
+												src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+												width="28px" height="28px" alt="사용자">
+								</span>
+							</span>
+						</button>
+					</c:if>
+
+					<!-- 회원 로그인 후 프로필 클릭하면 보이는 프로필창 -->
+					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">
+					<%-- <c:if test="${ not empty param.id && param.id ne 'admin' }"> --%>
+						<c:forEach var="memberList" items="${ memberList }">
+							<c:if test="${ memberList.m_id eq sessionScope.email }">
+							<%-- <c:if test="${ memberList.m_id eq param.id }"> --%>
+								<div class="profile_layer">
+		`							<span class="wrap_thumb"> 
+										<span class="inner_thumb">
+											<img class="thumb_user" src="${ memberList.m_pimg }" width="40px" height="40px" alt="사용자">
+										</span>
+									</span> 
+									<span class="tit_thumb">${ memberList.m_nn }</span> 
+									<span class="desc_email">${ memberList.m_id }</span>
+									<button class="btn_logout">로그아웃</button>
+								</div>
+							</c:if>
+						</c:forEach>
+					</c:if>
+
+					<!-- 관리자로 로그인할 경우, 프로필 창에 이모티콘 추가 삭제 버튼 -->
+					<c:if test="${ sessionScope.email eq 'admin' }">
+					<%-- <c:if test="${ param.id eq 'admin' }"> --%>
+						<div class="profile_layer">
+			               	<span class="tit_thumb">admin</span>
+			               	<button class="btn_em_add" onclick="location.href='../add_delete/em_add.do'">이모티콘 추가</button>
+			               	<button class="btn_em_delete" onclick="location.href='../add_delete/em_delete.do'">이모티콘 삭제</button>
+			               	<button class="btn_em_logout">로그아웃</button>
+		               </div>
+		            </c:if>
+
+					<!-- 로그인 한 경우, 쿠폰 발급 알림 -->
+					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">
+					<%-- <c:if test="${ not empty param.id && param.id ne 'admin' }"> --%>
+		              	<div class="tooltip_layer">
+		               		<div class="area_tooltip">
+		               			<p class="layer_tooltip">
+		               				<a class="link_tooltip" href="<%=contextPath %>/pages/mypage/coupons.do"><strong>항상 전상품 20% 할인</strong> 쿠폰이 발급되었습니다.</a>
+		               			</p>
+		               			<button class="btn_close_tt" aria-label="툴팁닫기">
+		               				<span class="ico_comm ico_close"></span>
+		               			</button>
+		               		</div>
+		               </div> 
+	               </c:if>
+
+				</div>
+
+				<div class="search_wrap on" style="display:none">
+					<div class="dim_layer"></div>
+					<form class="search-box__form" action="<%= contextPath %>/pages/header/search.do">
+						<div class="inner_search">
+							<h3 class="screen_out">이모티콘 검색어 입력</h3>
+							<div class="emoticon_sch">
+								<div class="box_search">
+									<input type="text" id="tfSearch" name="q"
+										placeholder="이모티콘을 검색해보세요!" class="tf_search"
+										autocomplete="off" value="">
+									<button type="button" id="search_delete" class="btn_delete">
+										<span class="ico_comm ico_schdelete">검색어 지우기</span>
+									</button>
+									<button type="submit" class="btn_search">
+										<span class="ico_comm ico_sch">검색</span>
+									</button>
+								</div>
+							</div>
+							<button type="button" class="btn_schcancel">취소</button>
+						</div>
+					</form>
+				</div>
+
+				<nav id="kakaoGnb">
+					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
+					<ul class="list_gnb">
+						<!-- 해당 페이지에 클래스 on 넣기  -->
+						<li class="on"><a class="link_gnb" onclick="location.href=''" style="cursor:pointer">홈</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+					</ul>
+				</nav>
 			</div>
-			<nav id="kakaoGnb">
-				<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
-				<ul class="list_gnb">
-					<li class="on"><a class="link_gnb" href="/jspPro/pages/home.do">홈</a></li>
-					<li class=""><a class="link_gnb" href="/item/new">신규</a></li>
-					<li class=""><a class="link_gnb" href="/item/hot">인기</a></li>
-					<li class=""><a class="link_gnb" href="/jspPro/pages/style.do">스타일</a></li>
-				</ul>
-			</nav>
-		</div>
-		<div id="kakaoContent" class="cont_home">
+		<div id="kakaoContent" class="cont_home"
+		<c:if test="${ empty sessionScope.email}">
+			style="padding-top:110px" </c:if>  >
 			<div class="area_hometab">
 				<div class="wrap_banner">
 					<div class="box_banner"><strong class="screen_out">프로모션 및 이벤트 배너</strong>
@@ -61,240 +490,124 @@
 						</div>
 					</div>
 				</div>
+				
+				
+				
 				<div class="wrap_newemoticon">
-					<h3 class="tit_section"><a class="link_menu" href="/item/new">신규 이모티콘<span
+					<h3 class="tit_section"><a class="link_menu" href="<%= contextPath%>/pages/new/new_kakao.do">신규 이모티콘<span
 								class="ico_comm ico_logarr"></span></a></h3>
 					<div class="area_listproduct">
 						<div class="list_product" style="transform: translate(0px, 0px);">
-							<div class="list_unit"><a class="link_emot" href="/t/anonymous-daily-life-ver-13"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/2281371e48a4566222b94421551042e9617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/2281371e48a4566222b94421551042e9f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">안녕! 나는 익명이고 쪼금 엉뚱해
-											2</span></strong></a></div>
-							<div class="list_unit"><a class="link_emot" href="/t/hurry-right-now"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/7dd87956edbe15eb8679514f67467295617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/7dd87956edbe15eb8679514f67467295f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">빨리티콘</span></strong></a></div>
-							<div class="list_unit"><a class="link_emot" href="/t/simple-doodles"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/faeb9ae828f6615500dcbbe5a88fdef7617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/faeb9ae828f6615500dcbbe5a88fdef77154249a3890514a43687a85e6b6cc82"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">그냥 그린 그런 그림</span></strong></a>
+						<c:forEach items="${ newList }" var="newList">
+						
+							<div class="list_unit"><a class="link_emot" href="<%=contextPath%>/pages/view/view.do?el_num=${ newList.el_num }">
+							<span class="inner_emot">
+							<c:if test="${ newList.el_num < 103 }">
+									<img src="${ newList.el_stopimg }"
+											class="img_emot img_default" alt="">
+									<img src="${ newList.el_mainimg }"
+											class="img_emot img_hover" alt="">
+							</c:if>
+							<c:if test="${ newList.el_num >= 103 }">
+									<img src="/jspPro/upload/${  newList.el_name }/${ newList.el_stopimg }"
+											class="img_emot img_default" alt="">
+									<img src="/jspPro/upload/${  newList.el_name }/${ newList.el_mainimg }"
+											class="img_emot img_hover" alt="">
+							</c:if>
+								</span>
+								<strong class="tit_product"><span class="tit_item">${ newList.el_name }</span></strong>
+								</a>
 							</div>
-							<div class="list_unit"><a class="link_emot" href="/t/stormtrooper"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/9f0aa538d18e8207faa0ab1d57998f04617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/9f0aa538d18e8207faa0ab1d57998f047154249a3890514a43687a85e6b6cc82"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">스톰트루퍼 등장!</span></strong></a>
-							</div>
-							<div class="list_unit"><a class="link_emot" href="/t/gorani-meme"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/4a1859657e14e3fa044ee922d1232ad8617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/4a1859657e14e3fa044ee922d1232ad87154249a3890514a43687a85e6b6cc82"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">고라니 밈</span></strong></a></div>
-							<div class="list_unit"><a class="link_emot" href="/t/noorungs-day-at-work"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/2b28e41fb75e298cfe1e598c41136472617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/2b28e41fb75e298cfe1e598c41136472f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">누렁이의 직장생활</span></strong></a>
-							</div>
-							<div class="list_unit"><a class="link_emot" href="/t/people-in-coffee-heaven"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/095d2fe3a62587207c8c7d1766458030617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/095d2fe3a62587207c8c7d17664580307154249a3890514a43687a85e6b6cc82"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">커피의 민족</span></strong></a></div>
-							<div class="list_unit"><a class="link_emot" href="/t/compliment-stickers-2"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/99e6e072e52c9727f7fa0cfe4f3d3f47617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/99e6e072e52c9727f7fa0cfe4f3d3f47f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">칭찬스티커 2</span></strong></a></div>
-							<div class="list_unit"><a class="link_emot"
-									href="/t/sunny-up-the-fried-egg-duck-2"><span class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/a95202819e744bf82967e0d014e13760617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/a95202819e744bf82967e0d014e13760f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">후라이덕 2</span></strong></a></div>
-							<div class="list_unit"><a class="link_emot" href="/t/dear-mom"><span
-										class="inner_emot"><img
-											src="https://item.kakaocdn.net/do/2b07fb4d0ac1aebedf671d4e756bec12617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt=""><img
-											src="https://item.kakaocdn.net/do/2b07fb4d0ac1aebedf671d4e756bec12f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt=""></span><strong
-										class="tit_product"><span class="tit_item">Dear 엄마</span></strong></a></div>
+								</c:forEach>
 						</div>
 					</div>
 				</div>
+				
+				
+				
+				
 				<div class="wrap_hottab">
-					<h3 class="tit_section"><a class="link_menu" href="/item/hot">인기 이모티콘<span
+					<h3 class="tit_section"><a class="link_menu" href="<%=contextPath%>/pages/hot/hot.do">인기 이모티콘<span
 								class="ico_comm ico_logarr"></span></a></h3>
 					<div class="area_hot">
+					
 						<ol class="list_double">
-							<li><span class="txt_num num_highlight">1</span>
-								<div class="double_tit"><a class="link_double"
-										href="/t/anonymous-daily-life-ver-13">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">안녕! 나는 익명이고 쪼금
-													엉뚱해 2</span></strong><span class="txt_author">라부</span></div>
-									</a></div><a class="link_double double_img"
-									href="/t/anonymous-daily-life-ver-13">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/2281371e48a4566222b94421551042e9617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2이미지"><img
-											src="https://item.kakaocdn.net/do/2281371e48a4566222b94421551042e9f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num num_highlight">2</span>
-								<div class="double_tit"><a class="link_double" href="/t/i-feel-great-today-ver-21">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">업티콘 업된
-													사랑!</span></strong><span class="txt_author">terry</span></div>
-									</a></div><a class="link_double double_img" href="/t/i-feel-great-today-ver-21">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/4fb299707c4de09b82c9ec0f28ff0ead617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="업티콘 업된 사랑!이미지"><img
-											src="https://item.kakaocdn.net/do/4fb299707c4de09b82c9ec0f28ff0eadf43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="업티콘 업된 사랑!세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num num_highlight">3</span>
-								<div class="double_tit"><a class="link_double" href="/t/noorungs-day-at-work">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">누렁이의
-													직장생활</span></strong><span class="txt_author">남씨</span></div>
-									</a></div><a class="link_double double_img" href="/t/noorungs-day-at-work">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/2b28e41fb75e298cfe1e598c41136472617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="누렁이의 직장생활이미지"><img
-											src="https://item.kakaocdn.net/do/2b28e41fb75e298cfe1e598c41136472f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="누렁이의 직장생활세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num">4</span>
-								<div class="double_tit"><a class="link_double"
-										href="/t/friendly-dog-couple-maltese-ver">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">사이좋은
-													댕댕이커플(몰티즈.ver)</span></strong><span class="txt_author">문랩</span>
+						
+						<c:forEach var="hotList" items="${ hotList }" varStatus="status">
+							<c:if test="${ status.count <= 5 }">
+								<li>
+									<c:if test="${ status.count <= 3 }">
+										<span class="txt_num num_highlight">${ status.count }</span>
+									</c:if>
+									<c:if test="${ status.count > 3 }">
+										<span class="txt_num">${ status.count }</span>
+									</c:if>
+									<div class="double_tit">
+										<a class="link_double" href="<%=contextPath%>/pages/view/view.do?el_num=${ hotList.el_num }">
+											<div class="area_tit">
+												<strong class="tit_product">
+													<span class="area_icons"></span>
+													<span class="txt_tit">${ hotList.el_name }</span>
+												</strong>
+												<span class="txt_author">${ hotList.el_maker }</span>
+											</div>
+										</a>
+									</div>
+									<a class="link_double double_img" href="<%=contextPath%>/pages/view/view.do?el_num=${ hotList.el_num }">
+										<div class="area_doubleemoticon">
+											<c:if test="${ hotList.el_num < 103 }">
+											<img src="${ hotList.el_stopimg }" class="img_emot img_default" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2이미지">
+											<img src="${ hotList.el_mainimg }" class="img_emot img_hover" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2세부이미지">
+											</c:if>
+											<c:if test="${ hotList.el_num >= 103 }">
+											<img src="/jspPro/upload/${  hotList.el_name }/${ hotList.el_stopimg }" class="img_emot img_default" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2이미지">
+											<img src="/jspPro/upload/${  hotList.el_name }/${ hotList.el_mainimg }" class="img_emot img_hover" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2세부이미지">
+											</c:if>
 										</div>
-									</a></div><a class="link_double double_img"
-									href="/t/friendly-dog-couple-maltese-ver">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/b1075862a4a5489c103d0357d1938df3617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="사이좋은 댕댕이커플(몰티즈.ver)이미지"><img
-											src="https://item.kakaocdn.net/do/b1075862a4a5489c103d0357d1938df3f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="사이좋은 댕댕이커플(몰티즈.ver)세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num">5</span>
-								<div class="double_tit"><a class="link_double" href="/t/say-it-with-bearkku-5">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">베어꾸로 말하라꾸
-													5</span></strong><span class="txt_author">귤제리</span></div>
-									</a></div><a class="link_double double_img" href="/t/say-it-with-bearkku-5">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/f5e91ecf914b77dc5fd4b66ba6560e3d617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="베어꾸로 말하라꾸 5이미지"><img
-											src="https://item.kakaocdn.net/do/f5e91ecf914b77dc5fd4b66ba6560e3df43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="베어꾸로 말하라꾸 5세부이미지"></div>
-								</a>
-							</li>
+									</a>
+								</li>
+							</c:if>
+						</c:forEach>
+							
 						</ol>
+						
+						
 						<ol class="list_double">
-							<li><span class="txt_num">6</span>
-								<div class="double_tit"><a class="link_double" href="/t/horong-survives-at-work">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">오늘도 출근! 직장인
-													호롱이</span></strong><span class="txt_author">펜낙</span></div>
-									</a></div><a class="link_double double_img" href="/t/horong-survives-at-work">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/86e17cb70f8b3ac4a3e43fc7a8587d09617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="오늘도 출근! 직장인 호롱이이미지"><img
-											src="https://item.kakaocdn.net/do/86e17cb70f8b3ac4a3e43fc7a8587d09f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="오늘도 출근! 직장인 호롱이세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num">7</span>
-								<div class="double_tit"><a class="link_double"
-										href="/t/gomsik-rough-around-the-edges-2">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">대충생긴 곰식이
-													2</span></strong><span class="txt_author">쩡고</span></div>
-									</a></div><a class="link_double double_img"
-									href="/t/gomsik-rough-around-the-edges-2">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/e96587536bcacce33bb707de6468f3f8617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="대충생긴 곰식이 2이미지"><img
-											src="https://item.kakaocdn.net/do/e96587536bcacce33bb707de6468f3f8f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="대충생긴 곰식이 2세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num">8</span>
-								<div class="double_tit"><a class="link_double"
-										href="/t/friendly-dog-couple-retriever-ver">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">사이좋은
-													댕댕이커플(리트리버.ver)</span></strong><span
-												class="txt_author">문랩</span></div>
-									</a></div><a class="link_double double_img"
-									href="/t/friendly-dog-couple-retriever-ver">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/261a695bfa6627c2a79a0741a4715eca617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="사이좋은 댕댕이커플(리트리버.ver)이미지"><img
-											src="https://item.kakaocdn.net/do/261a695bfa6627c2a79a0741a4715ecaf43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="사이좋은 댕댕이커플(리트리버.ver)세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num">9</span>
-								<div class="double_tit"><a class="link_double" href="/t/little-minigiri">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"></span><span class="txt_tit">쬐끄만한
-													미니기리</span></strong><span class="txt_author">오니기리</span></div>
-									</a></div><a class="link_double double_img" href="/t/little-minigiri">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/94e3bc15680039dc2a3e9a114d3a1e52617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="쬐끄만한 미니기리이미지"><img
-											src="https://item.kakaocdn.net/do/94e3bc15680039dc2a3e9a114d3a1e52f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="쬐끄만한 미니기리세부이미지"></div>
-								</a>
-							</li>
-							<li><span class="txt_num">10</span>
-								<div class="double_tit"><a class="link_double"
-										href="/t/baby-girl-will-become-prettier">
-										<div class="area_tit"><strong class="tit_product"><span
-													class="area_icons"><span
-														class="ico_comm ico_sound">소리켜짐</span></span><span
-													class="txt_tit">쥐방울은 더 이쁠예정</span></strong><span
-												class="txt_author">ⓒhansigan</span></div>
-									</a></div><a class="link_double double_img"
-									href="/t/baby-girl-will-become-prettier">
-									<div class="area_doubleemoticon"><img
-											src="https://item.kakaocdn.net/do/c94b16cbcec01e632c9f3410a3422f07617ea012db208c18f6e83b1a90a7baa7"
-											class="img_emot img_default" alt="쥐방울은 더 이쁠예정이미지"><img
-											src="https://item.kakaocdn.net/do/c94b16cbcec01e632c9f3410a3422f07f43ad912ad8dd55b04db6a64cddaf76d"
-											class="img_emot img_hover" alt="쥐방울은 더 이쁠예정세부이미지"></div>
-								</a>
-							</li>
+						
+							<c:forEach var="hotList" items="${ hotList }" varStatus="status">
+							<c:if test="${ status.count >= 6 and status.count <= 10 }">
+								<li>
+									<span class="txt_num">${ status.count }</span>
+									<div class="double_tit">
+										<a class="link_double" href="<%=contextPath%>/pages/view/view.do?el_num=${ hotList.el_num }">
+											<div class="area_tit">
+												<strong class="tit_product">
+													<span class="area_icons"></span>
+													<span class="txt_tit">${ hotList.el_name }</span>
+												</strong>
+												<span class="txt_author">${ hotList.el_maker }</span>
+											</div>
+										</a>
+									</div>
+									<a class="link_double double_img" href="<%=contextPath%>/pages/view/view.do?el_num=${ hotList.el_num }">
+										<div class="area_doubleemoticon">
+										<c:if test="${ hotList.el_num < 103 }">
+											<img src="${ hotList.el_stopimg }" class="img_emot img_default" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2이미지">
+											<img src="${ hotList.el_mainimg }" class="img_emot img_hover" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2세부이미지">
+										</c:if>
+										<c:if test="${ hotList.el_num >= 103 }">
+											<img src="/jspPro/upload/${  hotList.el_name }/${ hotList.el_stopimg }" class="img_emot img_default" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2이미지">
+											<img src="/jspPro/upload/${  hotList.el_name }/${ hotList.el_mainimg }" class="img_emot img_hover" alt="안녕! 나는 익명이고 쪼금 엉뚱해 2세부이미지">
+										</c:if>
+										</div>
+									</a>
+								</li>
+							</c:if>
+						</c:forEach>
+							
+							
 						</ol>
+						
 					</div>
 				</div>
 				<div class="wrap_style">
@@ -417,7 +730,171 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+		/* 검색 관련 */
 
+		// 검색 버튼 클릭 
+		$(".link_search").on("click", function() {
+			$(".search_wrap").css("display", "block");
+			$(".k_head").css("z-index", "2");
+			$("#kakaoGnb").css("position", "relative");
+			$("#kakaoGnb").css("z-index", "1");
+			$(".link_search").css({
+				"cursor" : "default",
+				"display" : "none"
+			});
+			$(".btn_delete").css({
+				"cursor" : "default",
+				"display" : "none"
+			});
+			$(".profile_layer").css("display", "none");
+			$(".link_thome").css("margin-right", "44px");
+		});
+
+		//검색창 밖 클릭시 검색창 제거 + 입력했던 값 제거
+		$(".dim_layer").on("click", function() {
+			$(".search_wrap").css("display", "none");
+			$(".link_search").css({
+				"cursor" : "pointer",
+				"display" : "block"
+			});
+			$(".tf_search").val("");
+			$(".link_thome").css("margin-right", "0px");
+		});
+
+		//검색 삭제 버튼
+		$(".tf_search").on("keyup", function() {
+			$(".btn_delete").css("display", "");
+		});
+
+		// 검색어 삭제 
+		$(".btn_delete").on("click", function() {
+			$(".tf_search").val("");
+			$(".btn_delete").css("display", "none");
+		});
+
+		
+		/* 쿠폰알림창 */
+		$(".btn_close_tt").on("click", function() {
+			$(".tooltip_layer").css("display", "none");
+		});
+
+		/* 띠 배너 */
+		//띠배너 닫기
+		$(".btn_close_tb").on("click", function() {
+			$(".kakaoTopbnr").css("display", "none");
+			$(".emoticon_head").css("top", "0px");
+			$(".search_wrap").css("top", "110px")
+			$(".wrap_menu").css("top","0px");
+	        $(".wrap_menu").css("height", "calc(100%)");
+	        $("#kakaoContent").css("padding-top", "110px");
+		});
+
+		if (${ not empty sessionScope.email }) {
+		//if (${ not empty param.id }) {
+			$(".head_bnr .emoticon_head").css("top", "50px");
+			$(".head_bnr .search_wrap").css("top", "160px");
+		}
+
+		/* 프로필 */
+		$(".link_my").on("click", function() {
+			$(".profile_layer").toggle();
+		});
+		
+	</script>
+<!--  -->
+	<script>
+
+	// 누르면 로그인 창 뜨도록 배경은 어둡게 
+	$(".list_mymenu").click(function() {
+	   $(".dimmed_layer").css("display", "block");
+	    $("#alert_logon").css("display", "block");
+	    $(".dimmed_menu").css("display", "block");
+	});
+	
+	//어두운 부분 누르면 다시 돌아감
+	$(".dimmed_layer").on("click", function() {
+	   $(".alert_layer").css("display", "none");
+	   $(".dimmed_layer").css("display","none");
+	});
+	// 로그아웃
+	$(".btn_em_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
+	
+	$(".btn_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
+
+	</script>
+
+	<script>
+	
+	// x 버튼
+	 $("#btn_layer_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	//취소 버튼
+	 $("#alert_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	
+
+	//메뉴 열림
+	 $("#side_open").on("click",function(){
+		$(".wrap_menu").css("display","block");
+		$(".dimmed_menu").css("display","block");
+		
+		
+		$(".wrap_menu").css("top","50px");
+		$(".wrap_menu").css("height", "calc(94%)");
+		
+		if($(".kakaoTopbnr").is(":visible") == false){
+			$(".wrap_menu").css("top","0px");
+       		$(".wrap_menu").css("height", "calc(100%)");
+		}
+		 
+	}); 
+	
+	$(".dimmed_menu").on("click", function() {
+		$(".wrap_menu").css("display", "none");
+		$(".dimmed_menu").css("display","none");
+		
+	}); 
+	$(".btn_close_tb").on("click",function(){
+		$(".wrap_menu").css("top","0px");
+		$(".wrap_menu").css("height", "calc(100%)");
+	})
+	
+	</script>
+
+	<script>
+	$(".btn_g").click(function() {
+	   location.href="../login/login_kakao.do";  
+	});
+	if(${ empty sessionScope.email }){
+		$(".wrap_profile").click(function() {
+		   location.href="../login/login_kakao.do";  
+		});
+	};
+	
+	</script>
+
+	<script>
+	//이메일을 보내줌? 안보내줌
+	function numbermodal(){
+	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
+	}
+	</script>
 
 </body>
 </html>

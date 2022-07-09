@@ -9,8 +9,15 @@ public class ElistDTO {
 	private int el_price;
 	private Date el_date;
 	private String el_mainimg;
+	private String el_stopimg;
 	
 	
+	public String getEl_stopimg() {
+		return el_stopimg;
+	}
+	public void setEl_stopimg(String el_stopimg) {
+		this.el_stopimg = el_stopimg;
+	}
 	public int getEl_num() {
 		return el_num;
 	}
@@ -50,6 +57,18 @@ public class ElistDTO {
 	public ElistDTO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public ElistDTO(int el_num, String el_name, String el_maker, int el_price, Date el_date, String el_mainimg,
+			String el_stopimg) {
+		super();
+		this.el_num = el_num;
+		this.el_name = el_name;
+		this.el_maker = el_maker;
+		this.el_price = el_price;
+		this.el_date = el_date;
+		this.el_mainimg = el_mainimg;
+		this.el_stopimg = el_stopimg;
 	}
 	public ElistDTO(String el_name, String el_maker, int el_price, String el_mainimg) {
 		super();

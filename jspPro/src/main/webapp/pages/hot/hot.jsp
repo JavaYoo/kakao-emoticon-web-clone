@@ -106,7 +106,7 @@
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" onclick="location.href=''">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
@@ -214,7 +214,7 @@
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" onclick="location.href=''">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
@@ -305,7 +305,7 @@
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" onclick="location.href=''">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
@@ -465,7 +465,7 @@
 						<!-- 해당 페이지에 클래스 on 넣기  -->
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-						<li class="on"><a class="link_gnb" href="#">인기</a></li>
+						<li class="on"><a class="link_gnb" onclick="location.href=''">인기</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
@@ -523,7 +523,7 @@
 										<span class="ico_comm ico_like">좋아요</span>
 									</button>
 								</div>
-								<a class="link_double double_img" href="#" >
+								<a class="link_double double_img" href="<%=contextPath%>/pages/view/view.do?el_num=${ hotList.el_num }" >
 									<!-- 이모티콘 등록한거 가져오려면 /Kakao/upload/이모티콘이름/이미지이름 -->
 									<div class="area_doubleemoticon">
 										<c:if test="${ status.count >= 103 }">
@@ -549,7 +549,78 @@
 					<div></div>
 				</div>
 			</div> <!-- content -->
-
+<div id="kakaoFoot" class="foot_group">
+				<div class="area_footer">
+					<h2 class="screen_out">서비스 이용정보</h2>
+					<div class="service_info">
+						<a class="link_service" href="/policy" target="_blank"
+							rel="noreferrer">이용약관</a><a class="link_service"
+							href="https://billing-web.kakao.com/kbill/terms/service"
+							target="_blank" rel="noreferrer">유료이용안내</a><a
+							class="link_service" href="https://www.kakao.com/policy/privacy"
+							target="_blank" rel="noreferrer"><strong class="dlnk_txt">개인정보처리방침</strong></a><a
+							class="link_service" href="https://bizemoticon.kakao.com"
+							target="_blank" rel="noreferrer">기업고객</a><a class="link_service"
+							href="https://cs.kakao.com/requests?category=278&amp;locale=ko&amp;node=30555&amp;service=94"
+							target="_blank" rel="noreferrer">문의하기</a><a class="link_service"
+							href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208147521"
+							target="_blank" rel="noreferrer">공정위사업자정보</a><a
+							class="link_service" href="https://www.kakaocorp.com/page/"
+							target="_blank" rel="noopener noreferrer"><strong
+							class="dlnk_txt">(주) 카카오</strong></a>
+						<p class="desc_service">카카오 이모티콘샵에서 판매되는 콘텐츠의 저작권은 콘텐츠 제공자에게
+							있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 처벌될 수 있습니다.</p>
+					</div>
+					<div class="wrap_info">
+						<strong class="tit_info"><a class="link_info"
+							href="https://www.kakaocorp.com/page/" target="_blank"
+							rel="noopener noreferrer">(주) 카카오</a></strong>
+						<dl class="list_info">
+							<div class="unit_info">
+								<dt>대표</dt>
+								<dd>남궁훈</dd>
+								<dt>사업자등록번호</dt>
+								<dd>
+									<span class="txt_en">120-81-47521</span>
+								</dd>
+							</div>
+							<div class="unit_info">
+								<dt>통신판매업신고번호</dt>
+								<dd>제2015-제주아라-0032호</dd>
+							</div>
+						</dl>
+						<dl class="list_info">
+							<div class="unit_info">
+								<dt>주소</dt>
+								<dd>
+									제주특별자치도 제주시 첨단로 <span class="txt_en">242</span>(영평동)
+								</dd>
+							</div>
+							<div class="unit_info">
+								<dt>호스팅사업자</dt>
+								<dd>(주)카카오</dd>
+								<dt>고객센터</dt>
+								<dd>
+									<span class="txt_en">1577-3754</span>
+								</dd>
+							</div>
+							<div class="unit_info">
+								<dt>메일</dt>
+								<dd>
+									<span class="txt_en">help.notice@kakaocorp.com</span>
+								</dd>
+							</div>
+						</dl>
+					</div>
+					<div class="area_movetop">
+						<button type="button" class="btn_movetop" onclick="location.href=''" >
+							<span class="ico_comm ico_movetop">위로 이동</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 			
          </div> <!-- #kakaoWrap -->
 	</div> <!-- #root -->

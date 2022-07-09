@@ -22,6 +22,8 @@ public class CategoryHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		ListCatgService catgService  = ListCatgService.getInstance();
 		List<CatgDTO> catgList = catgService.selectCatgList();
 		request.setAttribute("catgList", catgList);
@@ -42,9 +44,14 @@ public class CategoryHandler implements CommandHandler{
 		List<Profile_MemberDTO> memberList = listService.selectMemberList();
 		request.setAttribute("memberList", memberList);
 		
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("referer" , request.getRequestURI()  );
+		request.setCharacterEncoding("UTF-8");
+		session.setAttribute("referer" , request.getRequestURI()  
+				+ "?ct_main=" + java.net.URLEncoder.encode(request.getParameter("ct_main")) 
+				+ "&ec_sub=" + java.net.URLEncoder.encode(request.getParameter("ec_sub"))) ;
+				System.out.println(  (String)session.getAttribute("referer") );
+		System.out.println(  (String)session.getAttribute("referer")  );
+		
 		// 포워딩
 		return "/pages/style/category.jsp";
 	} // process

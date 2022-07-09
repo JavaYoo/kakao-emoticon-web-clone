@@ -105,7 +105,7 @@
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
-								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+								<li><a class="link_nav" onclick="location.href=''">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
@@ -213,7 +213,7 @@
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
-								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+								<li><a class="link_nav" onclick="location.href=''">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
@@ -304,7 +304,7 @@
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
-								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
+								<li><a class="link_nav" onclick="location.href=''">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
@@ -464,7 +464,7 @@
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
-						<li class="on"><a class="link_gnb" href="#">스타일</a></li>
+						<li class="on"><a class="link_gnb" onclick="location.href=''">스타일</a></li>
 					</ul>
 				</nav>
 			</div>

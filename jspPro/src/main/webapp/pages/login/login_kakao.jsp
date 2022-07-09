@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
@@ -1398,6 +1397,7 @@
 	                  //이메일 중복
 	                  alert("가입된 이메일이 있습니다.")
 	                  $("#form_signUp")[0].reset();
+	                  $("#signup").css("background-color","lightgray");
 	               }
 	
 	            },

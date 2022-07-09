@@ -93,6 +93,7 @@
 					<div class="submit_btn">
 						<input type="submit" class="em_submit" value="이모티콘 추가">
 					</div>
+					
 					<div class="home_btn">
 						<button class="btn_close" onclick="location.href='/jspPro/pages/home/home.do'">홈</button>
 					</div>

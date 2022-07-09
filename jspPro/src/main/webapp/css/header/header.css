@@ -3155,6 +3155,6 @@ strong {
     color: #fa4637;
     vertical-align: top;
 }
-.link_mymenu{
+.link_mymenu .link_gnb{
 	cursor: pointer;
 }
