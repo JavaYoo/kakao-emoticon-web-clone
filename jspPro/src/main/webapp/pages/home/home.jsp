@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../include.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <link rel="shortcut icon" href="../images/e_16x16.ico" />
-<link rel="stylesheet" href="home.css" />
+<link rel="stylesheet" href="../../css/home/home.css" />
 
 </head>
 <body>
@@ -299,7 +300,7 @@
 				<div class="wrap_style">
 					<div class="inner_style">
 						<h3 class="tit_section">
-							<a class="link_menu" href="/jspPro/pages/style.do">스타일<span class="ico_comm ico_logarr"></span></a>
+							<a class="link_menu" href="<%=contextPath %>/pages/style/style.do">스타일<span class="ico_comm ico_logarr"></span></a>
 						</h3>
 									
 						<c:if test="${ not empty ecatgCatgList }">
@@ -310,7 +311,7 @@
 									<div class="area_homestyle">
 									
 										<div class="area_linkstyle">
-											<a class="link_style" href="/jspPro/pages/category.do?ct_main=${ EcatgCatgDTO.ct_main }&ec_sub=${ EcatgCatgDTO.ec_sub }">
+											<a class="link_style" href="<%=contextPath %>/pages/style/category.do?ct_main=${ EcatgCatgDTO.ct_main }&ec_sub=${ EcatgCatgDTO.ec_sub }">
 												<span class="inner_link">
 													<strong class="tit_style">#${ EcatgCatgDTO.ct_main }</strong>
 													<span class="txt_hash">#${ EcatgCatgDTO.ec_sub }</span>
@@ -328,7 +329,7 @@
 														<c:if test="${ (EcatgCatgDTO.ec_sub eq ElistEcatgDTO.ec_sub) and (EcatgCatgDTO.ct_main eq ElistEcatgDTO.ct_main) and cnt2 <= 9 }">
 															<c:set var="cnt2" value="${ cnt2 + 1 }"></c:set>
 															<div class="list_unit">
-																<a class="link_emot" href="/t/sawol-is-your-best-friend">
+																<a class="link_emot" href="<%=contextPath%>/pages/view/view.do?el_num=${ ElistEcatgDTO.el_num }">
 																	<img src="${ ElistEcatgDTO.el_stopimg }" class="img_emot img_default" alt="">
 																</a>
 															</div>

@@ -29,13 +29,14 @@ public class ElistEcatgDAO {
 		//Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "SELECT el_mainimg, el_stopimg, ec_sub, el_name, el_maker, el_date, ct_main "
+		String sql = "SELECT el_num, el_mainimg, el_stopimg, ec_sub, el_name, el_maker, el_date, ct_main "
 						+ ", CASE WHEN ( SYSDATE - el_date ) < 40  then 'true' else 'false' end new "
 						+ "FROM em_elist JOIN em_ecatg ON el_num = ec_num "
 						+ 						   "JOIN em_catg ON ec_sub = ct_sub "
 						+ "ORDER BY el_date DESC";
 		String el_mainimg, el_stopimg, ec_sub, el_name, el_maker, ct_main;
 		Date el_date;
+		int el_num;
 		boolean newImg;
 
 		try{
@@ -46,6 +47,7 @@ public class ElistEcatgDAO {
 				if( rs.next() ){
 					elistEcatgList = new ArrayList<ElistEcatgDTO>();
 					do{
+						el_num = rs.getInt("el_num");
 						el_mainimg = rs.getString("el_mainimg");
 						el_stopimg = rs.getString("el_stopimg");
 						ec_sub = rs.getString("ec_sub");
@@ -55,7 +57,7 @@ public class ElistEcatgDAO {
 						ct_main = rs.getString("ct_main");
 						newImg = new Boolean(rs.getString("new"));
 	
-						ElistEcatgDTO dto = new ElistEcatgDTO(el_mainimg, el_stopimg, ec_sub, el_name, el_maker, el_date, ct_main, newImg);
+						ElistEcatgDTO dto = new ElistEcatgDTO(el_num , el_mainimg, el_stopimg, ec_sub, el_name, el_maker, el_date, ct_main, newImg);
 						elistEcatgList.add(dto);
 					}while( rs.next() );
 				} // if

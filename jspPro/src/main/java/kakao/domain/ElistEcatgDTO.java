@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class ElistEcatgDTO {
 	
+	private int el_num;
 	private String el_mainimg;
 	private String el_stopimg;
 	private String ec_sub;
@@ -17,9 +18,10 @@ public class ElistEcatgDTO {
 		super();
 	}
 	
-	public ElistEcatgDTO(String el_mainimg, String el_stopimg, String ec_sub, String el_name, String el_maker,
-			Date el_date, String ct_main, boolean newImg) {
+	public ElistEcatgDTO(int el_num, String el_mainimg, String el_stopimg, String ec_sub, String el_name,
+			String el_maker, Date el_date, String ct_main, boolean newImg) {
 		super();
+		this.el_num = el_num;
 		this.el_mainimg = el_mainimg;
 		this.el_stopimg = el_stopimg;
 		this.ec_sub = ec_sub;
@@ -29,8 +31,6 @@ public class ElistEcatgDTO {
 		this.ct_main = ct_main;
 		this.newImg = newImg;
 	}
-
-
 
 	public String getEl_mainimg() {
 		return el_mainimg;
@@ -94,6 +94,14 @@ public class ElistEcatgDTO {
 
 	public void setNewImg(boolean newImg) {
 		this.newImg = newImg;
+	}
+
+	public int getEl_num() {
+		return el_num;
+	}
+
+	public void setEl_num(int el_num) {
+		this.el_num = el_num;
 	}
 	
 	

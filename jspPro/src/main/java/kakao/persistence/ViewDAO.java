@@ -71,7 +71,9 @@ public class ViewDAO{
 		PreparedStatement pstmt = null;
 
 		//String sql = "SELECT ei_path FROM em_eimg WHERE ei_num = 130";
-		String sql = "SELECT ei_path FROM em_eimg WHERE ei_num = ?";
+		String sql = "select ei_num, el_name, ei_path "
+						+ "from em_elist join em_eimg on el_num = ei_num "
+						+ "WHERE ei_num = ?";
 
 		try{
 			pstmt = conn.prepareStatement(sql);	
@@ -79,13 +81,17 @@ public class ViewDAO{
 			ResultSet rs =  pstmt.executeQuery();
 
 			String ei_path;
+			String el_name;
+			int ei_num;
 			
 			if( rs.next() ){
 				eImgList = new ArrayList<EimgDTO>();
 				do{
 					ei_path = rs.getString("ei_path");
+					el_name = rs.getString("el_name");
+					ei_num = rs.getInt("ei_num");
 
-					EimgDTO dto = new EimgDTO(ei_path);
+					EimgDTO dto = new EimgDTO(ei_path, el_name ,ei_num);
 					eImgList.add(dto);
 				}while( rs.next() );
 			} // if

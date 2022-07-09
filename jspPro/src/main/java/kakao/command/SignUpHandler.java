@@ -11,8 +11,8 @@ public class SignUpHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-			String id = request.getParameter("id");
-			String pwd = request.getParameter("pwd");
+			String id = request.getParameter("email");
+			String pwd = request.getParameter("password");
 			String nn = request.getParameter("name");
 			
 			MemberDTO dto = new MemberDTO();
@@ -24,7 +24,7 @@ public class SignUpHandler implements CommandHandler{
 			int rowCount = signUpService.addMember(dto);
 		
 			if (rowCount == 1) {
-				String location = "/jspPro/pages/list.do";
+				String location = "/jspPro/pages/login/login_kakao.do";
 				response.sendRedirect(location);  
 			}
 			

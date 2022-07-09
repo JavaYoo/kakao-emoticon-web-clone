@@ -5,6 +5,15 @@ public class EimgDTO {
 	private int ei_seq;
 	private int ei_num;
 	private String ei_path;
+	private String el_name;
+	
+	
+	public String getEl_name() {
+		return el_name;
+	}
+	public void setEl_name(String el_name) {
+		this.el_name = el_name;
+	}
 	public int getEi_seq() {
 		return ei_seq;
 	}
@@ -33,10 +42,13 @@ public class EimgDTO {
 		this.ei_num = ei_num;
 		this.ei_path = ei_path;
 	}
-	public EimgDTO(String ei_path) {
+	public EimgDTO(String ei_path, String el_name,int ei_num ) {
 		super();
 		this.ei_path = ei_path;
+		this.el_name = el_name;
+		this.ei_num = ei_num;
 	}
+
 	
 	
 }

@@ -23,9 +23,7 @@ public class KakaoNewHandler implements CommandHandler {
 		request.setAttribute("emap", emap);
 
 		HeaderService listService = HeaderService.getInstance();
-
 		List<Profile_MemberDTO> memberList = listService.selectMemberList();
-
 		request.setAttribute("memberList", memberList);
 
 		HttpSession session = request.getSession();

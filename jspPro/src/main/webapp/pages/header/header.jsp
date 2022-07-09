@@ -159,11 +159,17 @@
 									<span class="ico_comm ico_coupon"></span>
 									<span class="txt_mymenu">쿠폰함
 											<c:if test="${not empty couponsList}">
-
 												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
 												<em class="txt_count">${fn:length(couponsList)}<span
 													class="screen_out">개</span></em>
 											</c:if>
+											<c:if test="${empty couponsList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+											
 									</span></a></li>
 								<li><a class="link_mymenu"
 									href="<%=contextPath %>/likes.do?id=email"><span

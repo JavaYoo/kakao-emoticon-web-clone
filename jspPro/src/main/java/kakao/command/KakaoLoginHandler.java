@@ -43,10 +43,8 @@ public class KakaoLoginHandler implements CommandHandler {
 				
 			}else {
 				System.out.println(" 로그인 실패 ! ");
-				
 				return "/pages/login/login_kakao.jsp";
 			}
-
 		} else { // PUT, DELETE , UPDATE 등등
             response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         }

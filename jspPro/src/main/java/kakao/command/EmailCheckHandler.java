@@ -24,7 +24,7 @@ public class EmailCheckHandler implements CommandHandler {
 		 * System.out.println(rowCount);
 		 */		
 		
-		return "/pages/view_emailCheck.jsp?rowCount="+rowCount;
+		return "/pages/login/view_emailCheck.jsp?rowCount="+rowCount;
 	}
 
 }

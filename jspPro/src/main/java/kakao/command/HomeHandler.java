@@ -25,7 +25,7 @@ public class HomeHandler implements CommandHandler{
 		request.setAttribute("elistEcatgList", elistEcatgList);
 		
 		
-		return "/pages/home.jsp";
+		return "/pages/home/home.jsp";
 		
 	}
 

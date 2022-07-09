@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import kakao.domain.EimgDTO;
 import kakao.domain.ElistDTO;
+import kakao.domain.Profile_MemberDTO;
+import kakao.service.HeaderService;
 import kakao.service.ViewService;
 
 public class ViewHandler implements CommandHandler {
@@ -25,6 +27,10 @@ public class ViewHandler implements CommandHandler {
 		ViewService viewService = ViewService.getInstance();
 		List<ElistDTO> eList = viewService.selectEmoInfo(el_num);
 		List<EimgDTO> eImgList = viewService.selectEmoImg(el_num);
+		
+		HeaderService listService = HeaderService.getInstance();
+		List<Profile_MemberDTO> memberList = listService.selectMemberList();
+		request.setAttribute("memberList", memberList);
 
 		request.setAttribute("eList", eList);
 		request.setAttribute("eImgList", eImgList);

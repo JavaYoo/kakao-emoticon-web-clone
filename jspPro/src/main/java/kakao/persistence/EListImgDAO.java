@@ -42,7 +42,7 @@ public class EListImgDAO {
 					el_name = rs.getString("el_name");
 					ei_path = rs.getString("ei_path");
 
-					EListImgDTO dto = new EimgDTO(el_name, ei_path);
+					EListImgDTO dto = new EListImgDTO(el_name, ei_path);
 					eimgList.add(dto);
 				}while( rs.next() );
 			} // if

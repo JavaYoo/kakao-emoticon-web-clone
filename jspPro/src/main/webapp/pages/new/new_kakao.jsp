@@ -64,35 +64,59 @@
 										class="ico_comm ico_logarr_type1"></span></span></span></a><strong
 								class="screen_out">나의 이용정보</strong>
 							<ul class="list_mymenu">
-								<li id="menu1"><a class="link_mymenu"
-								 href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
-										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li id="menu1"><a class="link_mymenu">
+								<span class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
 								<li id="menu1"><a class="link_mymenu" 
-								href="<%=contextPath %>/pages/mypage/recevied.do?id=email"><span
+								><span
 										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
 								<li id="menu1"><a class="link_mymenu" 
-								href="<%=contextPath %>/pages/mypage/coupons.do?id=email"><span
-										class="ico_comm ico_coupon"></span><span class="txt_mymenu">쿠폰함</span></a></li>
+								><span
+										class="ico_comm ico_coupon"></span><span class="txt_mymenu">쿠폰함
+										<c:if test="${not empty couponsList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty couponsList}">
+										
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+											
+										</span></a></li>
 								<li id="menu1"><a class="link_mymenu" 
-								href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
-										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요</span></a></li>
+								><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요
+											<c:if test="${not empty likesList}">
+													<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+													<em class="txt_count">${fn:length(likesList)}<span
+														class="screen_out">개</span></em>
+												</c:if>
+												<c:if test="${empty likesList}">
+													
+													<em class="txt_count">
+														<span class="screen_out"></span>
+													</em>
+												</c:if>
+										</span></a></li>
 							</ul>
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
-								<li><a class="link_nav" href="/">홈<%=ses %></a></li>
-								<li><a class="link_nav" href="/item/new">신규</a></li>
-								<li><a class="link_nav" href="/item/hot">인기</a></li>
-								<li><a class="link_nav" href="/item/style">스타일</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
+								<li><a class="link_nav" href="#">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
-								<li><a class="link_aside" href="/notices">새소식</a></li>
-								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
 								<li><a href="#" class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
-							<a class="link_shop" href="/"><span
+							<a class="link_shop" href="<%= contextPath %>/pages/home/home.do"><span
 								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
 								href="https://www.kakaocorp.com" class="link_corp">@ kakao
 								Corp</a>
@@ -107,7 +131,7 @@
 							</div>
 							<div class="layer_foot">
 								<button class="btn_s btn_m" id="alert_close">취소</button>
-								<button class="btn_g btn_m">로그인</button>
+								<button class="btn_g btn_m" onclick="location.href='../login/login_kakao.do">로그인</button>
 							</div>
 						</div>
 						<button type="button" class="btn_close">
@@ -157,34 +181,51 @@
 									<span class="ico_comm ico_coupon"></span>
 									<span class="txt_mymenu">쿠폰함
 											<c:if test="${not empty couponsList}">
-
 												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
 												<em class="txt_count">${fn:length(couponsList)}<span
 													class="screen_out">개</span></em>
 											</c:if>
+											<c:if test="${empty couponsList}">
+										
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+											
 									</span></a></li>
 								<li><a class="link_mymenu"
 									href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
-										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요<em
-											class="txt_count">2<span class="screen_out">개</span></em></span></a></li>
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요
+										<c:if test="${not empty likesList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(likesList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty likesList}">
+												
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
+										</span></a></li>
 							</ul>
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
-								<li><a class="link_nav" href="/">홈</a></li>
-								<li><a class="link_nav" href="/item/new">신규</a></li>
-								<li><a class="link_nav" href="/item/hot">인기</a></li>
-								<li><a class="link_nav" href="/item/style">스타일</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
+								<li><a class="link_nav" href="#">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
-								<li><a class="link_aside" href="/notices">새소식</a></li>
-								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
 								<li><a href="#" class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
-								<li><a href="#" class="link_aside" id="logout">로그아웃</a></li>
+								<li><a href="<%=contextPath %>/pages/loginlogout_kakao.do" class="link_aside" id="logout" >로그아웃</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
-							<a class="link_shop" href="/"><span
+							<a class="link_shop" href="<%= contextPath %>/pages/home/home.do"><span
 								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
 								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
 
@@ -233,34 +274,49 @@
 									<span class="ico_comm ico_coupon"></span>
 									<span class="txt_mymenu">쿠폰함
 											<c:if test="${not empty couponsList}">
-
 												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
 												<em class="txt_count">${fn:length(couponsList)}<span
 													class="screen_out">개</span></em>
 											</c:if>
+											<c:if test="${empty couponsList}">
+										
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if>
 									</span></a></li>
 								<li><a class="link_mymenu"
-									href="<%=contextPath %>/likes.do?id=email"><span
-										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요<em
-											class="txt_count">2<span class="screen_out">개</span></em></span></a></li>
+									href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요
+										<c:if test="${not empty likesList}">
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(likesList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+											<c:if test="${empty likesList}">
+												
+												<em class="txt_count">
+													<span class="screen_out"></span>
+												</em>
+											</c:if></span></a></li>
 							</ul>
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
-								<li><a class="link_nav" href="/jspPro/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" href="/jspPro/pages/hot/hot.do">인기</a></li>
-								<li><a class="link_nav" href="/jspPro/pages/style/style.do">스타일</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
-								<li><a class="link_aside" href="/notices">새소식</a></li>
-								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
+								<li><a class="link_aside" href="<%= contextPath%>/pages/user/faq.do">자주묻는 질문</a></li>
 								<li><a href="#" class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
-								<li><a href="#" class="link_aside" id="logout">로그아웃</a></li>
+								<li><a href="<%= contextPath %>/pages/login/logout.do" class="link_aside" id="logout">로그아웃</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
-							<a class="link_shop" href="/"><span
+							<a class="link_shop" href="<%= contextPath %>/pages/home/home.do"><span
 								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
 								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
 						</div>
@@ -275,10 +331,10 @@
 							<span class="ico_comm ico_new">new</span> 
 						</c:if>
 					</button>
-					<a class="link_home" href="/"><span class="ico_comm ico_home">홈으로
+					<a class="link_home" href="<%= contextPath %>/pages/home/home.do"><span class="ico_comm ico_home">홈으로
 							이동</span></a>
 					<h1 class="tit_logo">
-						<a class="link_thome" href="/">
+						<a class="link_thome" href="<%= contextPath %>/pages/home/home.do">
 							<span class="ico_comm ico_logo">kakao emoticon shop</span>
 						</a> 
 						<span class="ico_comm ico_logo">kakao emoticon shop</span>
@@ -287,6 +343,8 @@
 					<button class="link_search">
 						<span class="ico_comm ico_search">검색하기</span>
 					</button>
+					 
+					
 					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
 								<%-- <c:if test="${ not empty param.id && param.id ne 'admin'}"> --%>
 						<button class="link_my">
@@ -366,7 +424,7 @@
 		              	<div class="tooltip_layer">
 		               		<div class="area_tooltip">
 		               			<p class="layer_tooltip">
-		               				<a class="link_tooltip" href="/mypage/coupons"><strong>항상 전상품 20% 할인</strong> 쿠폰이 발급되었습니다.</a>
+		               				<a class="link_tooltip" href="<%=contextPath %>/pages/mypage/coupons.do"><strong>항상 전상품 20% 할인</strong> 쿠폰이 발급되었습니다.</a>
 		               			</p>
 		               			<button class="btn_close_tt" aria-label="툴팁닫기">
 		               				<span class="ico_comm ico_close"></span>
@@ -379,7 +437,7 @@
 
 				<div class="search_wrap on" style="display:none">
 					<div class="dim_layer"></div>
-					<form class="search-box__form" action="/Kakao/pages/header/search.do">
+					<form class="search-box__form" action="<%= contextPath %>/pages/header/search.do">
 						<div class="inner_search">
 							<h3 class="screen_out">이모티콘 검색어 입력</h3>
 							<div class="emoticon_sch">
@@ -404,10 +462,10 @@
 					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 					<ul class="list_gnb">
 						<!-- 해당 페이지에 클래스 on 넣기  -->
-						<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 						<li class="on"><a class="link_gnb" href="#">신규</a></li>
-						<li class=""><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
-						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -427,27 +485,36 @@
 					</div>
 
 					<ul class="list_new">
-						<c:forEach items="${  emap   }" var="emap" >
+						<c:forEach items="${  emap   }" var="emap"  varStatus="cnt">
 						<li class="new_list_imgHover">
 							<div class="link_new new_tit">
-								<a class="link_new" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
+									<a class="link_new" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
 								<div	class="area_tit">
 										<strong class="tit_product">
 										<span class="txt_tit">${ emap.key.el_name }</span>
 										</strong><span class="txt_author">${ emap.key.el_maker }</span>
 									</div></a>
-								<button type="button" class="btn_grpshare" onclick="onLike()">
+								<button type="button" class="btn_grpshare" >
 									<span class="ico_comm ico_like">좋아요</span>
 								</button>
 							</div>
+							
 							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
 							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
+							
 								<c:if test="${ i.index == 0 or i.index == 4 }"><ul class="area_newemoticon"></c:if>
 									<li>
+									<c:if test="${ emap.key.el_num < 103 }">
 									<img  	src="${ emapValue.ei_path }" 
 									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
+									</c:if>
+									<c:if test="${ emap.key.el_num >= 103 }">
+									<img  	src="/jspPro/upload/${ emap.key.el_name }/${ emapValue.ei_path }" 
+									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
+									</c:if>
 									</li>
 								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
+								
 							</c:forEach>
 							</a>
 							</li>
@@ -474,60 +541,13 @@
 			});
 
 			</script>
-			<!-- 
-			<script>
-			
-			let page = 1
-			function onTest(){	
-			
-				var params2 = {
-						currentPage :page+=1 ,
-						perPage : 10,
-					};
-				
-
-				//alert(params2.currentPage);
-				
-				
-					 $.ajax({
-						url : "/jspPro/pages/new/new_kakao.do",
-						dataType : "json",
-						type : "GET",
-						data : params2,
-						cache : false,
-						success : function(data, textStatus, jqXHR) {
-							
-							console.log(data)
-						if (data.count == 0) {
-								$("#giftForm").submit();
-								alert("선물하기 완료!!!");
-							}
-
-							else {
-								alert("친구가 이미 보유한 상품입니다. 다른 친구를 선택해 보세요!!");
-								dialog2.dialog("close");
-								$(".dimmed_layer").css("display", "block");
-								$(".emoticon_layer.friend_layer").css("display",
-										"block");
-
-							}
-
-						},
-						error : function() {
-							alert("ajax 에러");
-						}
-					});
-				
-			}
-			</script>
-			 -->
 			
 			<div id="kakaoFoot" class="foot_group">
 				<div class="area_footer">
 					<h2 class="screen_out">서비스 이용정보</h2>
 					<div class="service_info">
 						<a class="link_service" href="/policy" target="_blank"
-							rel="noreferrer">이용약관<%= ses%></a><a class="link_service"
+							rel="noreferrer">이용약관</a><a class="link_service"
 							href="https://billing-web.kakao.com/kbill/terms/service"
 							target="_blank" rel="noreferrer">유료이용안내</a><a
 							class="link_service" href="https://www.kakao.com/policy/privacy"
@@ -586,7 +606,7 @@
 						</dl>
 					</div>
 					<div class="area_movetop">
-						<button type="button" class="btn_movetop" onclick="location.href=''">
+						<button type="button" class="btn_movetop" onclick="location.href=''" >
 							<span class="ico_comm ico_movetop">위로 이동</span>
 						</button>
 					</div>
@@ -743,13 +763,14 @@
 	</script>
 
 	<script>
-	
 	$(".btn_g").click(function() {
-	   location.href="../mypage/purchases.jsp";  
+	   location.href="../login/login_kakao.do";  
 	});
-	$(".wrap_profile").click(function() {
-	   location.href="../mypage/purchases.jsp";  
-	});
+	if(${ empty sessionScope.email }){
+		$(".wrap_profile").click(function() {
+		   location.href="../login/login_kakao.do";  
+		});
+	};
 	
 	</script>
 
