@@ -612,7 +612,7 @@ name="viewport">
 										</dl>
 									</div>
 								<div class="area_item">
-									<a class="link_item" href="/t/sneaky-eunuch">  <!-- 상세 이모티콘페이지로 -->
+									<a class="link_item" href="<%=contextPath%>/pages/view/view.do?el_num=${ dto.bl_num }">  <!-- 상세 이모티콘페이지로 -->
 										<div class="area_tit">
 											<strong class="tit_product"><span class="txt_tit">
 												${dto.el_name}</span></strong><span class="txt_author">${dto.el_maker}</span>

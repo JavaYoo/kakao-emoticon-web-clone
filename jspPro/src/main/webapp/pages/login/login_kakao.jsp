@@ -61,19 +61,19 @@
 	
 	#imail {
 		position: absolute;
-		top: 118px;
+		top: 155px;
 		margin: 0 470px;
 	}
 	
 	#ipw {
 		position: absolute;
-		top: 167px;
+		top: 202px;
 		margin: 0 470px;
 	}
 	
 	#iperson2 {
 		position: absolute;
-		top: 213px;
+		top: 250px;
 		margin: 0 470px;
 	}
 	

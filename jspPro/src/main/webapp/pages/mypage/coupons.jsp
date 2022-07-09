@@ -391,7 +391,7 @@
 						<c:forEach var="memberList" items="${ memberList }">
 							<c:if test="${ memberList.m_id eq sessionScope.email }">
 							<%-- <c:if test="${ memberList.m_id eq param.id }"> --%>
-								<div class="profile_layer">
+								<div class="profile_layer" style="display:none">
 		`							<span class="wrap_thumb"> 
 										<span class="inner_thumb">
 											<img class="thumb_user" src="${ memberList.m_pimg }" width="40px" height="40px" alt="사용자">
@@ -682,8 +682,8 @@
 		</div>
 	</div>
 	
-<script src="../../js/sidemenu.js"></script>	
-<script src="../../js/snum.js"></script>	
+<script src="../../js/kitae/sidemenu.js"></script>	
+<script src="../../js/kitae/snum.js"></script>	
 <script type="text/javascript">
 		/* 검색 관련 */
 

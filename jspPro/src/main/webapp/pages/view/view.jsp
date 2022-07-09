@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="../images/e_16x16.ico" />
 <link rel="stylesheet" href="../../css/kview.css/area_product.css?ver=3">
 <link rel="stylesheet" href="../../css/kview.css/list_emoticon.css?ver=1">
-<link rel="stylesheet" href="../../css/kview.css/alert_layer.css?ver=2">
+<link rel="stylesheet" href="../../css/kview.css/alert_layer.css?ver=3">
 <link rel="stylesheet" href="../../css/header/header.css?ver=4">
 <link rel="stylesheet" href="../../css/kview.css/order_layer.css?ver=1">
 <link rel="stylesheet" href="../../css/kview.css/footer.css?ver=1">
@@ -32,7 +32,7 @@
 		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
 	</div>
 
-	<div id="root" style="height: 100%;">	
+	<div id="root" style="height: 100%;">
 		<div id="kakaoWrap" class="default head_bnr menu_in">
 
 			<!-- 로그인 하면 나오는 띠배너 -->
@@ -59,7 +59,8 @@
 				</div>
 			</c:if>
 
-			<div id="kakaoHead" class="emoticon_head">
+			<div id="kakaoHead" class="emoticon_head" 
+			<c:if test="${ empty sessionScope.email }">style="top:0"</c:if> >
 			
 			<c:if test="${ empty sessionScope.email }">
 					<div class="wrap_menu">
@@ -139,15 +140,16 @@
 							</div>
 							<div class="layer_foot">
 								<button class="btn_s btn_m" id="alert_close">취소</button>
-								<button class="btn_g btn_m btn_login">로그인</button>
+								<button class="btn_g btn_m" onclick="location.href='../login/login_kakao.do'">로그인</button>
 							</div>
 						</div>
 						<button type="button" class="btn_close">
 							<span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
 						</button>
 					</div>
-				<div class="dimmed_layer dim_over"></div>
-			</c:if>
+					<div class="dimmed_layer dim_over"></div>
+				</c:if>
+
 
 				<c:if test="${ not empty sessionScope.email }">
 				<%-- <c:if test="${ not empty param.id }"> --%>
@@ -577,7 +579,8 @@
 												style="display: none;" /> <input type="text" name=""
 												value="<%=email %>" style="display: none;" />
 											<button type="button" class="btn_g btn_gift" id="btn_gift"
-												onclick="getFriendJsonAjax()">선물하기</button>
+												onclick="getFriendJsonAjax()"
+												style=" border: 1px solid rgba(0, 0, 0, .14); background-color: #fff;">선물하기</button>
 										</form>
 									</div>
 								</div>
@@ -753,24 +756,24 @@
 					</div>
 				</div>
 				<!-- kakaoFoot -->
-				<div class="dimmed_layer dim_over"></div> 
-				<div class="alert_layer" id="alert_logon">
+				<div id="dark_layer"></div> 
+				<div class="alert_layer" id="alert_logon_inner">
 				
 					<div class="inner_layer">
 						<div class="layer_body">
 							<strong class="txt_info">로그인 후 이용해주세요.</strong>
 						</div>
 						<div class="layer_foot">
-							<button class="btn_s btn_m" id="alert_close">취소</button>
+							<button class="btn_s btn_m" id="alert_close_inner">취소</button>
 							<button class="btn_g btn_m btn_login" >로그인</button>
 						</div>
 					</div>
 					<button type="button" class="btn_close">
-						<span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
+						<span class="ico_comm ico_orderclose" id="btn_layer_close_inner">닫기</span>
 					</button>
 				</div>
 
-				<div class="dimmed_layer dim_over"></div>
+				
 				<div class="alert_layer" id="alert_buyCheck">
 					<div class="inner_layer">
 						<div class="layer_body">
@@ -1173,7 +1176,7 @@
 		})
 
 		$("#btn_gift_close").click(function() {
-			$(".dimmed_layer").css("display", "none");
+			$("#dark_layer").css("display", "none");
 			$("#gift_layer").css("display", "none");
 		});
 
@@ -1199,7 +1202,7 @@
 							$("#sel_coupon_opt option:selected").html());
 					$("#gift_getid").val(radioVal);
 
-					$(".dimmed_layer").css("display", "none");
+					$("#dark_layer").css("display", "none");
 					$(".emoticon_layer.order_layer").css("display", "none");
 					dialog2.dialog("open");
 				});
@@ -1212,7 +1215,7 @@
 	<script>
 
 		$("#btn_friendList_close").click(function() {
-			$(".dimmed_layer").css("display", "none");
+			$("#dark_layer").css("display", "none");
 			$(".emoticon_layer.friend_layer").css("display", "none");
 			$("#btn_gift_comp").attr("disabled", "disabled");
 		})
@@ -1242,7 +1245,7 @@
 					else {
 						alert("친구가 이미 보유한 상품입니다. 다른 친구를 선택해 보세요!!");
 						dialog2.dialog("close");
-						$(".dimmed_layer").css("display", "block");
+						$("#dark_layer").css("display", "block");
 						$(".emoticon_layer.friend_layer").css("display",
 								"block");
 
@@ -1346,13 +1349,13 @@
 
 		if(   ${ empty  email }    ){
 		$("#btn_buy").click(function() {
-			$(".dimmed_layer").css("display", "block");
-			$("#alert_logon").css("display", "block");
+			$("#dark_layer").css("display", "block");
+			$("#alert_logon_inner").css("display", "block");
 		});
 		
 		$("#btn_gift").click(function() {
-			$(".dimmed_layer").css("display", "block");
-			$("#alert_logon").css("display", "block");
+			$("#dark_layer").css("display", "block");
+			$("#alert_logon_inner").css("display", "block");
 		});
 		
 		}else{
@@ -1368,10 +1371,10 @@
 					cache : false,
 					success : function(data, textStatus, jqXHR) {
 						if (data.count == 0) { //구매 하지 않음
-							$(".dimmed_layer").css("display", "block");
+							$("#dark_layer").css("display", "block");
 							$("#buy_layer").css("display", "block");
 						} else {//이미 구매함
-							$(".dimmed_layer").css("display", "block");
+							$("#dark_layer").css("display", "block");
 							$("#alert_buyCheck").css("display", "block");
 						}
 					},
@@ -1383,24 +1386,24 @@
 			});
 			
 			$("#btn_gift").click(function() {
-				$(".dimmed_layer").css("display", "block");
+				$("#dark_layer").css("display", "block");
 				$(".emoticon_layer.friend_layer").css("display", "block");
 			})
 		}
-		$("#btn_layer_close").click(function() {
-			$(".dimmed_layer").css("display", "none");
-			$("#alert_logon").css("display", "none");
+		$("#btn_layer_close_inner").click(function() {
+			$("#dark_layer").css("display", "none");
+			$("#alert_logon_inner").css("display", "none");
 		});
 
-		$("#alert_close").click(function() {
-			$(".dimmed_layer").css("display", "none");
-			$("#alert_logon").css("display", "none");
+		$("#alert_close_inner").click(function() {
+			$("#dark_layer").css("display", "none");
+			$("#alert_logon_inner").css("display", "none");
 		});
 	</script>
 
 	<script>
 		$("#btn_order_close").click(function() {
-			$(".dimmed_layer").css("display", "none");
+			$("#dark_layer").css("display", "none");
 			$(".emoticon_layer.order_layer").css("display", "none");
 		})
 	</script>
@@ -1409,12 +1412,12 @@
 	<script>
 		//구매확인 창 닫기버튼		
 		$("#btn_buyCheck_close").click(function() {
-			$(".dimmed_layer").css("display", "none");
+			$("#dark_layer").css("display", "none");
 			$("#alert_buyCheck").css("display", "none");
 		})
 
 		$("#btn_buyCheck_ok").click(function() {
-			$(".dimmed_layer").css("display", "none");
+			$("#dark_layer").css("display", "none");
 			$("#alert_buyCheck").css("display", "none");
 		})
 	</script>
@@ -1456,7 +1459,7 @@
 			$("#buy_price").val($("#fin_price").html());
 			$("#uesd_coupon").val($("#sel_coupon_opt option:selected").html());
 
-			$(".dimmed_layer").css("display", "none");
+			$("#dark_layer").css("display", "none");
 			$(".emoticon_layer.order_layer").css("display", "none");
 			dialog.dialog("open");
 		});
@@ -1465,7 +1468,6 @@
 			alert("결제 완료!!!");
 		})
 	</script>
-
 	<script type="text/javascript">
 		/* 검색 관련 */
 
@@ -1631,6 +1633,7 @@
 	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
 	}
 	</script>
+
 	
 </body>
 </html>

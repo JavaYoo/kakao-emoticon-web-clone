@@ -602,7 +602,7 @@
 									<li class="item_unit"><strong class="date_item">${dto.gb_date}</strong><span
 										class="txt_account">From.<span class="account_id">${dto.m_nn}</span></span>
 									<div class="area_item">
-											<a class="link_item" href="/t/kejang-con-ver2"><div
+											<a class="link_item" href="<%=contextPath%>/pages/view/view.do?el_num=${ dto.gb_emnum }"><div
 													class="area_tit">
 													<strong class="tit_product"><span class="txt_tit">
 														${dto.el_name}</span></strong><span class="txt_author">${dto.el_maker}</span>

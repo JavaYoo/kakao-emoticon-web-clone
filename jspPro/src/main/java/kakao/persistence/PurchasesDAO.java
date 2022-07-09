@@ -29,10 +29,11 @@ public class PurchasesDAO {
 		   PreparedStatement pstmt = null;
 		    		
 		    String sql =	 "select a.bl_id, a.bl_seq ,a.bl_payway,a.bl_num,a.bl_date,b.el_price,a.bl_state,b.el_name,b.el_maker,b.el_stopimg"
-		    		+ " from em_buylist a"
-		    		+ " inner join em_elist b "
-		    		+ " on a.bl_num=b.el_num"
-		    		+ " where bl_id=?";
+				    		+ " from em_buylist a"
+				    		+ " inner join em_elist b "
+				    		+ " on a.bl_num=b.el_num"
+				    		+ " where bl_id=? "
+				    		+ " ORDER BY a.bl_date DESC";
 		    		       
 		    
 		    try{

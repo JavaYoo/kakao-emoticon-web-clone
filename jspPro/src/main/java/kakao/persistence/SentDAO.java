@@ -38,7 +38,8 @@ public class SentDAO {
 		    		+ "                on a.gb_getid=b.m_id"
 		    		+ "             where gb_sendid=?"
 		    		+ "              )f"
-		    		+ " on c.el_num=f.gb_emnum";
+		    		+ " on c.el_num=f.gb_emnum"
+		    		+ " ORDER BY f.gb_date DESC";
 		    		
 		    		
 		    		
