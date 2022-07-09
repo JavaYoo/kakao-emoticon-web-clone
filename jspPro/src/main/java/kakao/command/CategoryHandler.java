@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kakao.domain.CatgDTO;
 import kakao.domain.EcatgCatgDTO;
-import kakao.domain.EimgDTO;
+import kakao.domain.EListImgDTO;
 import kakao.domain.ElistEcatgDTO;
 import kakao.service.ListCatgService;
 import kakao.service.ListEcatgCatgService;
@@ -32,7 +32,7 @@ public class CategoryHandler implements CommandHandler{
 		request.setAttribute("elistEcatgList", elistEcatgList);
 		
 		ListEimgService eimgService  = ListEimgService.getInstance();
-		List<EimgDTO> eimgList = eimgService.selectEimgList();
+		List<EListImgDTO> eimgList = eimgService.selectEimgList();
 		request.setAttribute("eimgList", eimgList);
 		
 		// 포워딩
