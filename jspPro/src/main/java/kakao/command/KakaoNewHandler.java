@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import kakao.domain.KakaoEimgDTO;
 import kakao.domain.KakaoElistDTO;
+import kakao.domain.Profile_MemberDTO;
+import kakao.service.HeaderService;
 import kakao.service.KakaoEimgService;
 
 public class KakaoNewHandler implements CommandHandler {
@@ -20,15 +22,23 @@ public class KakaoNewHandler implements CommandHandler {
 		Map<KakaoElistDTO, List<KakaoEimgDTO>> emap = kakaoEimgService.select();
 		request.setAttribute("emap", emap);
 
-		HttpSession session= request.getSession(false);
+		HeaderService listService = HeaderService.getInstance();
 
-		// if( session.getAttribute("email").equals(null) ) {
+		List<Profile_MemberDTO> memberList = listService.selectMemberList();
 
-		session.setAttribute("referer", request.getRequestURI());
+		request.setAttribute("memberList", memberList);
 
-		System.out.println( session.getAttribute("referer") );
-		// }
-		
+		HttpSession session = request.getSession();
+
+		System.out.println(" 오냐 ? ");
+
+		//if (session.getAttribute("email").equals(null)) {
+			//System.out.println(" 오냐 1 ? ");
+			session.setAttribute("referer", request.getRequestURI());
+
+			System.out.println((String) session.getAttribute("referer"));
+		//}
+
 		// String email = (String)session.getAttribute("email");
 
 		// if( email != null ) System.out.println(email);

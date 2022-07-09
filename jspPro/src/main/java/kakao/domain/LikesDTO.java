@@ -4,7 +4,7 @@ public class LikesDTO {
 	
 	
 	private String el_mainimg;
-	private String el_staticimg;
+	private String el_stopimg;
 	private String el_name;
 	private String el_maker;
 	
@@ -14,11 +14,11 @@ public class LikesDTO {
 	public void setEl_mainimg(String el_mainimg) {
 		this.el_mainimg = el_mainimg;
 	}
-	public String getEl_staticimg() {
-		return el_staticimg;
+	public String getEl_stopimg() {
+		return el_stopimg;
 	}
-	public void setEl_staticimg(String el_staticimg) {
-		this.el_staticimg = el_staticimg;
+	public void setEl_stopimg(String el_stopimg) {
+		this.el_stopimg = el_stopimg;
 	}
 	public String getEl_name() {
 		return el_name;
@@ -36,19 +36,13 @@ public class LikesDTO {
 		super();
 		
 	}
-	public LikesDTO(String el_mainimg, String el_staticimg, String el_name, String el_maker) {
+	public LikesDTO(String el_mainimg, String el_stopimg, String el_name, String el_maker) {
 		super();
 		this.el_mainimg = el_mainimg;
-		this.el_staticimg = el_staticimg;
+		this.el_stopimg = el_stopimg;
 		this.el_name = el_name;
 		this.el_maker = el_maker;
 	}
-	@Override
-	public String toString() {
-		return "LikesDTO [el_mainimg=" + el_mainimg + ", el_staticimg=" + el_staticimg + ", el_name=" + el_name
-				+ ", el_maker=" + el_maker + "]";
-	}
-	
 	
 	
 

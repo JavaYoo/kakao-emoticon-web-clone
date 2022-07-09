@@ -29,7 +29,7 @@ public class ReceivedDAO {
 		   // Connection conn = DBconn.getConnection();
 		   PreparedStatement pstmt = null;
 		    		
-		    String sql =	 " select f.gb_date,f.m_nn,c.el_name,c.el_maker,c.el_staticimg"
+		    String sql =	 " select f.gb_date,f.m_nn,c.el_name,c.el_maker,c.el_stopimg"
 				    		+ " from em_elist c"
 				    		+ " inner join ( select b.m_nn,a.gb_date,a.gb_emnum"
 				    		+ "     			from em_giftbox a"
@@ -53,7 +53,7 @@ public class ReceivedDAO {
 		    	 String m_nn;
 		    	 String el_name;
 		    	 String el_maker;
-		    	 String el_staticimg;
+		    	 String el_stopimg;
 		    	 
 		    	 
 		    	 
@@ -65,12 +65,12 @@ public class ReceivedDAO {
 		        		
 		        		gb_date=rs.getDate("gb_date");
 		        		m_nn=rs.getString("m_nn");
-		        		el_staticimg=rs.getString("el_staticimg");
+		        		el_stopimg=rs.getString("el_stopimg");
 		        		el_name=rs.getString("el_name");
 		        		el_maker=rs.getString("el_maker");
 		        	
 		        		
-		        		ReceivedDTO dto=new ReceivedDTO(gb_date, m_nn, el_name, el_maker, el_staticimg);
+		        		ReceivedDTO dto=new ReceivedDTO(gb_date, m_nn, el_name, el_maker, el_stopimg);
 		        		PresentReceivedList.add(dto);
 		        	}while( rs.next() );
 		        } // if

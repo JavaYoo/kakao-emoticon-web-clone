@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 .main_mypage {
 	max-width: 1024px;
 	margin: 0 auto;
@@ -637,4 +636,51 @@
 	.main_mypage .list_notice {
 		padding: 14px 0 18px
 	}
+	.area_mypage .area_empty {
+    height: calc(100% - 172px);
+    }
+    .wrap_empty .area_empty {
+    height: calc(100% - 80px);
+    padding: 80px 0;
+	}
+	.wrap_empty .area_empty .img_empty {
+    width: 105px;
+    height: 105px;
+	}
+	.wrap_empty .area_empty .tit_empty {
+	    font-size: 16px;
+	}
+	.wrap_empty .area_empty .desc_empty {
+    padding: 0 24px;
+    font-size: 12px;
+    line-height: 16px;
+	}
+
+}
+.wrap_empty .area_empty {
+    display: table;
+    width: 100%;
+    padding: 100px 0;
+}
+.wrap_empty .area_empty .inner_area {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.wrap_empty .area_empty .img_empty {
+    width: 124px;
+    height: 124px;
+}
+.wrap_empty .area_empty .tit_empty {
+    display: block;
+    margin: 12px 0 4px;
+    font-weight: normal;
+    font-family: "notokr-bold",sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+}
+.wrap_empty .area_empty .desc_empty {
+    font-size: 13px;
+    line-height: 20px;
+    color: #7f7f7f;
 }

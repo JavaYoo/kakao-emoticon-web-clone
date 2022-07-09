@@ -9,7 +9,7 @@ public class ReceivedDTO {
 	private String m_nn;
 	private String el_name;
 	private String el_maker;
-	private String el_staticimg;
+	private String el_stopimg;
 	
 	public Date getGb_date() {
 		return gb_date;
@@ -35,30 +35,25 @@ public class ReceivedDTO {
 	public void setEl_maker(String el_maker) {
 		this.el_maker = el_maker;
 	}
-	public String getEl_staticimg() {
-		return el_staticimg;
+	public String getEl_stopimg() {
+		return el_stopimg;
 	}
-	public void setEl_staticimg(String el_staticimg) {
-		this.el_staticimg = el_staticimg;
+	public void setEl_stopimg(String el_stopimg) {
+		this.el_stopimg = el_stopimg;
 	}
 	public ReceivedDTO() {
 		super();
 	
 	}
-	public ReceivedDTO(Date gb_date, String m_nn, String el_name, String el_maker, String el_staticimg) {
+	public ReceivedDTO(Date gb_date, String m_nn, String el_name, String el_maker, String el_stopimg) {
 		super();
 		this.gb_date = gb_date;
 		this.m_nn = m_nn;
 		this.el_name = el_name;
 		this.el_maker = el_maker;
-		this.el_staticimg = el_staticimg;
+		this.el_stopimg = el_stopimg;
 	}
-	@Override
-	public String toString() {
-		return "ReceivedDTO [gb_date=" + gb_date + ", m_nn=" + m_nn + ", el_name=" + el_name + ", el_maker=" + el_maker
-				+ ", el_staticimg=" + el_staticimg + "]";
-	}
-	
+
 	
 
 	

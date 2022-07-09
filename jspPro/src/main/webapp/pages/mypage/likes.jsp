@@ -11,8 +11,8 @@
 <%String email = (String)session.getAttribute("email"); %>
 <link rel="shortcut icon" type="image/x-icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css?ver=1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagelikes.css?ver=1">
+<link rel="stylesheet" href="../../css/mypages/mypage.css?ver=1">
+<link rel="stylesheet" href="../../css/mypages/mypagelikes.css?ver=1">
 
 </head>
 <body>
@@ -132,12 +132,12 @@
 								<strong class="screen_out">마이페이지 메인 메뉴</strong>
 								<strong class="screen_out">마이페이지 메인 메뉴</strong>
 								<ul class="list_tab" style="transform: translate(0px, 0px);">
-									<li class=""><a class="link_tab" href="<%=contextPath %>/purchases.do?id=email">구매내역</a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
-										href="<%=contextPath %>/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/coupons.do?id=email">쿠폰함<span
-											class="num_tab">1</span></a></li>
-									<li class="on"><a class="link_tab" href="<%=contextPath %>/likes.do?id=email">좋아요<span
+										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
+											class="num_tab">${fn:length(couponsList)}</span></a></li>
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
 											class="num_tab">2</span><span class="screen_out">선택됨</span></a></li>
 								</ul>
 							</div>
@@ -175,12 +175,12 @@
 								</h3>
 								<strong class="screen_out">마이페이지 메인 메뉴</strong>
 								<ul class="list_tab" style="transform: translate(0px, 0px);">
-									<li class=""><a class="link_tab" href="<%=contextPath %>/purchases.do?id=email">구매내역</a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
-										href="<%=contextPath %>/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/coupons.do?id=email">쿠폰함<span
-											class="num_tab">1</span></a></li>
-									<li class="on"><a class="link_tab" href="<%=contextPath %>/likes.do?id=email">좋아요<span
+										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
+											class="num_tab">${fn:length(couponsList)}</span></a></li>
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
 											class="num_tab">2</span><span class="screen_out">선택됨</span></a></li>
 								</ul>
 							</div>
@@ -198,7 +198,7 @@
 											<!-- 안움직이는 대표 이미지 -->
 									<a class="link_product" aria-label="마음이는 즐거워~~~ 21 상세"
 										href="/t/happy-heart-kid-ver-21"><span class="unit_emot"><img
-											src="${dto.el_staticimg}"  
+											src="${dto.el_stopimg}"  
 											class="img_emot img_default" alt=""><img
 											src="${dto.el_mainimg}"
 											class="img_emot img_hover" alt=""></span></a>
@@ -295,8 +295,8 @@
 	<iframe src="https://bid.g.doubleclick.net/xbbe/pixel?d=KAE"
 		style="display: none;"></iframe> -->
 		
-<script src="js/sidemenu.js"></script>	
-<script src="js/snum.js"></script>	
+<script src="../../js/sidemenu.js"></script>	
+<script src="../../js/snum.js"></script>	
 
 <!-- <script>
 

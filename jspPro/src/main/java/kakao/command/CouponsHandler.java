@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kakao.domain.CouponsDTO;
 import kakao.domain.UsedCouponsDTO;
@@ -17,7 +18,10 @@ public class CouponsHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String id=request.getParameter("id");
+		/* String id=request.getParameter("id"); */
+		
+		HttpSession session = request.getSession(); 
+	      String id= (String) session.getAttribute("email");
 		
 		CouponsService couponsService  = CouponsService.getInstance();
 	      List<CouponsDTO> couponsList = couponsService.selectCouponsList(id);
@@ -29,7 +33,7 @@ public class CouponsHandler implements CommandHandler {
 	      
 	     
 	      // 포워딩
-	      return "/mypage/coupons.jsp";
+	      return "/pages/mypage/coupons.jsp";
 		
 	}
 

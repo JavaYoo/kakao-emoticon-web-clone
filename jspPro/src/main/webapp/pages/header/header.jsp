@@ -10,6 +10,7 @@
 <title>카카오 이모티콘샵</title>
 <link rel="shortcut icon"
 	href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
+<%String email=(String)session.getAttribute("email"); %>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../../css/header/header.css?ver=3" />
@@ -147,13 +148,13 @@
 								class="screen_out">나의 이용정보</strong>
 							<ul class="list_mymenu">
 								<li><a class="link_mymenu"
-									href="<%=contextPath %>/purchases.do?id=email"><span
+									href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
 										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
 								<li><a class="link_mymenu"
-									href="<%=contextPath %>/received.do?id=email"><span
+									href="<%=contextPath %>/pages/mypage/received.do?id=email"><span
 										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
 								<li><a class="link_mymenu"
-									href="<%=contextPath %>/coupons.do?id=email">
+									href="<%=contextPath %>/pages/mypage/coupons.do?id=email">
 									<span class="ico_comm ico_menunew">신규</span>
 									<span class="ico_comm ico_coupon"></span>
 									<span class="txt_mymenu">쿠폰함
@@ -329,10 +330,6 @@
 							</span>
 						</button>
 					</c:if>
-
-					<script>
-						
-					</script>
 
 					<!-- 회원 로그인 후 프로필 클릭하면 보이는 프로필창 -->
 					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">

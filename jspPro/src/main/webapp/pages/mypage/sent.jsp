@@ -12,8 +12,8 @@
 <title>카카오 이모티콘샵</title>
 <%String email = (String)session.getAttribute("email"); %>
 <link rel="shortcut icon" type="image/x-icon"href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css?ver=2">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagesent.css?ver=2">
+<link rel="stylesheet" href="../../css/mypages/mypage.css?ver=2">
+<link rel="stylesheet" href="../../css/mypages/mypagesent.css?ver=2">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -183,13 +183,13 @@
 								</h3>
 								<strong class="screen_out">마이페이지 메인 메뉴</strong>
 								<ul class="list_tab">
-									<li class=""><a class="link_tab" href="<%=contextPath %>/purchases.do?id=email">구매내역</a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class="on"><a class="link_tab"
-										href="<%=contextPath %>/received.do?id=email">선물함<span
+										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함<span
 											class="screen_out">선택됨</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/coupons.do?id=email">쿠폰함<span
-											class="num_tab">1</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/likes.do?id=email">좋아요<span
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
+											class="num_tab">${fn:length(couponsList)}</span></a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
 											class="num_tab">2</span></a></li>
 								</ul>
 							</div>
@@ -199,10 +199,10 @@
 						<h4 class="tit_mypage">
 							<strong class="screen_out">선물함 메뉴</strong>
 							<ul class="list_tit">
-								<li><a class="link_tit" href="<%=contextPath %>/received.do?id=email">받은
+								<li><a class="link_tit" href="<%=contextPath %>/pages/mypage/received.do?id=email">받은
 										선물함</a></li>
 								<li class="on"><a class="link_tit"
-									href="<%=contextPath %>/sent.do?id=email">보낸 선물함<span class="screen_out">선택됨</span></a></li>
+									href="<%=contextPath %>/pages/mypage/sent.do?id=email">보낸 선물함<span class="screen_out">선택됨</span></a></li>
 							</ul>
 						</h4>
 						<strong class="screen_out">보낸 선물함 본문</strong>
@@ -234,13 +234,13 @@
 								</h3>
 								<strong class="screen_out">마이페이지 메인 메뉴</strong>
 								<ul class="list_tab">
-									<li class=""><a class="link_tab" href="<%=contextPath %>/purchases.do?id=email">구매내역</a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class="on"><a class="link_tab"
-										href="<%=contextPath %>/received.do?id=email">선물함<span
+										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함<span
 											class="screen_out">선택됨</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/coupons.do?id=email">쿠폰함<span
-											class="num_tab">1</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/likes.do?id=email">좋아요<span
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
+											class="num_tab">${fn:length(couponsList)}</span></a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
 											class="num_tab">2</span></a></li>
 								</ul>
 							</div>
@@ -250,10 +250,10 @@
 						<h4 class="tit_mypage">
 							<strong class="screen_out">선물함 메뉴</strong>
 							<ul class="list_tit">
-								<li><a class="link_tit" href="<%=contextPath %>/received.do?id=email">받은
+								<li><a class="link_tit" href="<%=contextPath %>/pages/mypage/received.do?id=email">받은
 										선물함</a></li>
 								<li class="on"><a class="link_tit"
-									href="<%=contextPath %>/sent.do?id=email">보낸 선물함<span class="screen_out">선택됨</span></a></li>
+									href="<%=contextPath %>/pages/mypage/sent.do?id=email">보낸 선물함<span class="screen_out">선택됨</span></a></li>
 							</ul>
 						</h4>
 						<strong class="screen_out">보낸 선물함 본문</strong>
@@ -266,7 +266,7 @@
 							<div class="area_itemlist">
 									<dl class="item_list">
 										<dt>결제번호</dt>
-										<dd class="txt_num">${dto.gb_paynum}</dd>
+										<dd class="txt_num">${dto.gb_seq}</dd>
 										<dt>결제금액</dt>
 										<dd class="txt_price">
 											<em class="txt_num">${dto.gb_payprice}</em>원
@@ -287,7 +287,7 @@
 										</div>
 										<div class="area_itememoticon">
 											<img
-												src="${dto.el_staticimg}"
+												src="${dto.el_stopimg}"
 												class="img_emot" alt="이미지">
 										</div></a>
 								</div></li>
@@ -373,8 +373,8 @@
 	</div>
 	
 <!-- <script src="/bundle.js"></script> -->
-<script src="js/sidemenu.js"></script>	
-<script src="js/snum.js"></script>	
+<script src="../../js/sidemenu.js"></script>	
+<script src="../../js/snum.js"></script>	
 
 
 

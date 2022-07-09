@@ -27,16 +27,13 @@ public class HotHandler implements CommandHandler{
 		request.setAttribute("hotList", hotList);
 		request.setAttribute("hotNewList", hotNewList);
 		
-		
 		HttpSession session = request.getSession(false);
-		
 		
 		//if( session.getAttribute("email").equals(null) ) {
 		
 		session.setAttribute("referer" , request.getRequestURI());
 		
 		//}
-		
 		
 		return "/pages/hot/hot.jsp";
 	}

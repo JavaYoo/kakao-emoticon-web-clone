@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kakao.domain.CouponsDTO;
 import kakao.domain.ReceivedDTO;
@@ -15,7 +16,10 @@ public class ReceivedHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String id=request.getParameter("id");
+		/* String id=request.getParameter("id"); */
+		
+		HttpSession session = request.getSession(); 
+	      String id= (String) session.getAttribute("email");
 		
 		ReceivedService receivedService  = ReceivedService.getInstance();
 	      List<ReceivedDTO> receivedList = receivedService.selectPresentReceivedList(id);
@@ -27,7 +31,7 @@ public class ReceivedHandler implements CommandHandler {
 	      
 	     
 	      // 포워딩
-	      return "/mypage/received.jsp";
+	      return "/pages/mypage/received.jsp";
 		
 	}
 

@@ -29,10 +29,10 @@ public class SentDAO {
 		   // Connection conn = DBconn.getConnection();
 		   PreparedStatement pstmt = null;
 		    		
-		    String sql =	 " select f.gb_date,f.m_nn,f.gb_paynum,f.gb_payway,f.gb_payprice,f.gb_state,c.el_name,c.el_maker,c.el_staticimg"
+		    String sql =	 " select f.gb_date,f.m_nn,f.gb_seq,f.gb_payway,f.gb_payprice,f.gb_state,c.el_name,c.el_maker,c.el_stopimg"
 		    		+ " from em_elist c"
 		    		+ " inner join(    "
-		    		+ "             select b.m_nn,a.gb_date,a.gb_paynum,a.gb_payway,a.gb_state,a.gb_payprice,a.gb_emnum"
+		    		+ "             select b.m_nn,a.gb_date,a.gb_seq,a.gb_payway,a.gb_state,a.gb_payprice,a.gb_emnum"
 		    		+ "             from em_giftbox a"
 		    		+ "             inner join em_member b"
 		    		+ "                on a.gb_getid=b.m_id"
@@ -54,11 +54,11 @@ public class SentDAO {
 		      
 		         Date gb_date;
 		    	 String m_nn;
-		    	 long gb_paynum;
+		    	 int gb_seq;
 		    	 String gb_payway;
 		    	 int gb_payprice;
 		    	 String gb_state;
-		    	 String el_staticimg;
+		    	 String el_stopimg;
 		    	 String el_name;
 		    	 String el_maker;
 		    	 
@@ -70,16 +70,16 @@ public class SentDAO {
 		        		
 		        		gb_date=rs.getDate("gb_date");
 		        		m_nn=rs.getString("m_nn");
-		        		gb_paynum=rs.getLong("gb_paynum");
+		        		gb_seq=rs.getInt("gb_seq");
 		        		gb_payway=rs.getString("gb_payway");
 		        		gb_payprice=rs.getInt("gb_payprice");
 		        		gb_state=rs.getString("gb_state");
-		        		el_staticimg=rs.getString("el_staticimg");
+		        		el_stopimg=rs.getString("el_stopimg");
 		        		el_name=rs.getString("el_name");
 		        		el_maker=rs.getString("el_maker");
 		        	
 		        		
-		        		SentDTO dto=new SentDTO(gb_date, m_nn, gb_paynum, gb_payway, gb_payprice, gb_state, el_staticimg, el_name, el_maker);
+		        		SentDTO dto=new SentDTO(gb_date, m_nn, gb_seq, gb_payway, gb_payprice, gb_state, el_stopimg, el_name, el_maker);
 		        		PresentSentList.add(dto);
 		        	}while( rs.next() );
 		        } // if

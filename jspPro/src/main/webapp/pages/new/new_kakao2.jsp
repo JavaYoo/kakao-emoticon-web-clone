@@ -14,8 +14,10 @@
 <script src="../../js/sangho/httpRequest.js"></script>
 </head>
 <body>
-<% String ses = (String)session.getAttribute("email"); %>
-<% String contextPath = request.getContextPath(); %>
+<% 
+	String ses = (String)session.getAttribute("email");  
+	String contextPath = request.getContextPath(); 
+%>
 	<div id="root" style="height: 100%;">
 		<div id="kakaoWrap" class="">
 			<div id="kakaoHead" class="emoticon_head">
@@ -44,10 +46,10 @@
 				<nav id="kakaoGnb">
 					<h2 class="screen_out">kakao emoticon shop 메인메뉴</h2>
 					<ul class="list_gnb">
-						<li class=""><a class="link_gnb" href="/" >홈<%=ses%></a></li>
-						<li class="on"><a class="link_gnb" href="/item/new">신규</a></li>
-						<li class=""><a class="link_gnb" href="/item/hot">인기</a></li>
-						<li class=""><a class="link_gnb" href="/item/style">스타일</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈<%=ses%></a></li>
+						<li class="on"><a class="link_gnb" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
+						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -64,7 +66,7 @@
 					</div>
 					
 					<div>
-					<button onclick="onTest()">test</button>
+					<!-- <button onclick="onTest()">test</button> -->
 					</div>
 					<ul class="list_new">
 						<c:forEach items="${  emap   }" var="emap" >
@@ -114,7 +116,7 @@
 			});
 
 			</script>
-			
+			<!-- 
 			<script>
 			
 			let page = 1
@@ -126,7 +128,7 @@
 					};
 				
 
-				/* alert(params2.currentPage); */
+				//alert(params2.currentPage);
 				
 				
 					 $.ajax({
@@ -138,7 +140,7 @@
 						success : function(data, textStatus, jqXHR) {
 							
 							console.log(data)
-						/* 	if (data.count == 0) {
+						if (data.count == 0) {
 								$("#giftForm").submit();
 								alert("선물하기 완료!!!");
 							}
@@ -151,7 +153,7 @@
 										"block");
 
 							}
- */
+
 						},
 						error : function() {
 							alert("ajax 에러");
@@ -160,7 +162,7 @@
 				
 			}
 			</script>
-			
+			 -->
 			
 			<div id="kakaoFoot" class="foot_group">
 				<div class="area_footer">

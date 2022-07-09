@@ -107,7 +107,7 @@ String contextPath = request.getContextPath();
 									</span> 
 									<span class="tit_thumb">${ memberList.m_nn }</span> 
 									<span class="desc_email">${ memberList.m_id }</span>
-									<button class="btn_logout" id="btn_logout">로그아웃</button>
+									<button class="btn_logout" id="btn_logout" >로그아웃</button>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -250,27 +250,11 @@ String contextPath = request.getContextPath();
 					<div></div>
 				</div>
 			</div> <!-- content -->
-			
-			
-			
-			
-			
+
 			
          </div> <!-- #kakaoWrap -->
 	</div> <!-- #root -->
-         
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 <script type="text/javascript">
 		/* 검색 관련 */
@@ -342,20 +326,7 @@ String contextPath = request.getContextPath();
 		
 		/* 로그아웃 */
 		
-		$("#btn_em_logout").on("click", function() {
-			//sessionStorage.clear();  //세션 데이터 삭제
-			
-			 <% session.removeAttribute("email"); %>
-			location.reload(); //새로고침
-		});
 		
-		$("#btn_logout").on("click", function() {
-			//sessionStorage.clear();  //세션 데이터 삭제
-			
-			 <% session.removeAttribute("email"); %>
-			location.reload(); //새로고침
-		});
-		 
 	</script>
 
 

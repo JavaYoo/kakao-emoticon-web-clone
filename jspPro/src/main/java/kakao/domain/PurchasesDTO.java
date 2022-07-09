@@ -5,7 +5,7 @@ import java.util.Date;
 public class PurchasesDTO {
 	
 	private String bl_id;
-	private int bl_paynum;
+	private int bl_seq;
 	private String bl_payway;
 	private int bl_num;
 	private Date bl_date;
@@ -13,7 +13,7 @@ public class PurchasesDTO {
 	private String bl_state;
 	private String el_name;
 	private String el_maker;
-	private String el_staticimg;
+	private String el_stopimg;
 	
 	public String getBl_id() {
 		return bl_id;
@@ -21,11 +21,11 @@ public class PurchasesDTO {
 	public void setBl_id(String bl_id) {
 		this.bl_id = bl_id;
 	}
-	public int getBl_paynum() {
-		return bl_paynum;
+	public int getBl_seq() {
+		return bl_seq;
 	}
-	public void setBl_paynum(int bl_paynum) {
-		this.bl_paynum = bl_paynum;
+	public void setBl_seq(int bl_seq) {
+		this.bl_seq = bl_seq;
 	}
 	public String getBl_payway() {
 		return bl_payway;
@@ -69,21 +69,21 @@ public class PurchasesDTO {
 	public void setEl_maker(String el_maker) {
 		this.el_maker = el_maker;
 	}
-	public String getEl_staticimg() {
-		return el_staticimg;
+	public String getEl_stopimg() {
+		return el_stopimg;
 	}
-	public void setEl_staticimg(String el_staticimg) {
-		this.el_staticimg = el_staticimg;
+	public void setEl_stopimg(String el_stopimg) {
+		this.el_stopimg = el_stopimg;
 	}
 	public PurchasesDTO() {
 		super();
 	
 	}
-	public PurchasesDTO(String bl_id, int bl_paynum, String bl_payway, int bl_num, Date bl_date, int el_price,
-			String bl_state, String el_name, String el_maker, String el_staticimg) {
+	public PurchasesDTO(String bl_id, int bl_seq ,String bl_payway, int bl_num, Date bl_date, int el_price,
+			String bl_state, String el_name, String el_maker, String el_stopimg) {
 		super();
 		this.bl_id = bl_id;
-		this.bl_paynum = bl_paynum;
+		this.bl_seq = bl_seq;
 		this.bl_payway = bl_payway;
 		this.bl_num = bl_num;
 		this.bl_date = bl_date;
@@ -91,18 +91,7 @@ public class PurchasesDTO {
 		this.bl_state = bl_state;
 		this.el_name = el_name;
 		this.el_maker = el_maker;
-		this.el_staticimg = el_staticimg;
+		this.el_stopimg = el_stopimg;
 	}
-	@Override
-	public String toString() {
-		return "PurchasesDTO [bl_id=" + bl_id + ", bl_paynum=" + bl_paynum + ", bl_payway=" + bl_payway + ", bl_num="
-				+ bl_num + ", bl_date=" + bl_date + ", el_price=" + el_price + ", bl_state=" + bl_state + ", el_name="
-				+ el_name + ", el_maker=" + el_maker + ", el_staticimg=" + el_staticimg + "]";
-	}
-	
-	
-	
-	
-
 	
 }
