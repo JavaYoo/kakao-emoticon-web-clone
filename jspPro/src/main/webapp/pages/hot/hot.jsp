@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ include file="../include.jspf" %>
+<%@ include file="../auth.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>카카오 이모티콘샵</title>
 <link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
-<link rel="stylesheet" href="../../css/header/header.css" />
+<link rel="stylesheet" href="../../css/header/header.css?ver2" />
 <link rel="stylesheet" href="../../css/hot/hot.css?ver=1"  />
-<%
-String contextPath = request.getContextPath(); 
-%>
+
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -30,17 +31,19 @@ String contextPath = request.getContextPath();
 
 			<!-- 로그인 하면 나오는 띠배너 -->
 			<c:if test="${ not empty sessionScope.email }">
+			<%-- <c:if test="${ not empty param.id }"> --%>
 				<div class="kakaoTopbnr">
 					<div class="wrap_topbnr"
 						style="background-color: rgb(152, 232, 231);">
 						<div class="inner_topbnr">
-							<a href="https://my.kakao.com/product/EMOTICON001?t_src=emoticon&amp;t_ch=webstore&amp;t_obj=web_gnb_banner"
-								class="link_bnr"> 
-								<span class="txt_info" style="color: rgb(0, 0, 0);">이모티콘 무제한! 웹에선 평생 할인</span> 
-								<span class="unit_coupon"> 
-									<img src="https://item.kakaocdn.net/dn/e1iAq/btrFiaXi8G1/wYPKhfbRvUgCYIgsxc9V5k/img.png"
+							<a
+								href="https://my.kakao.com/product/EMOTICON001?t_src=emoticon&amp;t_ch=webstore&amp;t_obj=web_gnb_banner"
+								class="link_bnr"> <span class="txt_info"
+								style="color: rgb(0, 0, 0);">이모티콘 무제한! 웹에선 평생 할인</span> <span
+								class="unit_coupon"> 
+								<img src="https://item.kakaocdn.net/dn/e1iAq/btrFiaXi8G1/wYPKhfbRvUgCYIgsxc9V5k/img.png"
 									class="img_coupon" alt="띠배너이미지">
-								</span>
+							</span>
 							</a>
 						</div>
 						<button class="btn_close_tb" aria-label="띠배너닫기">
@@ -50,13 +53,227 @@ String contextPath = request.getContextPath();
 				</div>
 			</c:if>
 
-
-
 			<div id="kakaoHead" class="emoticon_head">
+			
+			<c:if test="${ empty sessionScope.email }">
+					<div class="wrap_menu">
+						<div class="inner_menu">
+							<a href="#" class="wrap_profile"><span class="wrap_thumb"><span
+									class="inner_thumb"><img class="thumb_user"
+										src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+										alt="사용자"></span></span><span class="wrap_name"><span
+									class="txt_name">로그인<span
+										class="ico_comm ico_logarr_type1"></span></span></span></a><strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li id="menu1"><a class="link_mymenu"
+								 href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/recevied.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/coupons.do?id=email"><span
+										class="ico_comm ico_coupon"></span><span class="txt_mymenu">쿠폰함</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요</span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" href="/">홈</a></li>
+								<li><a class="link_nav" href="/item/new">신규</a></li>
+								<li><a class="link_nav" href="/item/hot">인기</a></li>
+								<li><a class="link_nav" href="/item/style">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="/notices">새소식</a></li>
+								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="/"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakao
+								Corp</a>
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+
+					<div class="alert_layer" id="alert_logon">
+						<div class="inner_layer">
+							<div class="layer_body">
+								<strong class="txt_info">로그인 후 이용해주세요.</strong>
+							</div>
+							<div class="layer_foot">
+								<button class="btn_s btn_m" id="alert_close">취소</button>
+								<button class="btn_g btn_m">로그인</button>
+							</div>
+						</div>
+						<button type="button" class="btn_close">
+							<span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
+						</button>
+					</div>
+					<div class="dimmed_layer dim_over"></div>
+				</c:if>
+
+
+				<c:if test="${ not empty sessionScope.email }">
+				<%-- <c:if test="${ not empty param.id }"> --%>
+					<div class="wrap_menu" id=logonmenu style="display: none">
+						<div class="inner_menu">
+							<c:forEach var="memberList" items="${ memberList }">
+								<c:if test="${ memberList.m_id eq sessionScope.email }">
+								<%-- <c:if test="${ memberList.m_id eq param.id }"> --%> 
+									<span class="wrap_profile">
+										<span class="wrap_thumb">
+											<span class="inner_thumb">
+												<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												alt="사용자">
+											</span>
+										</span>
+									<span class="wrap_name">
+										<span class="txt_name">${ memberList.m_nn }</span>
+										<span class="txt_email">${ memberList.m_id }</span>
+									</span>
+								</span>
+								</c:if>
+							</c:forEach>
+							
+							
+						<strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li id="menu1"><a class="link_mymenu"
+								 href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/recevied.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/coupons.do?id=email">
+									<span class="ico_comm ico_menunew">신규</span>
+									<span class="ico_comm ico_coupon"></span>
+									<span class="txt_mymenu">쿠폰함
+											<c:if test="${not empty couponsList}">
+
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+									</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요<em
+											class="txt_count">2<span class="screen_out">개</span></em></span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" href="/">홈</a></li>
+								<li><a class="link_nav" href="/item/new">신규</a></li>
+								<li><a class="link_nav" href="/item/hot">인기</a></li>
+								<li><a class="link_nav" href="/item/style">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="/notices">새소식</a></li>
+								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a href="#" class="link_aside" id="logout">로그아웃</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="/"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
+
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+				</c:if>
+
+
+				<c:if test="${ not empty sessionScope.email }">
+				<%-- <c:if test="${ not empty param.id }"> --%>
+					<div class="wrap_menu" id=logonmenu style="display: none">
+						<div class="inner_menu">
+							<c:forEach var="memberList" items="${ memberList }">
+							<c:if test="${ memberList.m_id eq sessionScope.email }">
+								<%-- <c:if test="${ memberList.m_id eq param.id }">  --%>
+									<span class="wrap_profile">
+										<span class="wrap_thumb">
+											<span class="inner_thumb">
+												<img class="thumb_user"
+												src="${ memberList.m_pimg }"
+												alt="사용자">
+											</span>
+										</span>
+									<span class="wrap_name">
+										<span class="txt_name">${ memberList.m_nn }</span>
+										<span class="txt_email">${ memberList.m_id }</span>
+									</span>
+								</span>
+								</c:if>
+							</c:forEach>
+							
+							
+						<strong
+								class="screen_out">나의 이용정보</strong>
+							<ul class="list_mymenu">
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
+										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/received.do?id=email"><span
+										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/pages/mypage/coupons.do?id=email">
+									<span class="ico_comm ico_menunew">신규</span>
+									<span class="ico_comm ico_coupon"></span>
+									<span class="txt_mymenu">쿠폰함
+											<c:if test="${not empty couponsList}">
+
+												<!--   쿠폰리스트 핸들러에서 받아와야할듯? 개수 표시 -->
+												<em class="txt_count">${fn:length(couponsList)}<span
+													class="screen_out">개</span></em>
+											</c:if>
+									</span></a></li>
+								<li><a class="link_mymenu"
+									href="<%=contextPath %>/likes.do?id=email"><span
+										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요<em
+											class="txt_count">2<span class="screen_out">개</span></em></span></a></li>
+							</ul>
+							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
+							<ul class="list_nav">
+								<li><a class="link_nav" href="/jspPro/pages/home/home.do">홈</a></li>
+								<li><a class="link_nav" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
+								<li><a class="link_nav" href="/jspPro/pages/hot/hot.do">인기</a></li>
+								<li><a class="link_nav" href="/jspPro/pages/style/style.do">스타일</a></li>
+							</ul>
+							<ul class="list_aside">
+								<li><a class="link_aside" href="/notices">새소식</a></li>
+								<li><a class="link_aside" href="/faq">자주묻는 질문</a></li>
+								<li><a href="#" class="link_aside" target="_blank"
+									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a href="#" class="link_aside" id="logout">로그아웃</a></li>
+							</ul>
+						</div>
+						<div class="wrap_copyright">
+							<a class="link_shop" href="/"><span
+								class="ico_comm ico_menulogo">카카오이모티콘 샵</span></a><a
+								href="https://www.kakaocorp.com" class="link_corp">@ kakaoCorp</a>
+						</div>
+					</div>
+					<div class="dimmed_menu" style="display: none"></div>
+				</c:if>
 				<div class="k_head">
 					<button class="link_menu" id="side_open">
 						<span class="ico_comm ico_menu">사이드메뉴 열기</span>
 						<c:if test="${ not empty sessionScope.email }">
+						<%-- <c:if test="${ not empty param.id }"> --%>
 							<span class="ico_comm ico_new">new</span> 
 						</c:if>
 					</button>
@@ -72,33 +289,54 @@ String contextPath = request.getContextPath();
 					<button class="link_search">
 						<span class="ico_comm ico_search">검색하기</span>
 					</button>
-					<button class="link_my" >
-						<span class="wrap_thumb">
-							<span class="inner_thumb">
-								<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
+					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin'}">
+								<%-- <c:if test="${ not empty param.id && param.id ne 'admin'}"> --%>
+						<button class="link_my">
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
 									<c:forEach var="memberList" items="${ memberList }">
 										<c:if test="${ memberList.m_id eq sessionScope.email }">
+										<%-- <c:if test="${ memberList.m_id eq param.id }"> --%>
 											<img class="thumb_user"
 												src="${ memberList.m_pimg }"
 												width="28px" height="28px" alt="사용자">
 										</c:if>
 									</c:forEach>
-								</c:if>
-								<c:if test="${ empty sessionScope.email || sessionScope.email eq 'admin' }">
-									<a href="/"> <!-- 로그인 페이지 -->
+								</span>
+							</span>
+						</button>
+					</c:if>
+								
+					<c:if test="${ empty sessionScope.email }">
+								<%-- <c:if test="${ empty param.id || param.id eq 'admin' }"> --%>
+						<button class="link_my" onclick="location.href='../login/login_kakao.do'">
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
+									<img class="thumb_user"
+											src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
+											width="28px" height="28px" alt="사용자">
+								</span>
+							</span>
+						</button>
+					</c:if>
+					<c:if test="${ sessionScope.email eq 'admin' }">
+						<button class="link_my" >
+							<span class="wrap_thumb">
+								<span class="inner_thumb">
 										<img class="thumb_user"
 												src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/profile_default.png"
-												width="28px" height="28px" alt="사용자" >
-									</a>
-								</c:if>
+												width="28px" height="28px" alt="사용자">
+								</span>
 							</span>
-						</span>
-					</button>
+						</button>
+					</c:if>
 
-					<!-- 로그인 후 프로필 클릭하면 보이는 프로필창 -->
+					<!-- 회원 로그인 후 프로필 클릭하면 보이는 프로필창 -->
 					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">
+					<%-- <c:if test="${ not empty param.id && param.id ne 'admin' }"> --%>
 						<c:forEach var="memberList" items="${ memberList }">
-							<c:if test="${ memberList.m_id eq email }">
+							<c:if test="${ memberList.m_id eq sessionScope.email }">
+							<%-- <c:if test="${ memberList.m_id eq param.id }"> --%>
 								<div class="profile_layer">
 		`							<span class="wrap_thumb"> 
 										<span class="inner_thumb">
@@ -107,7 +345,7 @@ String contextPath = request.getContextPath();
 									</span> 
 									<span class="tit_thumb">${ memberList.m_nn }</span> 
 									<span class="desc_email">${ memberList.m_id }</span>
-									<button class="btn_logout" id="btn_logout" >로그아웃</button>
+									<button class="btn_logout">로그아웃</button>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -115,16 +353,18 @@ String contextPath = request.getContextPath();
 
 					<!-- 관리자로 로그인할 경우, 프로필 창에 이모티콘 추가 삭제 버튼 -->
 					<c:if test="${ sessionScope.email eq 'admin' }">
+					<%-- <c:if test="${ param.id eq 'admin' }"> --%>
 						<div class="profile_layer">
 			               	<span class="tit_thumb">admin</span>
 			               	<button class="btn_em_add" onclick="location.href='../add_delete/em_add.do'">이모티콘 추가</button>
 			               	<button class="btn_em_delete" onclick="location.href='../add_delete/em_delete.do'">이모티콘 삭제</button>
-			               	<button class="btn_em_logout" id="btn_em_logout">로그아웃</button>
+			               	<button class="btn_em_logout">로그아웃</button>
 		               </div>
 		            </c:if>
 
 					<!-- 로그인 한 경우, 쿠폰 발급 알림 -->
 					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">
+					<%-- <c:if test="${ not empty param.id && param.id ne 'admin' }"> --%>
 		              	<div class="tooltip_layer">
 		               		<div class="area_tooltip">
 		               			<p class="layer_tooltip">
@@ -139,9 +379,9 @@ String contextPath = request.getContextPath();
 
 				</div>
 
-				<div class="search_wrap on">
+				<div class="search_wrap on" style="display:none">
 					<div class="dim_layer"></div>
-					<form class="search-box__form" action="/jspPro/pages/header/search.do">
+					<form class="search-box__form" action="/Kakao/pages/header/search.do">
 						<div class="inner_search">
 							<h3 class="screen_out">이모티콘 검색어 입력</h3>
 							<div class="emoticon_sch">
@@ -168,7 +408,7 @@ String contextPath = request.getContextPath();
 						<!-- 해당 페이지에 클래스 on 넣기  -->
 						<li class=""><a class="link_gnb" href="/jspPro/pages/home/home.do">홈</a></li>
 						<li class=""><a class="link_gnb" href="/jspPro/pages/new/new_kakao.do">신규</a></li>
-						<li class="on"><a class="link_gnb" href="/jspPro/pages/hot/hot.do">인기</a></li>
+						<li class="on"><a class="link_gnb" href="/">인기</a></li>
 						<li class=""><a class="link_gnb" href="/jspPro/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
@@ -255,9 +495,9 @@ String contextPath = request.getContextPath();
          </div> <!-- #kakaoWrap -->
 	</div> <!-- #root -->
 
-	
+
 <script type="text/javascript">
-		/* 검색 관련 */
+		/* 검색 관련 */  
 
 		// 검색 버튼 클릭 
 		$(".link_search").on("click", function() {
@@ -299,6 +539,7 @@ String contextPath = request.getContextPath();
 			$(".btn_delete").css("display", "none");
 		});
 
+		
 		/* 쿠폰알림창 */
 		$(".btn_close_tt").on("click", function() {
 			$(".tooltip_layer").css("display", "none");
@@ -309,14 +550,16 @@ String contextPath = request.getContextPath();
 		$(".btn_close_tb").on("click", function() {
 			$(".kakaoTopbnr").css("display", "none");
 			$(".emoticon_head").css("top", "0px");
-			$(".search_wrap").css("top", "110px");
-			$(".area_hottab").css("margin-top", "0px");
+			$(".search_wrap").css("top", "110px")
+			$(".wrap_menu").css("top","0px");
+	        $(".wrap_menu").css("height", "calc(100%)");
+	        $("#kakaoContent").css("padding-top", "110px");
 		});
 
 		if (${ not empty sessionScope.email }) {
+		//if (${ not empty param.id }) {
 			$(".head_bnr .emoticon_head").css("top", "50px");
 			$(".head_bnr .search_wrap").css("top", "160px");
-			$(".area_hottab").css("margin-top", "50px");
 		}
 
 		/* 프로필 */
@@ -324,11 +567,99 @@ String contextPath = request.getContextPath();
 			$(".profile_layer").toggle();
 		});
 		
-		/* 로그아웃 */
+	</script>
+<!--  -->
+	<script>
+
+	// 누르면 로그인 창 뜨도록 배경은 어둡게 
+	$(".list_mymenu").click(function() {
+	   $(".dimmed_layer").css("display", "block");
+	    $("#alert_logon").css("display", "block");
+	    $(".dimmed_menu").css("display", "block");
+	});
+	
+	//어두운 부분 누르면 다시 돌아감
+	$(".dimmed_layer").on("click", function() {
+	   $(".alert_layer").css("display", "none");
+	   $(".dimmed_layer").css("display","none");
+	});
+	// 로그아웃
+	$(".btn_em_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
 		
-		
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
+	
+	$(".btn_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
+
 	</script>
 
+	<script>
+	
+	// x 버튼
+	 $("#btn_layer_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	//취소 버튼
+	 $("#alert_close").click(function() {
+	    $(".dimmed_layer").css("display", "none");
+	    $("#alert_logon").css("display", "none");
+	 });
+	
+
+	//메뉴 열림
+	 $(".link_menu").on("click",function(){
+		$(".wrap_menu").css("display","block");
+		$(".dimmed_menu").css("display","block");
+		
+		
+		$(".wrap_menu").css("top","50px");
+		$(".wrap_menu").css("height", "calc(94%)");
+		
+		if($(".kakaoTopbnr").is(":visible") == false){
+			$(".wrap_menu").css("top","0px");
+       		$(".wrap_menu").css("height", "calc(100%)");
+		}
+		 
+	}); 
+	
+	$(".dimmed_menu").on("click", function() {
+		$(".wrap_menu").css("display", "none");
+		$(".dimmed_menu").css("display","none");
+		
+	}); 
+	$(".btn_close_tb").on("click",function(){
+		$(".wrap_menu").css("top","0px");
+		$(".wrap_menu").css("height", "calc(100%)");
+	})
+	
+	</script>
+
+	<script>
+	
+	$(".btn_g").click(function() {
+	   location.href="../mypage/purchases.jsp";  
+	});
+	$(".wrap_profile").click(function() {
+	   location.href="../mypage/purchases.jsp";  
+	});
+	
+	</script>
+
+	<script>
+	//이메일을 보내줌? 안보내줌
+	function numbermodal(){
+	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
+	}
+	</script>
 
 
 

@@ -135,17 +135,36 @@
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
 										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
-											class="num_tab">${fn:length(couponsList)}</span></a></li>
-									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
-											class="num_tab">2</span><span class="screen_out">선택됨</span></a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+												<c:if test="${not empty couponsList}">
+														<span class="num_tab">${fn:length(couponsList)}</span>
+												</c:if>
+												
+												<c:if test="${empty couponsList}">
+														<span class="num_tab"></span>
+												</c:if>
+												</a>
+												</li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
+										
+													<span class="num_tab"></span>
+										
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="main_mypage">
 						<h4 class="tit_mypage">
-							<span class="txt_tit">좋아요<span class="tit_num">2</span></span>
+							<span class="txt_tit">좋아요
+							<c:if test="${not empty likesList}">
+							   <span class="num_tab"></span>
+							</c:if>
+							<c:if test="${empty likesList}">
+							   <span class="num_tab"></span>
+							</c:if>
+							</span>
 						</h4>
 						<strong class="screen_out">좋아요 본문</strong>
 							
@@ -178,10 +197,26 @@
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
 										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
-											class="num_tab">${fn:length(couponsList)}</span></a></li>
-									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
-											class="num_tab">2</span><span class="screen_out">선택됨</span></a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+												<c:if test="${not empty couponsList}">
+														<span class="num_tab">${fn:length(couponsList)}</span>
+												</c:if>
+												
+												<c:if test="${empty couponsList}">
+														<span class="num_tab"></span>
+												</c:if>
+												</a>
+												</li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
+										<c:if test="${not empty likesList}">
+														<span class="num_tab">${fn:length(likesList)}</span>
+											</c:if>
+											
+											<c:if test="${empty likesList}">
+													<span class="num_tab"></span>
+											</c:if>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -189,7 +224,7 @@
 					
 					<div class="main_mypage">
 						<h4 class="tit_mypage">
-							<span class="txt_tit">좋아요<span class="tit_num">2</span></span>
+							<span class="txt_tit">좋아요<span class="tit_num">${fn:length(likesList)}</span></span>
 						</h4>
 						<strong class="screen_out">좋아요 본문</strong>
 						<ul class="list_emoticonshop list_like">

@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kakao.domain.CouponsDTO;
+import kakao.domain.LikesDTO;
 import kakao.domain.UsedCouponsDTO;
 import kakao.service.CouponsService;
+import kakao.service.LikesService;
 import kakao.service.UsedCouponsService;
 
 
@@ -30,6 +32,10 @@ public class CouponsHandler implements CommandHandler {
 	      UsedCouponsService usedcouponsService  = UsedCouponsService.getInstance();
 	      List<UsedCouponsDTO> usedcouponsList = usedcouponsService.selectUsedCouponsList(id);
 	      request.setAttribute("usedcouponsList", usedcouponsList);
+	      
+	      LikesService likesService  = LikesService.getInstance();
+	      List<LikesDTO> likesList = likesService.selectLikesList(id);
+	      request.setAttribute("likesList", likesList);
 	      
 	     
 	      // 포워딩

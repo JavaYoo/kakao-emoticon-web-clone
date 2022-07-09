@@ -22,6 +22,8 @@ public class HotHandler implements CommandHandler{
 		List<HotDTO> hotList = listService.selectHotList();
 		List<HotNewDTO> hotNewList = listService.selectHotNewList();
 		List<Profile_MemberDTO> memberList = listService.selectMemberList();
+		
+		String referer = null;
 
 		request.setAttribute("memberList", memberList);
 		request.setAttribute("hotList", hotList);
@@ -31,7 +33,9 @@ public class HotHandler implements CommandHandler{
 		
 		//if( session.getAttribute("email").equals(null) ) {
 		
-		session.setAttribute("referer" , request.getRequestURI());
+		session.setAttribute("referer" , request.getRequestURI() );
+		referer = (String)session.getAttribute("referer"); 
+		System.out.println(referer);
 		
 		//}
 		

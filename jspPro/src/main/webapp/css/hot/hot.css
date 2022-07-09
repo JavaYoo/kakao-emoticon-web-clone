@@ -1,9 +1,9 @@
 @charset "UTF-8";
-
+/* 
 .head_bnr .emoticon_head~#kakaoContent {
-    padding-top: 110px;
+     padding-top: 110px; 
 }
-
+ */
 media (max-width: 767px)
 .head_bnr .emoticon_head~#kakaoContent {
     padding-top: 144px;

@@ -141,10 +141,26 @@
 									<li class="on"><a class="link_tab"
 										 href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함<span
 											class="screen_out">선택됨</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
-											class="num_tab">${fn:length(couponsList)}</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
-											class="num_tab">2</span></a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+												<c:if test="${not empty couponsList}">
+														<span class="num_tab">${fn:length(couponsList)}</span>
+												</c:if>
+												
+												<c:if test="${empty couponsList}">
+														<span class="num_tab"></span>
+												</c:if>
+												</a>
+												</li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
+										<c:if test="${not empty likesList}">
+														<span class="num_tab">${fn:length(likesList)}</span>
+											</c:if>
+											
+											<c:if test="${empty likesList}">
+													<span class="num_tab"></span>
+											</c:if>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -193,10 +209,26 @@
 									<li class="on"><a class="link_tab"
 										 href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함<span
 											class="screen_out">선택됨</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함<span
-											class="num_tab">${fn:length(couponsList)}</span></a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요<span
-											class="num_tab">2</span></a></li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+												<c:if test="${not empty couponsList}">
+														<span class="num_tab">${fn:length(couponsList)}</span>
+												</c:if>
+												
+												<c:if test="${empty couponsList}">
+														<span class="num_tab"></span>
+												</c:if>
+												</a>
+												</li>
+									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
+										<c:if test="${not empty likesList}">
+														<span class="num_tab">${fn:length(likesList)}</span>
+											</c:if>
+											
+											<c:if test="${empty likesList}">
+													<span class="num_tab"></span>
+											</c:if>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>

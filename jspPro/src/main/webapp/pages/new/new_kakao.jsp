@@ -12,7 +12,7 @@
 <link rel="shortcut icon " type = "image/x-icon" href = "SiSt.ico">
 <!-- <link rel="shortcut icon" href="../assets/icons/e_16x16.ico" /> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="../../css/new/header_footer.css?ver=1">
+<!-- <link rel="stylesheet" href="../../css/new/header_footer.css?ver=1"> -->
 <link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
 <link rel="stylesheet" href="../../css/header/header.css">
 <script src="../../js/sangho/httpRequest.js"></script>
@@ -64,18 +64,22 @@
 										class="ico_comm ico_logarr_type1"></span></span></span></a><strong
 								class="screen_out">나의 이용정보</strong>
 							<ul class="list_mymenu">
-								<li id="menu1"><a class="link_mymenu" href="#"><span
+								<li id="menu1"><a class="link_mymenu"
+								 href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
 										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
-								<li id="menu1"><a class="link_mymenu" href="#"><span
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/recevied.do?id=email"><span
 										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
-								<li id="menu1"><a class="link_mymenu" href="#"><span
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/coupons.do?id=email"><span
 										class="ico_comm ico_coupon"></span><span class="txt_mymenu">쿠폰함</span></a></li>
-								<li id="menu1"><a class="link_mymenu" href="#"><span
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/likes.do?id=email"><span
 										class="ico_comm ico_good"></span><span class="txt_mymenu">좋아요</span></a></li>
 							</ul>
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
-								<li><a class="link_nav" href="/">홈</a></li>
+								<li><a class="link_nav" href="/">홈<%=ses %></a></li>
 								<li><a class="link_nav" href="/item/new">신규</a></li>
 								<li><a class="link_nav" href="/item/hot">인기</a></li>
 								<li><a class="link_nav" href="/item/style">스타일</a></li>
@@ -141,14 +145,14 @@
 						<strong
 								class="screen_out">나의 이용정보</strong>
 							<ul class="list_mymenu">
-								<li><a class="link_mymenu"
-									href="<%=contextPath %>/purchases.do?id=email"><span
+								<li id="menu1"><a class="link_mymenu"
+								 href="<%=contextPath %>/pages/mypage/purchases.do?id=email"><span
 										class="ico_comm ico_buy"></span><span class="txt_mymenu">구매내역</span></a></li>
-								<li><a class="link_mymenu"
-									href="<%=contextPath %>/received.do?id=email"><span
+								<li id="menu1"><a class="link_mymenu" 
+								href="<%=contextPath %>/pages/mypage/recevied.do?id=email"><span
 										class="ico_comm ico_gift"></span><span class="txt_mymenu">선물함</span></a></li>
 								<li><a class="link_mymenu"
-									href="<%=contextPath %>/coupons.do?id=email">
+									href="<%=contextPath %>/pages/mypage/coupons.do?id=email">
 									<span class="ico_comm ico_menunew">신규</span>
 									<span class="ico_comm ico_coupon"></span>
 									<span class="txt_mymenu">쿠폰함
@@ -190,13 +194,13 @@
 				</c:if>
 
 
-				<%-- <c:if test="${ not empty sessionScope.email }"> --%>
-				<c:if test="${ not empty param.id }">
+				<c:if test="${ not empty sessionScope.email }">
+				<%-- <c:if test="${ not empty param.id }"> --%>
 					<div class="wrap_menu" id=logonmenu style="display: none">
 						<div class="inner_menu">
 							<c:forEach var="memberList" items="${ memberList }">
-							<%-- 	<c:if test="${ memberList.m_id eq sessionScope.email }"> --%>
-								<c:if test="${ memberList.m_id eq param.id }"> 
+							<c:if test="${ memberList.m_id eq sessionScope.email }">
+								<%-- <c:if test="${ memberList.m_id eq param.id }">  --%>
 									<span class="wrap_profile">
 										<span class="wrap_thumb">
 											<span class="inner_thumb">
@@ -357,8 +361,8 @@
 		            </c:if>
 
 					<!-- 로그인 한 경우, 쿠폰 발급 알림 -->
-					<%-- <c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }"> --%>
-					<c:if test="${ not empty param.id && param.id ne 'admin' }">
+					<c:if test="${ not empty sessionScope.email && sessionScope.email ne 'admin' }">
+					<%-- <c:if test="${ not empty param.id && param.id ne 'admin' }"> --%>
 		              	<div class="tooltip_layer">
 		               		<div class="area_tooltip">
 		               			<p class="layer_tooltip">
@@ -407,7 +411,10 @@
 					</ul>
 				</nav>
 			</div>
-			<div id="kakaoContent" class="cont_home">
+			
+			<div id="kakaoContent" class="cont_home" 
+			<c:if test="${ empty sessionScope.email}">
+			style="padding-top:110px" </c:if>  >
 				<div class="area_newtab">
 					<div class="area_tabbnr">
 						<h3 class="tit_tab">
@@ -645,6 +652,7 @@
 			$(".search_wrap").css("top", "110px")
 			$(".wrap_menu").css("top","0px");
 	        $(".wrap_menu").css("height", "calc(100%)");
+	        $("#kakaoContent").css("padding-top", "110px");
 		});
 
 		if (${ not empty sessionScope.email }) {
@@ -658,17 +666,6 @@
 			$(".profile_layer").toggle();
 		});
 		
-		
-		/* 로그아웃 */
-		$(".btn_em_logout").on("click", function() {
-			sessionStorage.clear();  //세션 데이터 삭제
-			location.reload(); //새로고침
-		});
-		
-		$(".btn_logout").on("click", function() {
-			sessionStorage.clear();  //세션 데이터 삭제
-			location.reload(); //새로고침
-		});
 	</script>
 <!--  -->
 	<script>
@@ -685,7 +682,21 @@
 	   $(".alert_layer").css("display", "none");
 	   $(".dimmed_layer").css("display","none");
 	});
+	// 로그아웃
+	$(".btn_em_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
 	
+	$(".btn_logout").on("click", function() {
+		//sessionStorage.clear();  //세션 데이터 삭제
+		location.href = "../login/logout.do";
+
+		//location.reload(); //새로고침
+	});
 
 	</script>
 
@@ -733,13 +744,13 @@
 
 	<script>
 	
-	/* 로그인 버튼 누르면 로그인 페이지로 */
 	$(".btn_g").click(function() {
 	   location.href="../mypage/purchases.jsp";  
 	});
 	$(".wrap_profile").click(function() {
 	   location.href="../mypage/purchases.jsp";  
 	});
+	
 	</script>
 
 	<script>
