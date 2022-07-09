@@ -9,21 +9,21 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import kakao.domain.EimgDTO;
+import kakao.domain.EListImgDTO;
 
-public class EimgDAO {
+public class EListImgDAO {
 
 	// 1. 싱글톤
-	private EimgDAO() {}
-	private static EimgDAO instance = new EimgDAO();
-	public static EimgDAO getInstance() {
+	private EListImgDAO() {}
+	private static EListImgDAO instance = new EListImgDAO();
+	public static EListImgDAO getInstance() {
 		return instance;
 	}
 
 
-	public List<EimgDTO> selectEimgList(Connection conn) throws SQLException, NamingException {
+	public List<EListImgDTO> selectEimgList(Connection conn) throws SQLException, NamingException {
 
-		ArrayList<EimgDTO>  eimgList = null;
+		ArrayList<EListImgDTO>  eimgList = null;
 		//Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = null;
 
@@ -37,12 +37,12 @@ public class EimgDAO {
 			ResultSet rs =  pstmt.executeQuery();
 
 			if( rs.next() ){
-				eimgList = new ArrayList<EimgDTO>();
+				eimgList = new ArrayList<EListImgDTO>();
 				do{
 					el_name = rs.getString("el_name");
 					ei_path = rs.getString("ei_path");
 
-					EimgDTO dto = new EimgDTO(el_name, ei_path);
+					EListImgDTO dto = new EimgDTO(el_name, ei_path);
 					eimgList.add(dto);
 				}while( rs.next() );
 			} // if
