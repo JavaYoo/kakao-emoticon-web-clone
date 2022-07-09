@@ -9,8 +9,8 @@ import javax.naming.NamingException;
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import kakao.domain.EimgDTO;
-import kakao.persistence.EimgDAO;
+import kakao.domain.EListImgDTO;
+import kakao.persistence.EListImgDAO;
 
 public class ListEimgService {
 
@@ -24,13 +24,13 @@ public class ListEimgService {
 		return instance;
 	}
 
-	public List<EimgDTO> selectEimgList(){
+	public List<EListImgDTO> selectEimgList(){
 		//
 		Connection con = null;
 		try {
 			con = ConnectionProvider.getConnection();
-			EimgDAO dao = EimgDAO.getInstance();
-			List<EimgDTO> list = null;
+			EListImgDAO dao = EListImgDAO.getInstance();
+			List<EListImgDTO> list = null;
 			list = dao.selectEimgList(con);
 			return list;
 		} catch (NamingException | SQLException e) { 
