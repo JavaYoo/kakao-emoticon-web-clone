@@ -1,15 +1,15 @@
 package kakao.domain;
 
-public class EimgDTO {
+public class EListImgDTO {
 	
 	private String el_name;
 	private String ei_path;
 	
 	
-	public EimgDTO() {
+	public EListImgDTO() {
 		super();
 	}
-	public EimgDTO(String el_name, String ei_path) {
+	public EListImgDTO(String el_name, String ei_path) {
 		super();
 		this.el_name = el_name;
 		this.ei_path = ei_path;
