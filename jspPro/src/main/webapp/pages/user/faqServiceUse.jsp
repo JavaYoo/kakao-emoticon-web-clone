@@ -1,22 +1,24 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="../include.jspf" %>
-<%@ include file="../auth.jspf" %>
+<%@ include file="../include.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>카카오 이모티콘샵</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
+<link rel="stylesheet" href="../../css/faq/faq.css">
 <link rel="stylesheet" href="../../css/header/header.css">
-<script src="../../js/sangho/httpRequest.js"></script>
 </head>
 <body>
-	<div id="kakaoIndex"
+
+
+
+
+<div id="kakaoIndex"
 		style="overflow: hidden; position: absolute; left: -9999px; width: 0; height: 1px; margin: 0; padding: 0;">
 		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
 	</div>
@@ -48,7 +50,8 @@
 				</div>
 			</c:if>
 
-			<div id="kakaoHead" class="emoticon_head">
+			<div id="kakaoHead" class="emoticon_head"
+			<c:if test="${ empty sessionScope.email }">style="top:0"</c:if> >
 			
 			<c:if test="${ empty sessionScope.email }">
 					<div class="wrap_menu">
@@ -101,15 +104,15 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal();"style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
@@ -209,14 +212,14 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
+								<li><a  class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%=contextPath %>/pages/loginlogout_kakao.do" class="link_aside" id="logout" >로그아웃</a></li>
 							</ul>
@@ -300,15 +303,15 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath%>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal()" style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%= contextPath %>/pages/login/logout.do" class="link_aside" id="logout">로그아웃</a></li>
 							</ul>
 						</div>
@@ -460,159 +463,230 @@
 					<ul class="list_gnb">
 						<!-- 해당 페이지에 클래스 on 넣기  -->
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-						<li class="on"><a class="link_gnb" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
 			
-			<div id="kakaoContent" class="cont_home" 
-			<c:if test="${ empty sessionScope.email}">
+			
+			
+			
+			<div id="kakaoContent" class="cont_notice"
+		<c:if test="${ empty sessionScope.email}">
 			style="padding-top:110px" </c:if>  >
-				<div class="area_newtab">
-					<div class="area_tabbnr">
-						<h3 class="tit_tab">
-							<img class="img_bnrtit"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/bnr_tit_new.png"
-								alt="배너 텍스트 이미지"><img class="img_bnrbg"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/bnr_bg_new.png"
-								alt="배너이미지">
-						</h3>
+			
+				<div class="area_faq">
+					<div class="section_top">
+						<h2 class="tit_area">자주묻는 질문</h2>
+						<div class="area_tabfaq">
+							<strong class="screen_out">자주묻는질문 메인 메뉴</strong>
+							<ul class="tab_faq">
+								<li class=""><a class="link_tab" href="../user/faqServiceInfo.do">서비스안내</a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqSecession.do">가입탈퇴<span
+										class="screen_out">선택됨</span></a></li>
+								<li class="on"><a class="link_tab" href="../user/faqServiceUse.do">서비스이용</a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqCancel.do">결제취소/환불</a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqEtc.do">기타</a></li>
+							</ul>
+						</div>
+						<img class="img_faq"
+							src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/img_faq.png"
+							alt="자주묻는질문 이미지">
 					</div>
-
-					<ul class="list_new">
-						<c:forEach items="${  emap   }" var="emap"  varStatus="cnt">
-						<li class="new_list_imgHover">
-							<div class="link_new new_tit">
-									<a class="link_new" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
-								<div	class="area_tit">
-										<strong class="tit_product">
-										<span class="txt_tit">${ emap.key.el_name }</span>
-										</strong><span class="txt_author">${ emap.key.el_maker }</span>
-									</div></a>
-								<button type="button" class="btn_grpshare" >
-									<span class="ico_comm ico_like">좋아요</span>
+					<div class="section_main">
+						<strong class="screen_out">자주묻는질문 메뉴별 본문</strong>
+						<ul class="list_faq">
+							<li class="" id="qa1"><a href="#" class="link_board"><span
+									class="tit_board">이모티콘을 선물하는데 내가 저장한 닉네임으로 친구가 검색되지
+										않는다면? <span class="ico_comm ico_faqopen">답변 펼치기</span>
+								</span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">카카오톡에서 친구 이름 동기화를
+											적용하셨나요?</span><br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">내가 주소록에 저장한 닉네임과 친구
+											리스트에 나오는 닉네임이 다른 경우 아래와 같이 설정해 보세요. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">닉네임 동기화를 설정하면 카카오톡 앱의
+											친구 이름을 PC버전, 카카오 게임 등에서도 동일하게 보여줍니다.</span>
+									</p>
+									<p>
+										<b><span
+											style="font-family: Arial; font-size: 13px; white-space: pre-wrap;">∙
+										</span><span style="font-family: Arial;">친구 리스트 닉네임 동기화 방법</span></b>
+									</p>
+									<p>
+										<span style="font-family: Arial;">1) 카카오톡 &gt; [설정]</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">2) [친구] 메뉴 확인</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">3) '친구 이름 동기화' 항목 on
+											설정</span>
+									</p>
+								</div></li>
+							<li class="" id="qa2"><a href="#" class="link_board"><span
+									class="tit_board">이모티콘의 구매하기 및 선물하기 갯수는 몇 개까지 가능한가요?<span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">이모티콘샵에서는 한번에 1개의
+											이모티콘을 구매할 수 있으며, </span><br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">카카오톡 친구에게 이모티콘을 선물할
+											경우에도 한 번에 1개의 이모티콘을 선물할 수 있습니다.</span>
+									</p>
+								</div></li>
+							<li class="" id="qa3"><a href="#" class="link_board"><span
+									class="tit_board">이모티콘 구매하기 이외에도 친구에게 선물하기도 가능한가요? <span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">이모티콘 상세 페이지에 있는
+											[선물하기] 버튼을 누르시면 친구에게 선물하기 하실 수 있습니다. </span><br>
+									</p>
+									<p>
+										<span style="font-family: Arial;"><b>∙ 친구에게 이모티콘
+												선물하기 방법</b></span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">1. 카카오 아이템샵에 카카오계정
+											로그인<br>
+										</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">2. 선물할 이모티콘을 선택<br></span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">3. 선물하기 버튼을 눌러 선물할
+											상대방 친구를 선택 <br>
+										</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">4. 결제수단을 선택한 후 필요한
+											정보를 입력<br>
+										</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">5. 카카오톡 대화창을 통해서 친구에게
+											이모티콘 선물하기 완료됨</span>
+									</p>
+								</div></li>
+							<li class="" id="qa4"><a href="#" class="link_board"><span
+									class="tit_board">'카카오 이모티콘샵’에서 구매한 이모티콘 아이템은 앱에서도 사용할 수
+										있나요?<span class="ico_comm ico_faqopen">답변 펼치기</span>
+								</span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">‘카카오 이모티콘샵’에서 구매한 모든
+											이모티콘 아이템은&nbsp;</span><span style="font-family: Arial;">PC버전
+											카카오톡 서비스 이외에도, </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">카카오톡 앱 서비스 및 카카오계정을
+											이용하는&nbsp;</span><span style="font-family: Arial;">일부 '카카오
+											서비스’ 앱과 웹 서비스 에서 사용하실 수 있습니다</span>
+									</p>
+								</div></li>
+						</ul>
+					</div>
+					<div id="kakaoFoot" class="foot_group ">
+						<div class="area_footer">
+							<h2 class="screen_out">서비스 이용정보</h2>
+							<div class="service_info">
+								<a class="link_service" href="/policy" target="_blank"
+									rel="noreferrer">이용약관</a> <a class="link_service"
+									href="https://billing-web.kakao.com/kbill/terms/service"
+									target="_blank" rel="noreferrer">유료이용안내</a> <a
+									class="link_service"
+									href="https://www.kakao.com/policy/privacy" target="_blank"
+									rel="noreferrer"> <strong class="dlnk_txt">개인정보처리방침</strong>
+								</a> <a class="link_service" href="https://bizemoticon.kakao.com"
+									target="_blank" rel="noreferrer">기업고객</a> <a
+									class="link_service"
+									href="https://cs.kakao.com/requests?category=278&amp;locale=ko&amp;node=30555&amp;service=94"
+									target="_blank" rel="noreferrer">문의하기</a> <a
+									class="link_service"
+									href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208147521"
+									target="_blank" rel="noreferrer">공정위사업자정보</a> <a
+									class="link_service" href="https://www.kakaocorp.com/page/"
+									target="_blank" rel="noopener noreferrer"> <strong
+									class="dlnk_txt">(주) 카카오</strong>
+								</a>
+								<p class="desc_service">카카오 이모티콘샵에서 판매되는 콘텐츠의 저작권은 콘텐츠 제공자에게
+									있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 처벌될 수 있습니다.</p>
+							</div>
+							<div class="wrap_info">
+								<strong class="tit_info"> <a class="link_info"
+									href="https://www.kakaocorp.com/page/" target="_blank"
+									rel="noopener noreferrer">(주) 카카오</a>
+								</strong>
+								<dl class="list_info">
+									<div class="unit_info">
+										<dt>대표</dt>
+										<dd>남궁훈</dd>
+										<dt>사업자등록번호</dt>
+										<dd>
+											<span class="txt_en">120-81-47521</span>
+										</dd>
+									</div>
+									<div class="unit_info">
+										<dt>통신판매업신고번호</dt>
+										<dd>제2015-제주아라-0032호</dd>
+									</div>
+								</dl>
+								<dl class="list_info">
+									<div class="unit_info">
+										<dt>주소</dt>
+										<dd>
+											제주특별자치도 제주시 첨단로 <span class="txt_en">242</span>(영평동)
+										</dd>
+									</div>
+									<div class="unit_info">
+										<dt>호스팅사업자</dt>
+										<dd>(주)카카오</dd>
+										<dt>고객센터</dt>
+										<dd>
+											<span class="txt_en">1577-3754</span>
+										</dd>
+									</div>
+									<div class="unit_info">
+										<dt>메일</dt>
+										<dd>
+											<span class="txt_en">help.notice@kakaocorp.com</span>
+										</dd>
+									</div>
+								</dl>
+							</div>
+							<div class="area_movetop">
+								<button type="button" class="btn_movetop">
+									<span class="ico_comm ico_movetop">위로 이동</span>
 								</button>
 							</div>
-							
-							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
-							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
-							
-								<c:if test="${ i.index == 0 or i.index == 4 }"><ul class="area_newemoticon"></c:if>
-									<li>
-									<c:if test="${ emap.key.el_num < 103 }">
-									<img  	src="${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
-									</c:if>
-									<c:if test="${ emap.key.el_num >= 103 }">
-									<img  	src="/jspPro/upload/${ emap.key.el_name }/${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
-									</c:if>
-									</li>
-								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
-								
-							</c:forEach>
-							</a>
-							</li>
-							</c:forEach>
-					</ul>
-					<div></div>
-				</div>
-			</div>
-			
-			
-			
-			
-			<script>
+						</div>
+					</div>
 
-			$(document).ready(function () {
-				$(".new_list_imgHover").on("mouseover", function(){
-					$(this).find(".img_hover").css("display", "block")
-					$(this).find(".img_default").css("display", "none")
-				})
-				$(".new_list_imgHover").on("mouseout", function(){
-					$(this).find(".img_hover").css("display", "none")
-					$(this).find(".img_default").css("display", "block")
-				})
-			});
+					<script>
+						var count = $("ul > li").length;
 
-			</script>
-			
-			<div id="kakaoFoot" class="foot_group">
-				<div class="area_footer">
-					<h2 class="screen_out">서비스 이용정보</h2>
-					<div class="service_info">
-						<a class="link_service" href="/policy" target="_blank"
-							rel="noreferrer">이용약관</a><a class="link_service"
-							href="https://billing-web.kakao.com/kbill/terms/service"
-							target="_blank" rel="noreferrer">유료이용안내</a><a
-							class="link_service" href="https://www.kakao.com/policy/privacy"
-							target="_blank" rel="noreferrer"><strong class="dlnk_txt">개인정보처리방침</strong></a><a
-							class="link_service" href="https://bizemoticon.kakao.com"
-							target="_blank" rel="noreferrer">기업고객</a><a class="link_service"
-							href="https://cs.kakao.com/requests?category=278&amp;locale=ko&amp;node=30555&amp;service=94"
-							target="_blank" rel="noreferrer">문의하기</a><a class="link_service"
-							href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208147521"
-							target="_blank" rel="noreferrer">공정위사업자정보</a><a
-							class="link_service" href="https://www.kakaocorp.com/page/"
-							target="_blank" rel="noopener noreferrer"><strong
-							class="dlnk_txt">(주) 카카오</strong></a>
-						<p class="desc_service">카카오 이모티콘샵에서 판매되는 콘텐츠의 저작권은 콘텐츠 제공자에게
-							있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 처벌될 수 있습니다.</p>
-					</div>
-					<div class="wrap_info">
-						<strong class="tit_info"><a class="link_info"
-							href="https://www.kakaocorp.com/page/" target="_blank"
-							rel="noopener noreferrer">(주) 카카오</a></strong>
-						<dl class="list_info">
-							<div class="unit_info">
-								<dt>대표</dt>
-								<dd>남궁훈</dd>
-								<dt>사업자등록번호</dt>
-								<dd>
-									<span class="txt_en">120-81-47521</span>
-								</dd>
-							</div>
-							<div class="unit_info">
-								<dt>통신판매업신고번호</dt>
-								<dd>제2015-제주아라-0032호</dd>
-							</div>
-						</dl>
-						<dl class="list_info">
-							<div class="unit_info">
-								<dt>주소</dt>
-								<dd>
-									제주특별자치도 제주시 첨단로 <span class="txt_en">242</span>(영평동)
-								</dd>
-							</div>
-							<div class="unit_info">
-								<dt>호스팅사업자</dt>
-								<dd>(주)카카오</dd>
-								<dt>고객센터</dt>
-								<dd>
-									<span class="txt_en">1577-3754</span>
-								</dd>
-							</div>
-							<div class="unit_info">
-								<dt>메일</dt>
-								<dd>
-									<span class="txt_en">help.notice@kakaocorp.com</span>
-								</dd>
-							</div>
-						</dl>
-					</div>
-					<div class="area_movetop">
-						<button type="button" class="btn_movetop" onclick="location.href=''" >
-							<span class="ico_comm ico_movetop">위로 이동</span>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-<script type="text/javascript">
+						for (i = 1; i <= count; i++) {
+							$("#qa" + i).click(function() {
+								$(this).find(".desc_board").toggle();
+							});
+						}
+					</script>
+					
+					<script type="text/javascript">
 		/* 검색 관련 */
 
 		// 검색 버튼 클릭 
@@ -732,7 +806,7 @@
 	
 
 	//메뉴 열림
-	 $(".link_menu").on("click",function(){
+	 $("#side_open").on("click",function(){
 		$(".wrap_menu").css("display","block");
 		$(".dimmed_menu").css("display","block");
 		

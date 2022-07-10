@@ -106,7 +106,7 @@
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" onclick="location.href=''">인기</a></li>
+								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
@@ -214,7 +214,7 @@
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" onclick="location.href=''">인기</a></li>
+								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
@@ -305,7 +305,7 @@
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-								<li><a class="link_nav" onclick="location.href=''">인기</a></li>
+								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
@@ -465,7 +465,7 @@
 						<!-- 해당 페이지에 클래스 on 넣기  -->
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
-						<li class="on"><a class="link_gnb" onclick="location.href=''">인기</a></li>
+						<li class="on"><a class="link_gnb" onclick="location.href=''" style="cursor:pointer">인기</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>

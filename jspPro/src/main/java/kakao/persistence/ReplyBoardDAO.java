@@ -1,6 +1,7 @@
 package kakao.persistence;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,22 +12,21 @@ import com.util.JdbcUtil;
 
 import kakao.domain.ReplyBoardDTO;
 
-public class ReplyBoardDAO{
+public class ReplyBoardDAO implements IReplyBoard{
 
-	// 1. 싱글톤
-	private ReplyBoardDAO() {}
+	public ReplyBoardDAO() {}
 	private static ReplyBoardDAO instance = new ReplyBoardDAO();
 	public static ReplyBoardDAO getInstance() {
 		return instance;
 	}
 
+	@Override
 	public List<ReplyBoardDTO> selectList(Connection con) throws SQLException {
 
 		String sql =
-				" select rownum rnum, num,writer,email,subject,pass, regdate,readcount,ref,step,depth,content,ip "
-						+  ", case       when ( sysdate - regdate ) < 0.041667  then  'true'      else 'false'      end  new "
-						+ " from replyboard "
-						+" order by ref desc, step asc";
+				" select qa_seq, qa_id, qa_class, qa_title, qa_content, qa_wdate, qa_readed, qa_lock "
+						+ " from em_qaboard "
+						+ " order by qa_wdate desc ";
 
 		ArrayList<ReplyBoardDTO> list = null;
 		PreparedStatement pstmt = null;
@@ -41,101 +41,72 @@ public class ReplyBoardDAO{
 				do {
 					dto =  new ReplyBoardDTO();
 
-					dto.setNum( rs.getInt("num") );
-					dto.setWriter( rs.getString("writer"));
-					dto.setEmail( rs.getString("email"));
-					dto.setSubject( rs.getString("subject"));
-					dto.setReadcount( rs.getInt("readcount"));
-					dto.setRegdate(rs.getDate("regdate"));
-					dto.setIp( rs.getString("ip"));
-					dto.setRef( rs.getInt("ref"));         // X
-					dto.setStep( rs.getInt("step"));     // X
-					dto.setDepth(rs.getInt("depth"));
-					dto.setNewImg( new Boolean(rs.getString("new")) );
+					dto.setQa_seq( rs.getInt("qa_seq") );
+					dto.setQa_id( rs.getString("qa_id"));
+					dto.setQa_class( rs.getString("qa_class"));
+					dto.setQa_title( rs.getString("qa_title"));   
+					dto.setQa_content( rs.getString("qa_content"));
+					dto.setQa_wdate(rs.getDate("qa_wdate"));
+					dto.setQa_readed( rs.getInt("qa_readed"));               
+					dto.setQa_lock( rs.getInt("qa_lock"));         
 
 					list.add(dto);
 				} while ( rs.next() );
-			} //
+			} 
 		} finally {
 			JdbcUtil.close(pstmt);
-			JdbcUtil.close(rs);
+			JdbcUtil.close(rs);         
 		} // finally
 
 		return list;
 	}
 
+	@Override
 	public int insert(Connection con, ReplyBoardDTO dto) throws SQLException {
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
 
-		if( dto.getRef() == 0 ) {// 새글
-			String sql = "insert into replyboard ( "
-					+" num, writer, email, subject, pass"
-					+ ", ref, step, depth, content, ip )"
+		if( dto.getQa_ref() == 0 ) { 
+			String sql = "insert into em_qaboard ( "
+					+" qa_seq, qa_id, qa_class, qa_title, qa_content, qa_lock, qa_ref, qa_step, qa_depth) "
 					+ " values "
-					+" ( seq_replyboard.nextval,  ?,?,?,? "
-					+ " , seq_replyboard.currval, ?,?,?,?  )";
+					+" (seq_em_qaboard.nextval, ?,?,?,?,?,seq_em_qaboard.currval,?,?) ";
 
 			try {
 				pstmt = con.prepareStatement(sql);
 
-				pstmt.setString(1, dto.getWriter());
-				pstmt.setString(2, dto.getEmail());
-				pstmt.setString(3, dto.getSubject());
-				pstmt.setString(4, dto.getPass());
-				pstmt.setInt(5, dto.getStep());          // 새글일 때는  STEP     1
-				pstmt.setInt(6, dto.getDepth());         // 새글일 때는  DEPTH 0
-				pstmt.setString(7, dto.getContent());
-				pstmt.setString(8, dto.getIp());
-
-				rowCount = pstmt.executeUpdate();
-			}finally {
-				JdbcUtil.close(pstmt);
-			}
-		}else{                             // 답글 + 부모의 REF
-
-			String sql = "insert into replyboard ( "
-					+" num, writer, email, subject, pass"
-					+ ", ref, step, depth, content, ip )"
-					+ " values "
-					+" ( seq_replyboard.nextval,  ?,?,?,? "
-					+ " , ?,?,?,?,?  )";
-
-
-			try {
-				pstmt = con.prepareStatement(sql);
-
-				pstmt.setString(1, dto.getWriter());
-				pstmt.setString(2, dto.getEmail());
-				pstmt.setString(3, dto.getSubject());
-				pstmt.setString(4, dto.getPass());
-
-				pstmt.setInt(5, dto.getRef()); // 부모 그룹            
-				pstmt.setInt(6, dto.getStep());           
-				pstmt.setInt(7, dto.getDepth());          
-
-				pstmt.setString(8, dto.getContent());
-				pstmt.setString(9, dto.getIp()); 
+				pstmt.setString(1, dto.getQa_id());
+				pstmt.setString(2, dto.getQa_class());
+				pstmt.setString(3, dto.getQa_title());
+				pstmt.setString(4, dto.getQa_content());
+				// pstmt.setDate(5, (Date) dto.getQa_wdate());         
+				// pstmt.setInt(6, dto.getQa_readed());         
+				pstmt.setInt(5, dto.getQa_lock());
+				pstmt.setInt(6, dto.getQa_step());
+				pstmt.setInt(7, dto.getQa_depth());
 
 				rowCount = pstmt.executeUpdate();
 			}finally {
 				JdbcUtil.close(pstmt);
 			} 
+		}else{                             
 
 		}
 		return rowCount;
 	}
 
-	public int updateReadCount(Connection con, int num) throws SQLException {
-		String sql = "update replyboard "
-				+" set readcount = readcount +1 "
-				+" where num = ?";
+	@Override
+	public int updateReadCount(Connection con, int qa_seq) throws SQLException {
+
+		String sql = "update em_qaboard "
+				+" set qa_readed = qa_readed +1 "
+				+" where qa_seq = ?";
 
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, qa_seq);
 			rowCount = pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);
@@ -143,33 +114,32 @@ public class ReplyBoardDAO{
 		return rowCount;
 	}
 
-	public ReplyBoardDTO selectOne(Connection con, int num) throws SQLException {
-		String sql = "select * from replyboard "
-				+" where num = ?";
+	@Override
+	public ReplyBoardDTO selectOne(Connection con, int qa_seq) throws SQLException {
+
+		String sql = "select * from em_qaboard "
+				+" where qa_seq = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ReplyBoardDTO dto = null;
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, qa_seq);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
 				dto =  new ReplyBoardDTO();
 
-				dto.setNum( rs.getInt("num") );
-				dto.setWriter( rs.getString("writer"));
-				dto.setEmail( rs.getString("email"));
-				dto.setSubject( rs.getString("subject"));
-				dto.setReadcount( rs.getInt("readcount"));
-				dto.setRegdate(rs.getDate("regdate"));
-				dto.setIp( rs.getString("ip"));
-				dto.setStep( rs.getInt("step"));
-				dto.setDepth(rs.getInt("depth"));
-
-				dto.setRef(rs.getInt("ref"));
-				dto.setPass(rs.getString("pass"));
-				dto.setContent(rs.getString("content"));
+				dto.setQa_id( rs.getString("qa_id"));
+				dto.setQa_class( rs.getString("qa_class"));
+				dto.setQa_title( rs.getString("qa_title"));   
+				dto.setQa_content( rs.getString("qa_content"));
+				dto.setQa_wdate(rs.getDate("qa_wdate"));
+				dto.setQa_readed( rs.getInt("qa_readed"));               
+				dto.setQa_lock( rs.getInt("qa_lock"));   
+				dto.setQa_ref(rs.getInt("qa_seq"));
+				dto.setQa_step(rs.getInt("qa_step"));
+				dto.setQa_depth(rs.getInt("qa_depth"));
 			}
 		}  finally {
 			JdbcUtil.close(pstmt);
@@ -179,11 +149,11 @@ public class ReplyBoardDAO{
 		return dto;
 	}
 
-	// 먼저)  동일한 글그룹(REF)에서 부모순번(STEP) 보다 큰 것들의 STEP을 1증가
+	@Override
 	public int updateRefStep(Connection con, int parentRef, int parentStep) throws SQLException {
-		String sql = "update replyboard "
-				+ " set step = step + 1 "
-				+ " where ref=? and step > ?";  
+		String sql = "update em_qaboard "
+				+ " set qa_step = qa_step + 1 "
+				+ " where qa_ref=? and qa_step > ?";  
 
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
@@ -201,9 +171,47 @@ public class ReplyBoardDAO{
 		return rowCount;
 	}
 
-	public int delete(Connection con, int num) throws SQLException {
+	@Override
+	public int delete(Connection con, int qa_seq) throws SQLException {
+		String sql = "delete from em_qaboard "
+				+ " where qa_seq = ? ";
+		System.out.println(qa_seq);
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,qa_seq);
+			rowCount = pstmt.executeUpdate();
 
-		return 0;
+		}  finally {
+			JdbcUtil.close(pstmt); 
+		}
+
+		return rowCount;
 	}
+
+	@Override
+	public int update(Connection con, int qa_seq, String qa_title, String qa_content) throws SQLException {
+		String sql="update em_qaboard "
+				+ " set qa_title = ? "
+				+ " , qa_content = ? "
+				+ " where qa_seq = ? ";
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,qa_title);
+			pstmt.setString(2, qa_content);
+			pstmt.setInt(3, qa_seq);
+			rowCount = pstmt.executeUpdate();
+
+		}  finally {
+			JdbcUtil.close(pstmt); 
+		}
+
+		return rowCount;
+	}
+
+
 
 }

@@ -8,10 +8,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>이모티콘 상세보기</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%String email = (String)session.getAttribute("email"); %>
-<link rel="shortcut icon" href="../images/e_16x16.ico" />
+<link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
 <link rel="stylesheet" href="../../css/kview.css/area_product.css?ver=3">
 <link rel="stylesheet" href="../../css/kview.css/list_emoticon.css?ver=1">
 <link rel="stylesheet" href="../../css/kview.css/alert_layer.css?ver=3">

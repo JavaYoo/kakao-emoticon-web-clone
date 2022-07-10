@@ -7,16 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2022. 7. 8. - 오전 11:32:16</title>
-<link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
+<title>카카오 이모티콘샵</title>
+<link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <link rel="shortcut icon" href="../images/e_16x16.ico" />
 <link rel="stylesheet" href="../../css/home/home.css" />
+<link rel="stylesheet" href="../../css/header/header.css" />
 
 </head>
 <body>
-<link rel="stylesheet" href="../../css/header/header.css">
+
 	<div id="kakaoIndex"
 		style="overflow: hidden; position: absolute; left: -9999px; width: 0; height: 1px; margin: 0; padding: 0;">
 		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
@@ -109,8 +110,8 @@
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal();"style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
@@ -217,7 +218,7 @@
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
+								<li><a  class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%=contextPath %>/pages/loginlogout_kakao.do" class="link_aside" id="logout" >로그아웃</a></li>
 							</ul>
@@ -308,8 +309,8 @@
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath%>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal()" style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%= contextPath %>/pages/login/logout.do" class="link_aside" id="logout">로그아웃</a></li>
 							</ul>
 						</div>
@@ -467,6 +468,9 @@
 					</ul>
 				</nav>
 			</div>
+			
+			
+			
 		<div id="kakaoContent" class="cont_home"
 		<c:if test="${ empty sessionScope.email}">
 			style="padding-top:110px" </c:if>  >

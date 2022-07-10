@@ -10,7 +10,7 @@
 <title>카카오 이모티콘샵</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<link rel="shortcut icon" href="../images/e_16x16.ico" />
+<link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
 <link rel="stylesheet" href="../../css/style/category.css" />
 <link rel="stylesheet" href="../../css/header/header.css" />
 
@@ -463,7 +463,7 @@
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
-						<li class="on"><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">스타일</a></li>
+						<li class="on"><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>

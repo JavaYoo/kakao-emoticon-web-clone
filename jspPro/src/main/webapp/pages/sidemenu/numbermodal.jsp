@@ -11701,54 +11701,10 @@ translate(
 	</div>
 	
 	
-		<div class="alert_layer" id="alert_logon" >
-		               <div class="inner_layer">
-		                  <div class="layer_body">
-		                     <strong class="txt_info">로그인 후 이용해주세요.</strong>
-		                  </div>
-		                  <div class="layer_foot">
-		                     <button class="btn_s btn_m" id="alert_close">취소</button>
-		                     <button class="btn_g btn_m">로그인</button>
-		                  </div>
-		               </div>
-		               <button type="button" class="btn_close">
-		                  <span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
-		               </button>
-		            </div>
-				<div class="dimmed_layer dim_over"></div>
-				
-		<c:if test="${not empty snnum }">
-			<div class="alert_layer" id="alert_check" style="display:none">
-				               <div class="inner_layer">
-				                  <div class="layer_body">
-				                     <strong class="txt_info">등록되었습니다.</strong>
-				                  </div>
-				                <button type="button" class="btn_close">
-				                  <span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
-				               </button>
-				            </div>
-				           </div>
-						<div class="dimmed_layer dim_over"></div>
-			</c:if>
-			
-			<c:if test="${empty snnum }">
-			<div class="alert_layer" id="alert_wrong" style="display:none">
-				               <div class="inner_layer">
-				                  <div class="layer_body">
-				                     <strong class="txt_info">잘못된 일련번호입니다.</strong>
-				                  </div>
-				                <button type="button" class="btn_close">
-				                  <span class="ico_comm ico_orderclose" id="btn_layer_close">닫기</span>
-				               </button>
-				            </div>
-				           </div>
-						<div class="dimmed_layer dim_over"></div>
-			</c:if>
+	
 				
 				
-	<!-- <script src="/bundle.js"></script>
-	<iframe src="https://bid.g.doubleclick.net/xbbe/pixel?d=KAE"
-		style="display: none;"></iframe> -->
+
 		
 <script>
 		
@@ -11772,43 +11728,8 @@ translate(
 
 </script>
 
-<script>
-
-//로그인 되어 안되어있으면 등록하기 누르면 로그인창 
-<%--  if(<%=email%>.eq(null)){
-    $(".btn_next").click(function() {
-       $(".dimmed_layer").css("display", "block");
-       $("#alert_logon").css("display", "block");
-    });
- //로그인이 되어 있으면 id, 일련번호 누르고 일련번호 체크 보냄 
-    }else{
-    	$(".btn_next").click(function() {
-    		
-    		var input=$("#inpCoupon").val();
-    		
-    		location.href="<%=contextPath%>/snumcheck.do?id=email&snum=input";
-    		
-    	});
-    }  --%>
-</script>
 
 
-<script>
-
-/* 로그인 버튼 누르면 로그인 페이지로 */
-$(".btn_g").click(function() {
-	location.href="../mypage/purchases.jsp";  
-});
-
-//닫기 버튼 
-$("#btn_layer_close").click(function() {
-    $(".dimmed_layer").css("display", "none");
-    $("#alert_check").css("display", "none");
-    $("#alert_wrong").css("display", "none");
- });
- 
- 
-</script>
 		
 </body>
 </html>

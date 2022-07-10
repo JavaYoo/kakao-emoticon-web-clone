@@ -1,22 +1,22 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="../include.jspf" %>
-<%@ include file="../auth.jspf" %>
+<%@ include file="../include.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>카카오 이모티콘샵</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
+<link rel="stylesheet" href="../../css/faq/faq.css">
 <link rel="stylesheet" href="../../css/header/header.css">
-<script src="../../js/sangho/httpRequest.js"></script>
 </head>
 <body>
-	<div id="kakaoIndex"
+	
+	
+		<div id="kakaoIndex"
 		style="overflow: hidden; position: absolute; left: -9999px; width: 0; height: 1px; margin: 0; padding: 0;">
 		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
 	</div>
@@ -48,7 +48,8 @@
 				</div>
 			</c:if>
 
-			<div id="kakaoHead" class="emoticon_head">
+			<div id="kakaoHead" class="emoticon_head"
+			<c:if test="${ empty sessionScope.email }">style="top:0"</c:if> >
 			
 			<c:if test="${ empty sessionScope.email }">
 					<div class="wrap_menu">
@@ -101,15 +102,15 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal();"style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
@@ -209,14 +210,14 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
+								<li><a  class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%=contextPath %>/pages/loginlogout_kakao.do" class="link_aside" id="logout" >로그아웃</a></li>
 							</ul>
@@ -300,15 +301,15 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath%>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal()" style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%= contextPath %>/pages/login/logout.do" class="link_aside" id="logout">로그아웃</a></li>
 							</ul>
 						</div>
@@ -460,111 +461,289 @@
 					<ul class="list_gnb">
 						<!-- 해당 페이지에 클래스 on 넣기  -->
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-						<li class="on"><a class="link_gnb" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
 			
-			<div id="kakaoContent" class="cont_home" 
-			<c:if test="${ empty sessionScope.email}">
+			
+			
+			
+			<div id="kakaoContent" class="cont_notice"
+		<c:if test="${ empty sessionScope.email}">
 			style="padding-top:110px" </c:if>  >
-				<div class="area_newtab">
-					<div class="area_tabbnr">
-						<h3 class="tit_tab">
-							<img class="img_bnrtit"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/bnr_tit_new.png"
-								alt="배너 텍스트 이미지"><img class="img_bnrbg"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/bnr_bg_new.png"
-								alt="배너이미지">
-						</h3>
+				<div class="area_faq">
+					<div class="section_top">
+						<h2 class="tit_area">자주묻는 질문</h2>
+						<div class="area_tabfaq">
+							<strong class="screen_out">자주묻는질문 메인 메뉴</strong>
+							<ul class="tab_faq">
+								<li class="on"><a class="link_tab"
+									href="../user/faqServiceInfo.do">서비스안내<span class="screen_out">선택됨</span></a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqSecession.do">가입탈퇴</a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqServiceUse.do">서비스이용</a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqCancel.do">결제취소/환불</a>
+								</li>
+								<li class=""><a class="link_tab" href="../user/faqEtc.do">기타</a></li>
+							</ul>
+						</div>
+						<img class="img_faq"
+							src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/img_faq.png"
+							alt="자주묻는질문 이미지">
 					</div>
-
-					<ul class="list_new">
-						<c:forEach items="${  emap   }" var="emap"  varStatus="cnt">
-						<li class="new_list_imgHover">
-							<div class="link_new new_tit">
-									<a class="link_new" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
-								<div	class="area_tit">
-										<strong class="tit_product">
-										<span class="txt_tit">${ emap.key.el_name }</span>
-										</strong><span class="txt_author">${ emap.key.el_maker }</span>
-									</div></a>
-								<button type="button" class="btn_grpshare" >
-									<span class="ico_comm ico_like">좋아요</span>
-								</button>
-							</div>
-							
-							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
-							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
-							
-								<c:if test="${ i.index == 0 or i.index == 4 }"><ul class="area_newemoticon"></c:if>
-									<li>
-									<c:if test="${ emap.key.el_num < 103 }">
-									<img  	src="${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
-									</c:if>
-									<c:if test="${ emap.key.el_num >= 103 }">
-									<img  	src="/jspPro/upload/${ emap.key.el_name }/${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
-									</c:if>
-									</li>
-								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
-								
-							</c:forEach>
-							</a>
-							</li>
-							</c:forEach>
-					</ul>
-					<div></div>
+					<div class="section_main">
+						<strong class="screen_out">자주묻는질문 메뉴별 본문</strong>
+						<ul class="list_faq">
+							<li class="" id="qa1">
+								<a href="#" class="link_board">
+									<span class="tit_board">'할인쿠폰'의 사용시 유의사항이 궁금합니다
+										<span class="ico_comm ico_faqopen" id="qa_board1">답변 펼치기</span>
+									</span>
+								</a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">할인쿠폰 사용시 아래 유의사항을
+											확인해주세요.&nbsp;</span><br>
+									</p>
+									<p>
+										<b><span style="font-family: Arial;">∙ 할인쿠폰 사용시
+												유의사항</span></b>
+									</p>
+									<p>
+										<span style="font-family: Arial;">- 할인쿠폰은 중복으로 사용할 수
+											없으며, 1회 결제시 1개의 할인쿠폰만 사용 가능합니다.<br>
+										</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">- 일부 카테고리 상품은 할인쿠폰
+											적용이 불가능합니다.</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">- 주문취소 및 환불시 이미 사용한
+											쿠폰은 재발급되지 않습니다.</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">- 발급된 할인쿠폰의 유효기간은
+											조기종료 및 변경 될 수 있습니다.<br>
+										</span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">- 유효기간이 지난 할인쿠폰은 자동
+											소멸하오니 기간 만료 전에 꼭 사용하시기 바랍니다.</span>
+									</p>
+								</div></li>
+							<li class="" id="qa2"><a href="#" class="link_board"><span
+									class="tit_board">'할인쿠폰'은 어떻게 받을 수 있나요? <span
+										class="ico_comm ico_faqopen">답변 펼치기</span>
+								</span> </a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">카카오 이모티콘샵에서 발행하는
+											할인쿠폰은 서비스에서 상시 진행하는 이벤트에 따라 발급 됩니다. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">이벤트에 참여하여 받은 할인쿠폰은 </span> <b>
+											<span style="font-family: Arial;">'마이페이지 &gt; 쿠폰함 &gt;
+												보유쿠폰'</span>
+										</b> <span style="font-family: Arial;"> 에서 확인하실 수 있으며, </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">사용하거나 유효기간이 만료된 할인쿠폰은
+										</span> <b> <span style="font-family: Arial;">'마이페이지 &gt;
+												쿠폰함 &gt; 사용한 쿠폰' </span>
+										</b> <span style="font-family: Arial;">에서 확인하실 수 있습니다.</span>
+									</p>
+								</div></li>
+							<li class="" id="qa3"><a href="#" class="link_board"><span
+									class="tit_board">'할인쿠폰'의 사용방법이 궁금합니다<span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">내가 보유중이며 현재 사용가능한
+											할인쿠폰 리스트는 구매하기/선물하기 결제시도시 결제확인창에서 확인가능하며, </span> <br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">결제시 적용을 원하는 할인쿠폰을
+											선택하면, 해당 할인쿠폰에 기재된 비율로 할인된 금액을 결제하실 수 있습니다. </span>
+									</p>
+									<p>
+										<br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">단, 결제가 이미 완료된 이후에는
+											할인쿠폰을 적용할 수 없으며, </span> <br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">할인쿠폰 사용이 가능한 유효기간
+											이내에만 사용하실 수 있습니다. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">1회 결제시 1개의 할인쿠폰만 적용됨을
+											원칙으로 합니다. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">이미 사용된 할인쿠폰의 중복 사용은
+											불가능하며, 유효기간이 지난 할인쿠폰은 자동 소멸합니다.</span><span
+											style="font-family: Arial;">﻿</span>
+									</p>
+								</div></li>
+							<li class="" id="qa4"><a href="#" class="link_board"><span
+									class="tit_board">카카오 이모티콘샵 이용가능한 OS, 브라우저 버전 지원범위는 어떻게
+										되나요?<span class="ico_comm ico_faqopen">답변 펼치기</span>
+								</span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">주요 사용환경 지원 범위 (OS 및
+											브라우저 버전)는 아래와 같습니다. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">OS 및 브라우저는 최신버전 업데이트
+											후 이용을 권장해드립니다.&nbsp;</span>
+									</p>
+									<ul>
+										<li><b> <span style="font-family: Arial;">윈7 -
+													IE 10, 크롬</span> <br>
+										</b></li>
+										<li><b> <span style="font-family: Arial;">윈10
+													- IE 11 이상, MS엣지, 크롬 </span> <br>
+										</b></li>
+										<li><span style="font-family: Arial;"> <b>맥OS10
+													- 사파리, 크롬&nbsp;</b>
+										</span></li>
+									</ul>
+									<p></p>
+								</div></li>
+							<li class="" id="qa5"><a href="#" class="link_board"><span
+									class="tit_board"> 카카오 이모티콘샵에서 구입한 상품은 어디에서 이용할 수 있나요? <span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">카카오 이모티콘샵에서 구입한 이모티콘
+											아이템은</span> <br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">카카오톡 모바일 앱 또는 카카오톡
+											PC/MAC 버전에서 사용하실 수 있습니다.</span>
+									</p>
+								</div></li>
+							<li class="" id="qa6"><a href="#" class="link_board"><span
+									class="tit_board">'카카오 이모티콘샵'에서 판매하는 상품은 어떤 것들이 있나요? <span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">'카카오 이모티콘샵'에서는 </span> <br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">카카오톡 앱 내에서 이모티콘 스토어에서
+											판매하고 있는 이모티콘 대부분이 판매가 되고 있으며, </span> <br>
+									</p>
+									<p>
+										<span style="font-family: Arial;">그 중 일부 예외적인 경우는 판매기간
+											종료 또는 상품제공 계약 변경 등 개별적인 사정에 의하여 카카오 이모티콘샵에서 판매가 되지 않을 수도
+											있습니다.</span>
+									</p>
+								</div></li>
+							<li class="" id="qa7"><a href="#" class="link_board"><span
+									class="tit_board">카카오 이모티콘샵에서 제공하는 결제수단은 어떤 것들이 있나요? <span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">'카카오 이모티콘샵'에서 제공하는
+											결제수단은 아래와 같습니다. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;"><b>∙ 카카오페이
+												(카카오머니, 카카오페이 카드)</b></span>
+									</p>
+									<p>
+										<span style="font-family: Arial;"><b>∙ 휴대폰 일반결제 </b></span>
+									</p>
+									<p>
+										<span style="font-family: Arial;"><b>∙ 신용카드 일반결제</b></span>
+									</p>
+									<p>
+										<span style="font-family: Arial;"><b>∙ 문화상품권 결제
+												(컬쳐랜드, 해피머니, 도서문화)</b></span>
+									</p>
+								</div></li>
+							<li class="" id="qa8"><a href="#" class="link_board"><span
+									class="tit_board">카카오 이모티콘샵은 어느 나라에서 이용할 수 있나요? <span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p>
+										<span style="font-family: Arial;">'카카오 이모티콘샵'의 이모티콘 아이템
+											구매하기, 선물하기 기능은 기본적으로 한국에서 사용 가능합니다. </span>
+									</p>
+									<p>
+										<span style="font-family: Arial;">한국 카카오톡 사용자가 아닌 경우에는
+											일부 기능이 제한될 수 있습니다.</span>
+									</p>
+								</div></li>
+							<li class="" id="qa9"><a href="#" class="link_board"><span
+									class="tit_board"> '카카오 이모티콘샵'은 어떻게 이용하나요?<span
+										class="ico_comm ico_faqopen">답변 펼치기</span></span></a>
+								<div class="desc_board">
+									<p data-pm-slice="1 1 []">
+										<strong>∙ 이모티콘을 구매하기 할 때</strong>
+									</p>
+									<p>
+										1) PC 또는 모바일의 웹브라우저에서 “<a href="https://e.kakao.com"
+											target="_blank" style="color: rgb(0, 0, 255);">카카오 이모티콘샵</a>”
+										접속
+									</p>
+									<p>2) 좌측 햄버거 메뉴 하위의 '로그인' 버튼을 눌러 ‘카카오계정’으로 로그인 합니다.</p>
+									<p>3) 구매하기 선택</p>
+									<p>4) 결제하기 팝업창에서 결제수단을 선택한 후 필요한 정보를 입력하시면 됩니다.</p>
+									<p>
+										<br>
+									</p>
+									<p>
+										<strong>∙ 이모티콘을 카톡 친구에게 선물하기 할때</strong>
+									</p>
+									<p>1) 위 1),2)의 방법으로 로그인 하신 후 선물하기 하실 이모티콘 아이템을 선택 합니다.</p>
+									<p>2) 이모티콘 아이템 상세화면에서 ‘선물하기’를 누릅니다.</p>
+									<p>3) 선물받으실 상대방을 내 카카오톡 친구 목록에서 선택 합니다.</p>
+									<p>4) 결제하기 팝업창에서 결제수단을 선택한 후 필요한 정보를 입력하시면 됩니다.</p>
+									<p>이 때, 반드시 구매하시는 분의 카카오톡에 연결되어 있는 ‘한국 카카오 계정’으로 로그인 해야만</p>
+									<p>구매하기 또는 카톡 친구에게 선물하기 기능을 이용하실 수 있습니다.</p>
+								</div></li>
+						</ul>
+					</div>
 				</div>
 			</div>
-			
-			
-			
-			
-			<script>
-
-			$(document).ready(function () {
-				$(".new_list_imgHover").on("mouseover", function(){
-					$(this).find(".img_hover").css("display", "block")
-					$(this).find(".img_default").css("display", "none")
-				})
-				$(".new_list_imgHover").on("mouseout", function(){
-					$(this).find(".img_hover").css("display", "none")
-					$(this).find(".img_default").css("display", "block")
-				})
-			});
-
-			</script>
-			
-			<div id="kakaoFoot" class="foot_group">
+			<div id="kakaoFoot" class="foot_group ">
 				<div class="area_footer">
 					<h2 class="screen_out">서비스 이용정보</h2>
 					<div class="service_info">
 						<a class="link_service" href="/policy" target="_blank"
-							rel="noreferrer">이용약관</a><a class="link_service"
+							rel="noreferrer">이용약관</a> <a class="link_service"
 							href="https://billing-web.kakao.com/kbill/terms/service"
-							target="_blank" rel="noreferrer">유료이용안내</a><a
+							target="_blank" rel="noreferrer">유료이용안내</a> <a
 							class="link_service" href="https://www.kakao.com/policy/privacy"
-							target="_blank" rel="noreferrer"><strong class="dlnk_txt">개인정보처리방침</strong></a><a
-							class="link_service" href="https://bizemoticon.kakao.com"
-							target="_blank" rel="noreferrer">기업고객</a><a class="link_service"
+							target="_blank" rel="noreferrer"> <strong class="dlnk_txt">개인정보처리방침</strong>
+						</a> <a class="link_service" href="https://bizemoticon.kakao.com"
+							target="_blank" rel="noreferrer">기업고객</a> <a class="link_service"
 							href="https://cs.kakao.com/requests?category=278&amp;locale=ko&amp;node=30555&amp;service=94"
-							target="_blank" rel="noreferrer">문의하기</a><a class="link_service"
+							target="_blank" rel="noreferrer">문의하기</a> <a class="link_service"
 							href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208147521"
-							target="_blank" rel="noreferrer">공정위사업자정보</a><a
+							target="_blank" rel="noreferrer">공정위사업자정보</a> <a
 							class="link_service" href="https://www.kakaocorp.com/page/"
-							target="_blank" rel="noopener noreferrer"><strong
-							class="dlnk_txt">(주) 카카오</strong></a>
+							target="_blank" rel="noopener noreferrer"> <strong
+							class="dlnk_txt">(주) 카카오</strong>
+						</a>
 						<p class="desc_service">카카오 이모티콘샵에서 판매되는 콘텐츠의 저작권은 콘텐츠 제공자에게
 							있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 처벌될 수 있습니다.</p>
 					</div>
 					<div class="wrap_info">
-						<strong class="tit_info"><a class="link_info"
+						<strong class="tit_info"> <a class="link_info"
 							href="https://www.kakaocorp.com/page/" target="_blank"
-							rel="noopener noreferrer">(주) 카카오</a></strong>
+							rel="noopener noreferrer">(주) 카카오</a>
+						</strong>
 						<dl class="list_info">
 							<div class="unit_info">
 								<dt>대표</dt>
@@ -603,15 +782,25 @@
 						</dl>
 					</div>
 					<div class="area_movetop">
-						<button type="button" class="btn_movetop" onclick="location.href=''" >
+						<button type="button" class="btn_movetop">
 							<span class="ico_comm ico_movetop">위로 이동</span>
 						</button>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+
+
+<script>
+
+	var count = $("ul > li").length;
 	
+	for(i = 1 ; i <= count ; i++){
+		  $("#qa"+ i).click(function(){
+		    $(this).find(".desc_board").toggle();
+		  });
+	}
+</script>
+
 <script type="text/javascript">
 		/* 검색 관련 */
 
@@ -732,7 +921,7 @@
 	
 
 	//메뉴 열림
-	 $(".link_menu").on("click",function(){
+	 $("#side_open").on("click",function(){
 		$(".wrap_menu").css("display","block");
 		$(".dimmed_menu").css("display","block");
 		

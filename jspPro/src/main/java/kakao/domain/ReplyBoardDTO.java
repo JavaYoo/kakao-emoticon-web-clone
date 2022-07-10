@@ -3,127 +3,85 @@ package kakao.domain;
 import java.util.Date;
 
 public class ReplyBoardDTO {
-
-	// fields
-	private int num;         // 글번호
-	private String writer;      // 작성자
-	private String email;      // 이메일
-	private String subject;      // 제목
-	private String pass;      // 비밀번호
-	private int readcount;      // 조회수
-	private Date regdate;      // 등록일
-	private String content;      // 내용
-	private String ip;         // IP주소
-	private int ref;         // *** 그룹
-	private int step;         // *** 그룹내 순번
-	private int depth;         // *** 깊이
-
-	// 새로운 게시글 일경우  new 이미지 붙이기 위한 필드 추가
-	private boolean newImg;  // new 마크
-
-	// getter, setter
-	public int getNum() {
-		return num;
+	private int qa_seq;
+	private String qa_id;
+	private String qa_class;
+	private String qa_title;
+	private String qa_content;
+	private Date qa_wdate;
+	private int qa_readed;
+	private int qa_lock;
+	private int qa_ref;
+	private int qa_step;
+	private int qa_depth;
+	public int getQa_seq() {
+		return qa_seq;
 	}
-
-	public void setNum(int num) {
-		this.num = num;
+	public void setQa_seq(int qa_seq) {
+		this.qa_seq = qa_seq;
 	}
-
-	public String getWriter() {
-		return writer;
+	public String getQa_id() {
+		return qa_id;
 	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setQa_id(String qa_id) {
+		this.qa_id = qa_id;
 	}
-
-	public String getEmail() {
-		return email;
+	public String getQa_class() {
+		return qa_class;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setQa_class(String qa_class) {
+		this.qa_class = qa_class;
 	}
-
-	public String getSubject() {
-		return subject;
+	public String getQa_title() {
+		return qa_title;
 	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setQa_title(String qa_title) {
+		this.qa_title = qa_title;
 	}
-
-	public String getPass() {
-		return pass;
+	public String getQa_content() {
+		return qa_content;
 	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setQa_content(String qa_content) {
+		this.qa_content = qa_content;
 	}
-
-	public int getReadcount() {
-		return readcount;
+	public Date getQa_wdate() {
+		return qa_wdate;
 	}
-
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
+	public void setQa_wdate(Date qa_wdate) {
+		this.qa_wdate = qa_wdate;
 	}
-
-	public Date getRegdate() {
-		return regdate;
+	public int getQa_readed() {
+		return qa_readed;
 	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setQa_readed(int qa_readed) {
+		this.qa_readed = qa_readed;
 	}
-
-	public String getContent() {
-		return content;
+	public int getQa_lock() {
+		return qa_lock;
 	}
-
-	public void setContent(String content) {
-		this.content = content;
+	public void setQa_lock(int qa_lock) {
+		this.qa_lock = qa_lock;
 	}
-
-	public String getIp() {
-		return ip;
+	public int getQa_ref() {
+		return qa_ref;
 	}
-
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setQa_ref(int qa_ref) {
+		this.qa_ref = qa_ref;
 	}
-
-	public int getRef() {
-		return ref;
+	public int getQa_step() {
+		return qa_step;
 	}
-
-	public void setRef(int ref) {
-		this.ref = ref;
+	public void setQa_step(int qa_step) {
+		this.qa_step = qa_step;
 	}
-
-	public int getStep() {
-		return step;
+	public int getQa_depth() {
+		return qa_depth;
 	}
-
-	public void setStep(int step) {
-		this.step = step;
+	public void setQa_depth(int qa_depth) {
+		this.qa_depth = qa_depth;
 	}
+	
+	
 
-	public int getDepth() {
-		return depth;
-	}
-
-	public void setDepth(int depth) {
-		this.depth = depth;
-	}
-
-	public boolean isNewImg() {
-		return newImg;
-	}
-
-	public void setNewImg(boolean newImg) {
-		this.newImg = newImg;
-	}
-
+   
 }

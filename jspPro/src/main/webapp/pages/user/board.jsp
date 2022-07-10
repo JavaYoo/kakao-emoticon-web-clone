@@ -1,22 +1,58 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="../include.jspf" %>
-<%@ include file="../auth.jspf" %>
+<%@ include file="../include.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>카카오 이모티콘샵</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="shortcut icon" href="https://t1.kakaocdn.net/estoreweb/favicon/e_16x16.ico" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="../../css/new/new_body.css?ver=5">
-<link rel="stylesheet" href="../../css/header/header.css">
-<script src="../../js/sangho/httpRequest.js"></script>
+<link rel="stylesheet" href="../../header/header.css">
+<link rel="stylesheet" href="../../css/faq/faq.css">
+
+<style>
+a {
+	text-decoration: none;
+	color: black;
+}
+
+table, tr, td {
+	border: solid 1px gray;
+	border-radius: 3px;
+	padding: 5px;
+	font-size: 12px;
+}
+
+/
+*  
+tr.data:hover {
+	background: #EFEFEF;
+}
+
+select, input {
+	vertical-align: middle;
+}
+</style>
+
+<script>
+ $(function (){    
+   $('#searchBtn').click(function (){
+      $('form:first').attr('action','/pages/faq/boardList.do');
+      $('form:first').attr('method','get');
+      $('form:first').submit();
+   });
+ });
+</script>
+
 </head>
 <body>
-	<div id="kakaoIndex"
+
+
+
+<div id="kakaoIndex"
 		style="overflow: hidden; position: absolute; left: -9999px; width: 0; height: 1px; margin: 0; padding: 0;">
 		<a href="#dkBody">본문 바로가기</a> <a href="#dkGnb">메뉴 바로가기</a>
 	</div>
@@ -48,7 +84,8 @@
 				</div>
 			</c:if>
 
-			<div id="kakaoHead" class="emoticon_head">
+			<div id="kakaoHead" class="emoticon_head"
+			<c:if test="${ empty sessionScope.email }">style="top:0"</c:if> >
 			
 			<c:if test="${ empty sessionScope.email }">
 					<div class="wrap_menu">
@@ -101,15 +138,15 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal();"style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 							</ul>
 						</div>
 						<div class="wrap_copyright">
@@ -209,14 +246,14 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
+								<li><a  class="link_aside" target="_blank"
 									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%=contextPath %>/pages/loginlogout_kakao.do" class="link_aside" id="logout" >로그아웃</a></li>
 							</ul>
@@ -300,15 +337,15 @@
 							<strong class="screen_out">kakao emoticon shop 메뉴</strong>
 							<ul class="list_nav">
 								<li><a class="link_nav" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-								<li><a class="link_nav" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+								<li><a class="link_nav" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 								<li><a class="link_nav" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 							</ul>
 							<ul class="list_aside">
 								<li><a class="link_aside" href="<%= contextPath %>/pages/user/board.do">게시판</a></li>
 								<li><a class="link_aside" href="<%= contextPath%>/pages/user/faq.do">자주묻는 질문</a></li>
-								<li><a href="#" class="link_aside" target="_blank"
-									onclick="numbermodal();">이모티콘 일련번호 입력하기</a></li>
+								<li><a  class="link_aside" target="_blank"
+									onclick="numbermodal()" style="cursor:pointer">이모티콘 일련번호 입력하기</a></li>
 								<li><a href="<%= contextPath %>/pages/login/logout.do" class="link_aside" id="logout">로그아웃</a></li>
 							</ul>
 						</div>
@@ -460,111 +497,124 @@
 					<ul class="list_gnb">
 						<!-- 해당 페이지에 클래스 on 넣기  -->
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/home/home.do">홈</a></li>
-						<li class="on"><a class="link_gnb" onclick="location.href=''" style="cursor:pointer">신규</a></li>
+						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/new/new_kakao.do">신규</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/hot/hot.do">인기</a></li>
 						<li class=""><a class="link_gnb" href="<%= contextPath %>/pages/style/style.do">스타일</a></li>
 					</ul>
 				</nav>
 			</div>
 			
-			<div id="kakaoContent" class="cont_home" 
-			<c:if test="${ empty sessionScope.email}">
-			style="padding-top:110px" </c:if>  >
-				<div class="area_newtab">
-					<div class="area_tabbnr">
-						<h3 class="tit_tab">
-							<img class="img_bnrtit"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/bnr_tit_new.png"
-								alt="배너 텍스트 이미지"><img class="img_bnrbg"
-								src="https://t1.kakaocdn.net/estoreweb/images/20220421091219/bnr_bg_new.png"
-								alt="배너이미지">
-						</h3>
-					</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	<h3 style="text-align: center">문의하기 게시판</h3>
+	<table style="width: 1000px; margin: 50px auto" border="1">
+		<tr>
+			<td align="right" colspan="6"><a href="../user/boardWrite.do">글쓰기</a></td>
+		</tr>
+		<tr style="background: gray; color: white; font-weight: bold">
+			<td width="100" align="center">글번호</td>
+			<td width="280" align="center">제목</td>
+			<td width="200" align="center">문의분류</td>
+			<td width="200" align="center">작성자</td>
+			<td width="100" align="center">조회수</td>
+			<td width="100" align="center">공개여부</td>
+		</tr>
+		<tbody>
+			<!-- request.setAtttribute("list", ??); -->
+			<c:if test="${ empty list }">
+				<tr class="data">
+					<td align="center" colspan="6">
+						<h3>작성된 게시글이 없습니다.</h3>
+					</td>
+				</tr>
+			</c:if>
+			<c:if test="${ not empty list }">
+				<c:forEach items="${ list }" var="dto">
+					<tr class="data">
+						<td align="center">${ dto.qa_seq }</td>
+						<td align="center">
+						<%-- 
+						<c:if test="${ dto.depth gt 0 }">
+								<img width="${ dto.depth*15 }px">
+								<img src="/jspPro/days10/replyboard/images/arr.gif" alt="" />
+							</c:if>  
+							--%>
+							<a href="../user/boardView.do?qa_seq=${ dto.qa_seq }">${ dto.qa_title }</a>
+							<td align="center">${dto.qa_class }</td>
+						<td align="center">${ dto.qa_id }</td>
+						<td align="center">${ dto.qa_readed }</td>
+						<td align="center">
+						<c:if test="${dto.qa_lock eq 0 }">
+						공개
+						</c:if>
+						<c:if test="${dto.qa_lock eq 1 }">
+						비공개
+						</c:if>
+						</td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td align="center" colspan="6">
+						<!-- request.setAttribute("pageBlock", "[1] 2 3 4 5 6 7 8 9 10 > ");-->
+						[1]
+					</td>
+				</tr>
+			</c:if>
 
-					<ul class="list_new">
-						<c:forEach items="${  emap   }" var="emap"  varStatus="cnt">
-						<li class="new_list_imgHover">
-							<div class="link_new new_tit">
-									<a class="link_new" href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
-								<div	class="area_tit">
-										<strong class="tit_product">
-										<span class="txt_tit">${ emap.key.el_name }</span>
-										</strong><span class="txt_author">${ emap.key.el_maker }</span>
-									</div></a>
-								<button type="button" class="btn_grpshare" >
-									<span class="ico_comm ico_like">좋아요</span>
-								</button>
-							</div>
-							
-							<a class="link_new new_img" aria-label="예쁜 말풍선톡 5 상세"	href="<%=contextPath%>/pages/view/view.do?el_num=${ emap.key.el_num }">
-							<c:forEach items="${ emap.value }"  var="emapValue" varStatus="i">
-							
-								<c:if test="${ i.index == 0 or i.index == 4 }"><ul class="area_newemoticon"></c:if>
-									<li>
-									<c:if test="${ emap.key.el_num < 103 }">
-									<img  	src="${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
-									</c:if>
-									<c:if test="${ emap.key.el_num >= 103 }">
-									<img  	src="/jspPro/upload/${ emap.key.el_name }/${ emapValue.ei_path }" 
-									class="<c:if test="${ i.index <= 3 }">img_emot img_default</c:if><c:if test="${ i.index > 3 }">img_emot img_hover</c:if>" alt="">
-									</c:if>
-									</li>
-								<c:if test="${ i.index == 3 or i.index == 7 }"></ul></c:if>
-								
-							</c:forEach>
-							</a>
-							</li>
-							</c:forEach>
-					</ul>
-					<div></div>
-				</div>
-			</div>
-			
-			
-			
-			
-			<script>
+		</tbody>
+		<form>
+			<tr>
+				<td colspan="6" align="center" style="padding: 3px;"><select
+					id="searchCondition" name="searchCondition"
+					style="font-size: 15px;">
+						<option value="subject"
+							${ param.searchCondition eq "qa_title" ? "selected" : "" }>제목</option>
+						<option value="writer"
+							${ param.searchCondition eq "qa_id" ? "selected" : "" }>작성자</option>
+						<option value="subject+content">제목+내용</option>
+				</select> <input type="text" name="searchWord" value='${ param.searchWord }'>
+					<input type="button" style="height: 22px; width: 50px" value="검색"
+					id="searchBtn"></td>
+			</tr>
+		</form>
+	</table>
+	<br> <br> <br> <br> <br> <br> <br>
 
-			$(document).ready(function () {
-				$(".new_list_imgHover").on("mouseover", function(){
-					$(this).find(".img_hover").css("display", "block")
-					$(this).find(".img_default").css("display", "none")
-				})
-				$(".new_list_imgHover").on("mouseout", function(){
-					$(this).find(".img_hover").css("display", "none")
-					$(this).find(".img_default").css("display", "block")
-				})
-			});
-
-			</script>
-			
-			<div id="kakaoFoot" class="foot_group">
+<div id="kakaoFoot" class="foot_group ">
 				<div class="area_footer">
 					<h2 class="screen_out">서비스 이용정보</h2>
 					<div class="service_info">
-						<a class="link_service" href="/policy" target="_blank"
-							rel="noreferrer">이용약관</a><a class="link_service"
+						<a class="link_service" href="https://e.kakao.com/policy" target="_blank"
+							rel="noreferrer">이용약관</a> <a class="link_service"
 							href="https://billing-web.kakao.com/kbill/terms/service"
-							target="_blank" rel="noreferrer">유료이용안내</a><a
+							target="_blank" rel="noreferrer">유료이용안내</a> <a
 							class="link_service" href="https://www.kakao.com/policy/privacy"
-							target="_blank" rel="noreferrer"><strong class="dlnk_txt">개인정보처리방침</strong></a><a
-							class="link_service" href="https://bizemoticon.kakao.com"
-							target="_blank" rel="noreferrer">기업고객</a><a class="link_service"
+							target="_blank" rel="noreferrer"> <strong class="dlnk_txt">개인정보처리방침</strong>
+						</a> <a class="link_service" href="https://bizemoticon.kakao.com"
+							target="_blank" rel="noreferrer">기업고객</a> <a class="link_service"
 							href="https://cs.kakao.com/requests?category=278&amp;locale=ko&amp;node=30555&amp;service=94"
-							target="_blank" rel="noreferrer">문의하기</a><a class="link_service"
+							target="_blank" rel="noreferrer">문의하기</a> <a class="link_service"
 							href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208147521"
-							target="_blank" rel="noreferrer">공정위사업자정보</a><a
+							target="_blank" rel="noreferrer">공정위사업자정보</a> <a
 							class="link_service" href="https://www.kakaocorp.com/page/"
-							target="_blank" rel="noopener noreferrer"><strong
-							class="dlnk_txt">(주) 카카오</strong></a>
+							target="_blank" rel="noopener noreferrer"> <strong
+							class="dlnk_txt">(주) 카카오</strong>
+						</a>
 						<p class="desc_service">카카오 이모티콘샵에서 판매되는 콘텐츠의 저작권은 콘텐츠 제공자에게
 							있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 처벌될 수 있습니다.</p>
 					</div>
 					<div class="wrap_info">
-						<strong class="tit_info"><a class="link_info"
+						<strong class="tit_info"> <a class="link_info"
 							href="https://www.kakaocorp.com/page/" target="_blank"
-							rel="noopener noreferrer">(주) 카카오</a></strong>
+							rel="noopener noreferrer">(주) 카카오</a>
+						</strong>
 						<dl class="list_info">
 							<div class="unit_info">
 								<dt>대표</dt>
@@ -603,15 +653,12 @@
 						</dl>
 					</div>
 					<div class="area_movetop">
-						<button type="button" class="btn_movetop" onclick="location.href=''" >
+						<button type="button" class="btn_movetop">
 							<span class="ico_comm ico_movetop">위로 이동</span>
 						</button>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	
 <script type="text/javascript">
 		/* 검색 관련 */
 
@@ -732,7 +779,7 @@
 	
 
 	//메뉴 열림
-	 $(".link_menu").on("click",function(){
+	 $("#side_open").on("click",function(){
 		$(".wrap_menu").css("display","block");
 		$(".dimmed_menu").css("display","block");
 		
@@ -777,5 +824,6 @@
 	   window.open("../sidemenu/numbermodal.jsp" ,"numbermodal", "width=380,height=650");
 	}
 	</script>
+
 </body>
 </html>
