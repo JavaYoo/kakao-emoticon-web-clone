@@ -14,6 +14,7 @@ public class SentDTO {
 	private String el_stopimg;
 	private String el_name;
 	private String el_maker;
+	private int gb_emnum;
 	
 	public Date getGb_date() {
 		return gb_date;
@@ -69,12 +70,19 @@ public class SentDTO {
 	public void setEl_maker(String el_maker) {
 		this.el_maker = el_maker;
 	}
+	
+	public int getGb_emnum() {
+		return gb_emnum;
+	}
+	public void setGb_emnum(int gb_emnum) {
+		this.gb_emnum = gb_emnum;
+	}
 	public SentDTO() {
 		super();
 	
 	}
 	public SentDTO(Date gb_date, String m_nn, int gb_seq, String gb_payway, int gb_payprice, String gb_state,
-			String el_stopimg, String el_name, String el_maker) {
+			String el_stopimg, String el_name, String el_maker, int gb_emnum) {
 		super();
 		this.gb_date = gb_date;
 		this.m_nn = m_nn;
@@ -85,7 +93,9 @@ public class SentDTO {
 		this.el_stopimg = el_stopimg;
 		this.el_name = el_name;
 		this.el_maker = el_maker;
+		this.gb_emnum = gb_emnum;
 	}
+	
 	
 	
 }

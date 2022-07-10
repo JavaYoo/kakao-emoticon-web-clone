@@ -24,7 +24,7 @@ public class SearchDAO {
 
 		String sql = "SELECT el_num, el_name, el_maker, el_mainimg, el_stopimg "
 				+ "FROM em_elist "
-				+ "WHERE el_name LIKE '%" + q + "%'OR el_maker LIKE '%" + q + "%' "
+				+ "WHERE replace(el_name, ' ', '') LIKE '%" + q + "%' OR replace(el_maker, ' ', '') LIKE '%" + q + "%' "
 				+ "ORDER BY el_date ";
 
 		ArrayList<SearchDTO> list = null;

@@ -1,4 +1,19 @@
 
+@font-face {
+	font-family: notokr-regular;
+	src: url("../../images/notokr-regular.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: notokr-bold;
+	src: url("../../images/notokr-bold.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 600
+}
+
+
 @media ( max-width : 1024px) {
 	.emoticon_head #kakaoGnb .list_gnb li:hover .link_gnb {
 		color: gray;

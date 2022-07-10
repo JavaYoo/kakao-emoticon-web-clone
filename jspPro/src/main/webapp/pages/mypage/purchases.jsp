@@ -16,7 +16,6 @@ name="viewport">
 <link rel="stylesheet" href="../../css/header/header.css?ver=1">
 <link rel="stylesheet" href="../../css/mypages/mypage.css?ver=1">
 <link rel="stylesheet" href="../../css/mypages/mypagepurchases.css?ver=1">
-
 </head>
 <body>
 

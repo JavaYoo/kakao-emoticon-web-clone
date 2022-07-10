@@ -1,13 +1,13 @@
 @font-face {
 	font-family: notokr-regular;
-	src: url("../images/notokr-regular.ttf") format("truetype");
+	src: url("../../images/notokr-regular.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
 }
 
 @font-face {
 	font-family: notokr-bold;
-	src: url("../images/notokr-bold.ttf") format("truetype");
+	src: url("../../images/notokr-bold.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 600
 }
@@ -2312,13 +2312,6 @@ body {
 .foot_group .area_movetop .btn_movetop {
 	margin: 30px 0 40px
 }
-
-
-
-
-
-
-
 
 .search_wrap {
     display: none;

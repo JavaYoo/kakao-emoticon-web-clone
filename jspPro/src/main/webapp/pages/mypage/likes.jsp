@@ -587,7 +587,7 @@
 							<li class="on"><div class="link_new">
 											<!-- 안움직이는 대표 이미지 -->
 									<a class="link_product" aria-label="마음이는 즐거워~~~ 21 상세"
-										href="/t/happy-heart-kid-ver-21"><span class="unit_emot"><img
+										href="<%=contextPath%>/pages/view/view.do?el_num=${ dto.li_num }"><span class="unit_emot"><img
 											src="${dto.el_stopimg}"  
 											class="img_emot img_default" alt=""><img
 											src="${dto.el_mainimg}"

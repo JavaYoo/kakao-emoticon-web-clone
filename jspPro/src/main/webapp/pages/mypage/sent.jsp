@@ -618,7 +618,7 @@
 									</dl>
 								</div>
 								<div class="area_item">
-									<a class="link_item" href="/t/girls-who-talk-harshly">
+									<a class="link_item" href="<%=contextPath%>/pages/view/view.do?el_num=${ dto.gb_emnum }">
 										<div class="area_tit">
 											<strong class="tit_product"><span class="txt_tit">${dto.el_name}
 													</span></strong><span class="txt_author">${dto.el_maker}</span>
