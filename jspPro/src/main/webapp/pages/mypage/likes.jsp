@@ -562,11 +562,11 @@
 												</c:if>
 												</a>
 												</li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
 										<c:if test="${not empty likesList}">
 														<span class="num_tab">${fn:length(likesList)}</span>
 											</c:if>
-											
+											<span class="screen_out">선택됨</span>
 											<c:if test="${empty likesList}">
 													<span class="num_tab"></span>
 											</c:if>

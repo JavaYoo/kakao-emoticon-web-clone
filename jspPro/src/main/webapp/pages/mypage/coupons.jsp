@@ -13,6 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="../../css/mypages/mypage.css?ver=1">
  <link rel="stylesheet" href="../../css/mypages/mypagecoupons.css?ver=1">
+ <link rel="stylesheet" href="../../css/header/header.css?ver=1">
 </head>
 <body>
 
@@ -488,16 +489,16 @@
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
 										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+									
 												<c:if test="${not empty couponsList}">
 														<span class="num_tab">${fn:length(couponsList)}</span>
 												</c:if>
-												
 												<c:if test="${empty couponsList}">
 														<span class="num_tab"></span>
 												</c:if>
-												</a>
-												</li>
+												</a></li>
+												
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/likes.do?id=email">좋아요
 										<c:if test="${not empty likesList}">
 														<span class="num_tab">${fn:length(likesList)}</span>
@@ -551,7 +552,7 @@
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
 										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
 												<c:if test="${not empty couponsList}">
 														<span class="num_tab">${fn:length(couponsList)}</span>
 												</c:if>

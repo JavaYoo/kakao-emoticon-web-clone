@@ -489,7 +489,7 @@
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
 										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
 												<c:if test="${not empty couponsList}">
 														<span class="num_tab">${fn:length(couponsList)}</span>
 												</c:if>
@@ -552,7 +552,7 @@
 									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/purchases.do?id=email">구매내역</a></li>
 									<li class=""><a class="link_tab"
 										href="<%=contextPath %>/pages/mypage/received.do?id=email">선물함</a></li>
-									<li class=""><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
+									<li class="on"><a class="link_tab" href="<%=contextPath %>/pages/mypage/coupons.do?id=email">쿠폰함
 												<c:if test="${not empty couponsList}">
 														<span class="num_tab">${fn:length(couponsList)}</span>
 												</c:if>

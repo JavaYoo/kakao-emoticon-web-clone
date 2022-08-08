@@ -38,7 +38,7 @@ public class KakaoLoginHandler implements CommandHandler {
 				if ( referer != null) {
 					response.sendRedirect(referer);
 				}else {
-					response.sendRedirect("../new/new_kakao.do");
+					response.sendRedirect("../home/home.do");
 				}
 				
 			}else {
